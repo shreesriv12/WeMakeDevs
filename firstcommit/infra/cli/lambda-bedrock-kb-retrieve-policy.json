@@ -1,0 +1,9 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Sid": "RetrieveAuthorizedQuizCourseChunks",
+    "Effect": "Allow",
+    "Action": "bedrock:Retrieve",
+    "Resource": "arn:aws:bedrock:us-east-1:339486312822:knowledge-base/OUSANRBFI4"
+  }]
+}

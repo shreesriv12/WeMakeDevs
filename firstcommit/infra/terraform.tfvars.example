@@ -1,0 +1,4 @@
+aws_region = "ap-south-1"
+environment = "dev"
+# Must be globally unique; do not reuse a production bucket for development.
+course_bucket_name = "replace-with-globally-unique-shikshamesh-course-content"

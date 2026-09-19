@@ -1,0 +1,7 @@
+{
+  "type": "S3_VECTORS",
+  "s3VectorsConfiguration": {
+    "vectorBucketArn": "arn:aws:s3vectors:us-east-1:339486312822:bucket/shikshamesh-vectors-339486312822-us-east-1",
+    "indexArn": "arn:aws:s3vectors:us-east-1:339486312822:bucket/shikshamesh-vectors-339486312822-us-east-1/index/shikshamesh-course-index"
+  }
+}

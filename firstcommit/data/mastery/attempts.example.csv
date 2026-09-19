@@ -1,0 +1,9 @@
+learner_id,topic_id,question_id,is_correct,occurred_at,difficulty
+learner-demo-01,fractions,q-01,1,2026-09-01T09:00:00Z,easy
+learner-demo-01,fractions,q-02,0,2026-09-01T09:05:00Z,medium
+learner-demo-01,decimals,q-03,1,2026-09-02T09:00:00Z,easy
+learner-demo-02,fractions,q-01,0,2026-09-01T10:00:00Z,easy
+learner-demo-02,decimals,q-03,0,2026-09-02T10:00:00Z,medium
+learner-demo-02,decimals,q-04,1,2026-09-02T10:05:00Z,medium
+learner-demo-03,fractions,q-02,1,2026-09-03T11:00:00Z,medium
+learner-demo-03,decimals,q-04,1,2026-09-03T11:05:00Z,medium

@@ -1,0 +1,9 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Sid": "GenerateOptInQuizzesWithNovaLite",
+    "Effect": "Allow",
+    "Action": "bedrock:InvokeModel",
+    "Resource": "arn:aws:bedrock:us-east-1::inference-profile/us.amazon.nova-2-lite-v1:0"
+  }]
+}

@@ -1,0 +1,12 @@
+{"id":"intent-0082","query":"Search for current AICTE internship guidelines","labels":["external_research"]}
+{"id":"intent-0103","query":"Make MCQs using the lecture notes I uploaded","labels":["assessment","knowledge_retrieval"]}
+{"id":"intent-0100","query":"new education polcy update kya hai search kro","labels":["external_research"]}
+{"id":"intent-0045","query":"Retrieve the formula for numerical aperture from my study material","labels":["knowledge_retrieval"]}
+{"id":"intent-0112","query":"Meri galtiyo ke hisab se Hinglish me study plan do","labels":["personalization","language_support"]}
+{"id":"intent-0078","query":"explain it bilingual english plus hindi","labels":["language_support"]}
+{"id":"intent-0093","query":"Web par naye cybersecurity reports dhundo","labels":["external_research"]}
+{"id":"intent-0052","query":"Lecture PDF se normalization ke rules nikalo","labels":["knowledge_retrieval"]}
+{"id":"intent-0092","query":"Abhi kaun si student scholarships open hain","labels":["external_research"]}
+{"id":"intent-0084","query":"Find recent research papers on federated learning in education","labels":["external_research"]}
+{"id":"intent-0049","query":"कक्षा के नोट्स से ओएसआई मॉडल समझाओ","labels":["knowledge_retrieval"]}
+{"id":"intent-0059","query":"uploded slides me RAID wala topic search kro","labels":["knowledge_retrieval"]}

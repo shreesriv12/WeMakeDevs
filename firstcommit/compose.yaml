@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: shikshamesh-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: shikshamesh
+      POSTGRES_USER: shikshamesh
+      POSTGRES_PASSWORD: shikshamesh_dev_password
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - shikshamesh_postgres_data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shikshamesh -d shikshamesh"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  shikshamesh_postgres_data:

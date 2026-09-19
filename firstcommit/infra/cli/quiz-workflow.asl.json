@@ -1,0 +1,35 @@
+{
+  "Comment": "ShikshaMesh quiz generation, translation, notification and analytics contract",
+  "StartAt": "GenerateQuiz",
+  "States": {
+    "GenerateQuiz": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:339486312822:function:shikshamesh-quiz-worker",
+      "Parameters": { "stage": "generate", "classId.$": "$.classId", "lectureSourceId.$": "$.lectureSourceId", "difficulty.$": "$.difficulty", "institutionId.$": "$.institutionId", "useOpenRouter.$": "$.useOpenRouter" },
+      "ResultPath": "$.generation",
+      "Next": "TranslateQuiz"
+    },
+    "TranslateQuiz": {
+      "Type": "Map",
+      "ItemsPath": "$.languages",
+      "ResultPath": "$.translations",
+      "ItemSelector": { "stage": "translate", "language.$": "$$.Map.Item.Value", "quiz.$": "$.generation.quiz", "institutionId.$": "$.institutionId" },
+      "Iterator": { "StartAt": "Translate", "States": { "Translate": { "Type": "Task", "Resource": "arn:aws:lambda:us-east-1:339486312822:function:shikshamesh-quiz-worker", "End": true } } },
+      "Next": "ScheduleNotification"
+    },
+    "ScheduleNotification": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:339486312822:function:shikshamesh-quiz-worker",
+      "Parameters": { "stage": "notify", "scheduledFor.$": "$.scheduledFor", "quiz.$": "$.generation.quiz", "translations.$": "$.translations" },
+      "ResultPath": "$.notification",
+      "Next": "InitializeAnalytics"
+    },
+    "InitializeAnalytics": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:339486312822:function:shikshamesh-quiz-worker",
+      "Parameters": { "stage": "analytics", "quiz.$": "$.generation.quiz", "institutionId.$": "$.institutionId" },
+      "ResultPath": "$.analytics",
+      "End": true
+    }
+  }
+}

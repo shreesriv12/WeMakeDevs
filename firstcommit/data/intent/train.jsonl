@@ -1,0 +1,96 @@
+{"id":"intent-0119","query":"Search the latest policy and explain it in Hindi","labels":["language_support","external_research"]}
+{"id":"intent-0077","query":"Muje easy hindi mai deadlock samjna hai","labels":["language_support"]}
+{"id":"intent-0097","query":"find curent govt rules for online courses","labels":["external_research"]}
+{"id":"intent-0009","query":"मुझे डेटा स्ट्रक्चर के प्रश्नों से जांचो","labels":["assessment"]}
+{"id":"intent-0001","query":"Make a 10-question quiz on TCP reliability","labels":["assessment"]}
+{"id":"intent-0062","query":"Translate this explanation of routing into Hindi","labels":["language_support"]}
+{"id":"intent-0018","query":"Muje recursion ka test dena hai ques banao","labels":["assessment"]}
+{"id":"intent-0096","query":"serch latest cloud computing certfication updates","labels":["external_research"]}
+{"id":"intent-0036","query":"my last scor was low pls make a personal study stratgy","labels":["personalization"]}
+{"id":"intent-0040","query":"mere perfomance ke accrding next topic btado","labels":["personalization"]}
+{"id":"intent-0079","query":"isko simpl langauge me likh do","labels":["language_support"]}
+{"id":"intent-0056","query":"find paging defination frm my uploded notes","labels":["knowledge_retrieval"]}
+{"id":"intent-0029","query":"मेरी प्रगति देखकर अगला अभ्यास स्तर चुनो","labels":["personalization"]}
+{"id":"intent-0002","query":"Create five MCQs on database normalization","labels":["assessment"]}
+{"id":"intent-0089","query":"हाल में प्रकाशित क्वांटम कंप्यूटिंग शोधपत्र बताओ","labels":["external_research"]}
+{"id":"intent-0064","query":"Give the answer in both English and Hindi","labels":["language_support"]}
+{"id":"intent-0102","query":"Mere pichle scores ke hisab se mock test banao","labels":["assessment","personalization"]}
+{"id":"intent-0107","query":"Find the latest syllabus and make a quiz from it","labels":["assessment","external_research"]}
+{"id":"intent-0113","query":"Find current courses suited to my weak areas","labels":["personalization","external_research"]}
+{"id":"intent-0013","query":"DBMS ke liye 15 MCQ chahiye","labels":["assessment"]}
+{"id":"intent-0085","query":"Check the current application deadline for the scholarship","labels":["external_research"]}
+{"id":"intent-0006","query":"आज के नेटवर्किंग टॉपिक पर 10 सवाल बनाओ","labels":["assessment"]}
+{"id":"intent-0091","query":"Latest coding hackathons search karke batao","labels":["external_research"]}
+{"id":"intent-0101","query":"Use my weak topics to create a practice quiz","labels":["assessment","personalization"]}
+{"id":"intent-0024","query":"Adjust the difficulty because the previous quiz was too easy","labels":["personalization"]}
+{"id":"intent-0044","query":"What did my class notes say about Dijkstra's algorithm?","labels":["knowledge_retrieval"]}
+{"id":"intent-0080","query":"Can u translet this networking answer to Hindi","labels":["language_support"]}
+{"id":"intent-0058","query":"Show wat the lecture said abt routing tables","labels":["knowledge_retrieval"]}
+{"id":"intent-0026","query":"मेरे पिछले टेस्ट के आधार पर कमजोर विषय बताओ","labels":["personalization"]}
+{"id":"intent-0038","query":"analyse my weak arias frm old quizes","labels":["personalization"]}
+{"id":"intent-0061","query":"Teach process synchronization in Hindi","labels":["language_support"]}
+{"id":"intent-0041","query":"Show my lecture notes about TCP congestion control","labels":["knowledge_retrieval"]}
+{"id":"intent-0042","query":"Find the definition of functional dependency in my notes","labels":["knowledge_retrieval"]}
+{"id":"intent-0055","query":"Class notes se TCP aur UDP ka difference batao","labels":["knowledge_retrieval"]}
+{"id":"intent-0053","query":"Jo notes upload kiye hain unse quick summary do","labels":["knowledge_retrieval"]}
+{"id":"intent-0116","query":"Meri PDF ka summary easy Hinglish me do","labels":["knowledge_retrieval","language_support"]}
+{"id":"intent-0099","query":"latest DBMS research articals dhund do","labels":["external_research"]}
+{"id":"intent-0028","query":"जिन अध्यायों में कम अंक आए उन्हें पहले कैसे पढ़ूं","labels":["personalization"]}
+{"id":"intent-0046","query":"मेरे नोट्स में दिए गए डेडलॉक के चार नियम दिखाओ","labels":["knowledge_retrieval"]}
+{"id":"intent-0114","query":"Mere weak topics ke liye latest resources web par dhundo","labels":["personalization","external_research"]}
+{"id":"intent-0022","query":"Plan my revision based on the questions I got wrong","labels":["personalization"]}
+{"id":"intent-0025","query":"Recommend practice topics based on my recent scores","labels":["personalization"]}
+{"id":"intent-0111","query":"Explain my weak chapters in simple Hindi","labels":["personalization","language_support"]}
+{"id":"intent-0063","query":"Explain recursion using simple English","labels":["language_support"]}
+{"id":"intent-0047","query":"अपलोड किए अध्याय से मुख्य बिंदु निकालो","labels":["knowledge_retrieval"]}
+{"id":"intent-0027","query":"मेरी गलतियों को देखकर पढ़ाई की योजना बनाओ","labels":["personalization"]}
+{"id":"intent-0020","query":"kal exam h pls ek quick physics mock bna do","labels":["assessment"]}
+{"id":"intent-0069","query":"इस अवधारणा को हिंदी और अंग्रेज़ी दोनों में लिखो","labels":["language_support"]}
+{"id":"intent-0075","query":"Technical terms English me rakho baki Hindi me samjhao","labels":["language_support"]}
+{"id":"intent-0087","query":"शिक्षा से जुड़ी हाल की एआई नीति की जानकारी ढूंढो","labels":["external_research"]}
+{"id":"intent-0019","query":"Can u genrate fill in blanks for SQL joins","labels":["assessment"]}
+{"id":"intent-0012","query":"OS scheduling ka practice test bana do","labels":["assessment"]}
+{"id":"intent-0015","query":"Pointers topic ka ek mock test le lo","labels":["assessment"]}
+{"id":"intent-0057","query":"mere pdf se imp formulas nikal do plz","labels":["knowledge_retrieval"]}
+{"id":"intent-0086","query":"ऑनलाइन परीक्षा के लिए नवीनतम सरकारी दिशानिर्देश खोजो","labels":["external_research"]}
+{"id":"intent-0054","query":"Meri file me producer consumer problem kaha explain hai","labels":["knowledge_retrieval"]}
+{"id":"intent-0032","query":"Maine arrays me galti ki thi ab kya practice karu","labels":["personalization"]}
+{"id":"intent-0118","query":"Uploaded syllabus ko current web syllabus se verify kro","labels":["knowledge_retrieval","external_research"]}
+{"id":"intent-0005","query":"Test me on binary trees without showing answers first","labels":["assessment"]}
+{"id":"intent-0011","query":"Mujhe TCP handshake par quiz do","labels":["assessment"]}
+{"id":"intent-0017","query":"make a quizz on oops concepts with ansers at end","labels":["assessment"]}
+{"id":"intent-0031","query":"Mere weak topics ke liye revision plan banao","labels":["personalization"]}
+{"id":"intent-0003","query":"Give me a short test on process scheduling","labels":["assessment"]}
+{"id":"intent-0050","query":"मेरी सामग्री में दिए गए एसक्यूएल उदाहरण दिखाओ","labels":["knowledge_retrieval"]}
+{"id":"intent-0073","query":"Hinglish me explain karo ki cache memory kya hoti hai","labels":["language_support"]}
+{"id":"intent-0008","query":"डीबीएमएस नॉर्मलाइजेशन पर बहुविकल्पीय प्रश्न दो","labels":["assessment"]}
+{"id":"intent-0066","query":"यह टॉपिक बहुत आसान हिंदी में समझाओ","labels":["language_support"]}
+{"id":"intent-0034","query":"Pichle tests dekh kar batao main kaha improve kar sakta hu","labels":["personalization"]}
+{"id":"intent-0037","query":"Muje hard ques mat do pehle basic se start krao","labels":["personalization"]}
+{"id":"intent-0090","query":"वर्तमान इंटर्नशिप नियमों की आधिकारिक जानकारी खोजो","labels":["external_research"]}
+{"id":"intent-0007","query":"ऑपरेटिंग सिस्टम के लिए एक छोटा टेस्ट बनाइए","labels":["assessment"]}
+{"id":"intent-0014","query":"Graph traversal se viva questions pucho","labels":["assessment"]}
+{"id":"intent-0120","query":"Naye AI rules web se dhund ke simple Hinglish me smjhao","labels":["language_support","external_research"]}
+{"id":"intent-0109","query":"Review my past mistakes using the feedback file","labels":["personalization","knowledge_retrieval"]}
+{"id":"intent-0021","query":"I scored poorly in subnetting; tell me what to revise first","labels":["personalization"]}
+{"id":"intent-0071","query":"TCP handshake ko Hindi me samjha do","labels":["language_support"]}
+{"id":"intent-0004","query":"Prepare true or false questions about deadlocks","labels":["assessment"]}
+{"id":"intent-0060","query":"my notes se linked list ka explnation chahiye","labels":["knowledge_retrieval"]}
+{"id":"intent-0068","query":"कठिन तकनीकी शब्दों का हिंदी अर्थ भी बताओ","labels":["language_support"]}
+{"id":"intent-0105","query":"Create a Hindi quiz on operating systems","labels":["assessment","language_support"]}
+{"id":"intent-0094","query":"AICTE ke current exam rules check karo","labels":["external_research"]}
+{"id":"intent-0035","query":"Mere level ke hisab se coding questions suggest karo","labels":["personalization"]}
+{"id":"intent-0043","query":"Summarize the uploaded chapter on virtual memory","labels":["knowledge_retrieval"]}
+{"id":"intent-0074","query":"Ye answer Hindi me translate krdo","labels":["language_support"]}
+{"id":"intent-0051","query":"Mere notes me subnet mask wala section dhundo","labels":["knowledge_retrieval"]}
+{"id":"intent-0016","query":"plz cn routing pe 5 qustions bnao","labels":["assessment"]}
+{"id":"intent-0070","query":"मुझे चरण-दर-चरण सरल भाषा में पढ़ाओ","labels":["language_support"]}
+{"id":"intent-0030","query":"पिछले क्विज़ के हिसाब से मुझे क्या दोहराना चाहिए","labels":["personalization"]}
+{"id":"intent-0023","query":"Which chapters should I prioritize from my last three tests?","labels":["personalization"]}
+{"id":"intent-0115","query":"Explain the uploaded networking notes in Hindi","labels":["knowledge_retrieval","language_support"]}
+{"id":"intent-0095","query":"Is month ke upcoming tech competitions batao","labels":["external_research"]}
+{"id":"intent-0110","query":"Mere uploaded test results dekh kar revision topics batao","labels":["personalization","knowledge_retrieval"]}
+{"id":"intent-0088","query":"इस वर्ष की छात्रवृत्ति की अंतिम तारीख खोजें","labels":["external_research"]}
+{"id":"intent-0039","query":"I keep missing cache questions what shud i revise","labels":["personalization"]}
+{"id":"intent-0081","query":"Find the latest UGC policy updates for online degrees","labels":["external_research"]}
+{"id":"intent-0083","query":"What are the newest changes to the national education policy?","labels":["external_research"]}

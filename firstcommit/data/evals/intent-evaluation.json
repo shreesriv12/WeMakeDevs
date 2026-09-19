@@ -1,0 +1,10 @@
+[
+  { "id": "intent-001", "query": "Create a quiz on TCP reliability", "labels": ["assessment"] },
+  { "id": "intent-002", "query": "Analyze my weak topics from the last quiz", "labels": ["assessment", "personalization"] },
+  { "id": "intent-003", "query": "Show professor lecture notes for routing", "labels": ["knowledge_retrieval"] },
+  { "id": "intent-004", "query": "Mujhe Hindi mein lecture notes samjhao", "labels": ["knowledge_retrieval", "language_support"] },
+  { "id": "intent-005", "query": "Find the latest UGC research on online learning", "labels": ["external_research"] },
+  { "id": "intent-006", "query": "Prepare test questions from the syllabus in Hindi", "labels": ["assessment", "knowledge_retrieval", "language_support"] },
+  { "id": "intent-007", "query": "Review my history and explain weak concepts", "labels": ["personalization"] },
+  { "id": "intent-008", "query": "Search the web for latest education policy", "labels": ["external_research"] }
+]

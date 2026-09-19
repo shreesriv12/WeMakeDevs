@@ -1,0 +1,7 @@
+{
+  "type": "S3",
+  "s3Configuration": {
+    "bucketArn": "arn:aws:s3:::shikshamesh-339486312822-us-east-1",
+    "inclusionPrefixes": ["institutions/"]
+  }
+}

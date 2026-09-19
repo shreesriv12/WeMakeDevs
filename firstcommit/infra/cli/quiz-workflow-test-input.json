@@ -1,0 +1,11 @@
+{
+  "classId": "cn-b",
+  "lectureSourceId": "cn-transport-01",
+  "languages": ["hi", "mr"],
+  "scheduledFor": "2026-09-20T10:00:00.000Z",
+  "difficulty": "easy",
+  "useOpenRouter": true,
+  "institutionId": "demo-institute",
+  "requestedBy": "teacher-demo",
+  "requestedAt": "2026-09-19T00:00:00.000Z"
+}

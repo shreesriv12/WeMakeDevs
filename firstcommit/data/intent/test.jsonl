@@ -1,0 +1,12 @@
+{"id":"intent-0010","query":"कल के चैप्टर से रिक्त स्थान वाले सवाल बनाओ","labels":["assessment"]}
+{"id":"intent-0117","query":"Compare my notes with the latest official guidelines","labels":["knowledge_retrieval","external_research"]}
+{"id":"intent-0106","query":"TCP ka quizz Hindi me do plz","labels":["assessment","language_support"]}
+{"id":"intent-0033","query":"Meri speed slow hai mere liye daily study plan set karo","labels":["personalization"]}
+{"id":"intent-0076","query":"plz is topic ko hinglsh me smjhao","labels":["language_support"]}
+{"id":"intent-0048","query":"मेरी पीडीएफ में पेज रिप्लेसमेंट वाला भाग खोजो","labels":["knowledge_retrieval"]}
+{"id":"intent-0104","query":"Mere class notes se 10 sawal banao","labels":["assessment","knowledge_retrieval"]}
+{"id":"intent-0065","query":"Convert this technical paragraph into easy Hindi","labels":["language_support"]}
+{"id":"intent-0072","query":"Is paragraph ka simple English version do","labels":["language_support"]}
+{"id":"intent-0067","query":"इस उत्तर को अंग्रेज़ी में अनुवाद करो","labels":["language_support"]}
+{"id":"intent-0108","query":"Current cloud certification topics search karke test banao","labels":["assessment","external_research"]}
+{"id":"intent-0098","query":"abhi ki internship dedlines web se check kro","labels":["external_research"]}

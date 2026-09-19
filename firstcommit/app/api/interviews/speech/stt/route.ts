@@ -1,0 +1,3 @@
+import { authenticate } from "@/lib/auth";
+import { transcribeWithDeepgram } from "@/lib/voice-providers";
+export async function POST(request: Request) { try { await authenticate(request); const type = request.headers.get("content-type") ?? "audio/webm"; const audio = await request.arrayBuffer(); if (!audio.byteLength || audio.byteLength > 10_000_000) throw new Error("Audio must be between 1 byte and 10 MB"); return Response.json({ transcript: await transcribeWithDeepgram(audio, type) }); } catch (error) { return Response.json({ error: error instanceof Error ? error.message : "Transcription failed" }, { status: 400 }); } }

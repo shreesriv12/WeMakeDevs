@@ -1,0 +1,32 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["s3:ListBucket"],
+      "Resource": "arn:aws:s3:::shikshamesh-339486312822-us-east-1"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["s3:GetObject"],
+      "Resource": "arn:aws:s3:::shikshamesh-339486312822-us-east-1/institutions/*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3vectors:GetVectorBucket",
+        "s3vectors:GetIndex",
+        "s3vectors:GetVectors",
+        "s3vectors:PutVectors",
+        "s3vectors:DeleteVectors",
+        "s3vectors:QueryVectors"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["bedrock:InvokeModel"],
+      "Resource": "arn:aws:bedrock:us-east-1::foundation-model/amazon.titan-embed-text-v2:0"
+    }
+  ]
+}

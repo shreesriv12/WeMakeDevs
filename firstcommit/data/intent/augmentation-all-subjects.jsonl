@@ -1,0 +1,600 @@
+{"id":"synthetic-0001","query":"Create 10 MCQs on fractions","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0002","query":"Create 10 MCQs on quadratic equations","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0003","query":"Create 10 MCQs on trigonometry","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0004","query":"Create 10 MCQs on probability","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0005","query":"Create 10 MCQs on photosynthesis","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0006","query":"Create 10 MCQs on human digestion","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0007","query":"Create 10 MCQs on Newton's laws","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0008","query":"Create 10 MCQs on chemical bonding","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0009","query":"Create 10 MCQs on Indian independence movement","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0010","query":"Create 10 MCQs on Indian Constitution","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0011","query":"Create 10 MCQs on climate change","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0012","query":"Create 10 MCQs on maps and latitude","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0013","query":"Create 10 MCQs on Hindi grammar","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0014","query":"Create 10 MCQs on English essay writing","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0015","query":"Create 10 MCQs on financial accounting","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0016","query":"Create 10 MCQs on marketing fundamentals","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0017","query":"Create 10 MCQs on data structures","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0018","query":"Create 10 MCQs on DBMS normalization","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0019","query":"Create 10 MCQs on computer networks","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0020","query":"Create 10 MCQs on Python programming","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0021","query":"Mujhe fractions par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0022","query":"Mujhe quadratic equations par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0023","query":"Mujhe trigonometry par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0024","query":"Mujhe probability par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0025","query":"Mujhe photosynthesis par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0026","query":"Mujhe human digestion par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0027","query":"Mujhe Newton's laws par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0028","query":"Mujhe chemical bonding par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0029","query":"Mujhe Indian independence movement par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0030","query":"Mujhe Indian Constitution par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0031","query":"Mujhe climate change par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0032","query":"Mujhe maps and latitude par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0033","query":"Mujhe Hindi grammar par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0034","query":"Mujhe English essay writing par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0035","query":"Mujhe financial accounting par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0036","query":"Mujhe marketing fundamentals par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0037","query":"Mujhe data structures par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0038","query":"Mujhe DBMS normalization par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0039","query":"Mujhe computer networks par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0040","query":"Mujhe Python programming par practice test do","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0041","query":"Make a short quiz from fractions","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0042","query":"Make a short quiz from quadratic equations","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0043","query":"Make a short quiz from trigonometry","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0044","query":"Make a short quiz from probability","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0045","query":"Make a short quiz from photosynthesis","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0046","query":"Make a short quiz from human digestion","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0047","query":"Make a short quiz from Newton's laws","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0048","query":"Make a short quiz from chemical bonding","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0049","query":"Make a short quiz from Indian independence movement","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0050","query":"Make a short quiz from Indian Constitution","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0051","query":"Make a short quiz from climate change","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0052","query":"Make a short quiz from maps and latitude","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0053","query":"Make a short quiz from Hindi grammar","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0054","query":"Make a short quiz from English essay writing","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0055","query":"Make a short quiz from financial accounting","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0056","query":"Make a short quiz from marketing fundamentals","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0057","query":"Make a short quiz from data structures","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0058","query":"Make a short quiz from DBMS normalization","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0059","query":"Make a short quiz from computer networks","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0060","query":"Make a short quiz from Python programming","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0061","query":"fractions ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0062","query":"quadratic equations ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0063","query":"trigonometry ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0064","query":"probability ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0065","query":"photosynthesis ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0066","query":"human digestion ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0067","query":"Newton's laws ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0068","query":"chemical bonding ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0069","query":"Indian independence movement ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0070","query":"Indian Constitution ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0071","query":"climate change ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0072","query":"maps and latitude ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0073","query":"Hindi grammar ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0074","query":"English essay writing ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0075","query":"financial accounting ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0076","query":"marketing fundamentals ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0077","query":"data structures ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0078","query":"DBMS normalization ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0079","query":"computer networks ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0080","query":"Python programming ke questions banao","labels":["assessment"],"source":"synthetic-review-required"}
+{"id":"synthetic-0081","query":"Analyze my weak areas in fractions","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0082","query":"Analyze my weak areas in quadratic equations","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0083","query":"Analyze my weak areas in trigonometry","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0084","query":"Analyze my weak areas in probability","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0085","query":"Analyze my weak areas in photosynthesis","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0086","query":"Analyze my weak areas in human digestion","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0087","query":"Analyze my weak areas in Newton's laws","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0088","query":"Analyze my weak areas in chemical bonding","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0089","query":"Analyze my weak areas in Indian independence movement","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0090","query":"Analyze my weak areas in Indian Constitution","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0091","query":"Analyze my weak areas in climate change","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0092","query":"Analyze my weak areas in maps and latitude","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0093","query":"Analyze my weak areas in Hindi grammar","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0094","query":"Analyze my weak areas in English essay writing","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0095","query":"Analyze my weak areas in financial accounting","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0096","query":"Analyze my weak areas in marketing fundamentals","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0097","query":"Analyze my weak areas in data structures","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0098","query":"Analyze my weak areas in DBMS normalization","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0099","query":"Analyze my weak areas in computer networks","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0100","query":"Analyze my weak areas in Python programming","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0101","query":"Mere last score ke hisaab se fractions revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0102","query":"Mere last score ke hisaab se quadratic equations revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0103","query":"Mere last score ke hisaab se trigonometry revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0104","query":"Mere last score ke hisaab se probability revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0105","query":"Mere last score ke hisaab se photosynthesis revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0106","query":"Mere last score ke hisaab se human digestion revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0107","query":"Mere last score ke hisaab se Newton's laws revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0108","query":"Mere last score ke hisaab se chemical bonding revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0109","query":"Mere last score ke hisaab se Indian independence movement revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0110","query":"Mere last score ke hisaab se Indian Constitution revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0111","query":"Mere last score ke hisaab se climate change revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0112","query":"Mere last score ke hisaab se maps and latitude revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0113","query":"Mere last score ke hisaab se Hindi grammar revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0114","query":"Mere last score ke hisaab se English essay writing revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0115","query":"Mere last score ke hisaab se financial accounting revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0116","query":"Mere last score ke hisaab se marketing fundamentals revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0117","query":"Mere last score ke hisaab se data structures revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0118","query":"Mere last score ke hisaab se DBMS normalization revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0119","query":"Mere last score ke hisaab se computer networks revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0120","query":"Mere last score ke hisaab se Python programming revise karvao","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0121","query":"Track my progress for fractions","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0122","query":"Track my progress for quadratic equations","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0123","query":"Track my progress for trigonometry","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0124","query":"Track my progress for probability","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0125","query":"Track my progress for photosynthesis","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0126","query":"Track my progress for human digestion","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0127","query":"Track my progress for Newton's laws","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0128","query":"Track my progress for chemical bonding","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0129","query":"Track my progress for Indian independence movement","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0130","query":"Track my progress for Indian Constitution","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0131","query":"Track my progress for climate change","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0132","query":"Track my progress for maps and latitude","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0133","query":"Track my progress for Hindi grammar","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0134","query":"Track my progress for English essay writing","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0135","query":"Track my progress for financial accounting","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0136","query":"Track my progress for marketing fundamentals","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0137","query":"Track my progress for data structures","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0138","query":"Track my progress for DBMS normalization","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0139","query":"Track my progress for computer networks","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0140","query":"Track my progress for Python programming","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0141","query":"Why am I weak in fractions?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0142","query":"Why am I weak in quadratic equations?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0143","query":"Why am I weak in trigonometry?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0144","query":"Why am I weak in probability?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0145","query":"Why am I weak in photosynthesis?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0146","query":"Why am I weak in human digestion?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0147","query":"Why am I weak in Newton's laws?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0148","query":"Why am I weak in chemical bonding?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0149","query":"Why am I weak in Indian independence movement?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0150","query":"Why am I weak in Indian Constitution?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0151","query":"Why am I weak in climate change?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0152","query":"Why am I weak in maps and latitude?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0153","query":"Why am I weak in Hindi grammar?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0154","query":"Why am I weak in English essay writing?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0155","query":"Why am I weak in financial accounting?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0156","query":"Why am I weak in marketing fundamentals?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0157","query":"Why am I weak in data structures?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0158","query":"Why am I weak in DBMS normalization?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0159","query":"Why am I weak in computer networks?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0160","query":"Why am I weak in Python programming?","labels":["personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0161","query":"Show my study notes for fractions","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0162","query":"Show my study notes for quadratic equations","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0163","query":"Show my study notes for trigonometry","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0164","query":"Show my study notes for probability","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0165","query":"Show my study notes for photosynthesis","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0166","query":"Show my study notes for human digestion","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0167","query":"Show my study notes for Newton's laws","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0168","query":"Show my study notes for chemical bonding","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0169","query":"Show my study notes for Indian independence movement","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0170","query":"Show my study notes for Indian Constitution","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0171","query":"Show my study notes for climate change","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0172","query":"Show my study notes for maps and latitude","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0173","query":"Show my study notes for Hindi grammar","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0174","query":"Show my study notes for English essay writing","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0175","query":"Show my study notes for financial accounting","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0176","query":"Show my study notes for marketing fundamentals","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0177","query":"Show my study notes for data structures","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0178","query":"Show my study notes for DBMS normalization","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0179","query":"Show my study notes for computer networks","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0180","query":"Show my study notes for Python programming","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0181","query":"Find fractions in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0182","query":"Find quadratic equations in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0183","query":"Find trigonometry in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0184","query":"Find probability in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0185","query":"Find photosynthesis in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0186","query":"Find human digestion in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0187","query":"Find Newton's laws in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0188","query":"Find chemical bonding in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0189","query":"Find Indian independence movement in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0190","query":"Find Indian Constitution in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0191","query":"Find climate change in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0192","query":"Find maps and latitude in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0193","query":"Find Hindi grammar in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0194","query":"Find English essay writing in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0195","query":"Find financial accounting in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0196","query":"Find marketing fundamentals in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0197","query":"Find data structures in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0198","query":"Find DBMS normalization in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0199","query":"Find computer networks in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0200","query":"Find Python programming in my PDF","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0201","query":"Mere notes me fractions ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0202","query":"Mere notes me quadratic equations ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0203","query":"Mere notes me trigonometry ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0204","query":"Mere notes me probability ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0205","query":"Mere notes me photosynthesis ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0206","query":"Mere notes me human digestion ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0207","query":"Mere notes me Newton's laws ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0208","query":"Mere notes me chemical bonding ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0209","query":"Mere notes me Indian independence movement ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0210","query":"Mere notes me Indian Constitution ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0211","query":"Mere notes me climate change ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0212","query":"Mere notes me maps and latitude ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0213","query":"Mere notes me Hindi grammar ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0214","query":"Mere notes me English essay writing ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0215","query":"Mere notes me financial accounting ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0216","query":"Mere notes me marketing fundamentals ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0217","query":"Mere notes me data structures ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0218","query":"Mere notes me DBMS normalization ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0219","query":"Mere notes me computer networks ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0220","query":"Mere notes me Python programming ka section kholo","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0221","query":"Syllabus material for fractions dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0222","query":"Syllabus material for quadratic equations dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0223","query":"Syllabus material for trigonometry dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0224","query":"Syllabus material for probability dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0225","query":"Syllabus material for photosynthesis dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0226","query":"Syllabus material for human digestion dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0227","query":"Syllabus material for Newton's laws dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0228","query":"Syllabus material for chemical bonding dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0229","query":"Syllabus material for Indian independence movement dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0230","query":"Syllabus material for Indian Constitution dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0231","query":"Syllabus material for climate change dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0232","query":"Syllabus material for maps and latitude dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0233","query":"Syllabus material for Hindi grammar dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0234","query":"Syllabus material for English essay writing dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0235","query":"Syllabus material for financial accounting dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0236","query":"Syllabus material for marketing fundamentals dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0237","query":"Syllabus material for data structures dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0238","query":"Syllabus material for DBMS normalization dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0239","query":"Syllabus material for computer networks dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0240","query":"Syllabus material for Python programming dikhao","labels":["knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0241","query":"Explain fractions in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0242","query":"Explain quadratic equations in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0243","query":"Explain trigonometry in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0244","query":"Explain probability in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0245","query":"Explain photosynthesis in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0246","query":"Explain human digestion in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0247","query":"Explain Newton's laws in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0248","query":"Explain chemical bonding in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0249","query":"Explain Indian independence movement in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0250","query":"Explain Indian Constitution in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0251","query":"Explain climate change in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0252","query":"Explain maps and latitude in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0253","query":"Explain Hindi grammar in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0254","query":"Explain English essay writing in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0255","query":"Explain financial accounting in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0256","query":"Explain marketing fundamentals in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0257","query":"Explain data structures in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0258","query":"Explain DBMS normalization in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0259","query":"Explain computer networks in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0260","query":"Explain Python programming in Hindi","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0261","query":"fractions ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0262","query":"quadratic equations ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0263","query":"trigonometry ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0264","query":"probability ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0265","query":"photosynthesis ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0266","query":"human digestion ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0267","query":"Newton's laws ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0268","query":"chemical bonding ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0269","query":"Indian independence movement ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0270","query":"Indian Constitution ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0271","query":"climate change ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0272","query":"maps and latitude ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0273","query":"Hindi grammar ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0274","query":"English essay writing ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0275","query":"financial accounting ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0276","query":"marketing fundamentals ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0277","query":"data structures ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0278","query":"DBMS normalization ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0279","query":"computer networks ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0280","query":"Python programming ko Hinglish me samjhao","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0281","query":"Translate this fractions answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0282","query":"Translate this quadratic equations answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0283","query":"Translate this trigonometry answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0284","query":"Translate this probability answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0285","query":"Translate this photosynthesis answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0286","query":"Translate this human digestion answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0287","query":"Translate this Newton's laws answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0288","query":"Translate this chemical bonding answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0289","query":"Translate this Indian independence movement answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0290","query":"Translate this Indian Constitution answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0291","query":"Translate this climate change answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0292","query":"Translate this maps and latitude answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0293","query":"Translate this Hindi grammar answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0294","query":"Translate this English essay writing answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0295","query":"Translate this financial accounting answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0296","query":"Translate this marketing fundamentals answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0297","query":"Translate this data structures answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0298","query":"Translate this DBMS normalization answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0299","query":"Translate this computer networks answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0300","query":"Translate this Python programming answer into English","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0301","query":"fractions आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0302","query":"quadratic equations आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0303","query":"trigonometry आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0304","query":"probability आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0305","query":"photosynthesis आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0306","query":"human digestion आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0307","query":"Newton's laws आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0308","query":"chemical bonding आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0309","query":"Indian independence movement आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0310","query":"Indian Constitution आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0311","query":"climate change आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0312","query":"maps and latitude आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0313","query":"Hindi grammar आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0314","query":"English essay writing आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0315","query":"financial accounting आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0316","query":"marketing fundamentals आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0317","query":"data structures आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0318","query":"DBMS normalization आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0319","query":"computer networks आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0320","query":"Python programming आसान भाषा में बताओ","labels":["language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0321","query":"Search latest official learning guidance about fractions","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0322","query":"Search latest official learning guidance about quadratic equations","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0323","query":"Search latest official learning guidance about trigonometry","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0324","query":"Search latest official learning guidance about probability","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0325","query":"Search latest official learning guidance about photosynthesis","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0326","query":"Search latest official learning guidance about human digestion","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0327","query":"Search latest official learning guidance about Newton's laws","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0328","query":"Search latest official learning guidance about chemical bonding","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0329","query":"Search latest official learning guidance about Indian independence movement","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0330","query":"Search latest official learning guidance about Indian Constitution","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0331","query":"Search latest official learning guidance about climate change","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0332","query":"Search latest official learning guidance about maps and latitude","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0333","query":"Search latest official learning guidance about Hindi grammar","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0334","query":"Search latest official learning guidance about English essay writing","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0335","query":"Search latest official learning guidance about financial accounting","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0336","query":"Search latest official learning guidance about marketing fundamentals","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0337","query":"Search latest official learning guidance about data structures","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0338","query":"Search latest official learning guidance about DBMS normalization","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0339","query":"Search latest official learning guidance about computer networks","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0340","query":"Search latest official learning guidance about Python programming","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0341","query":"Find current official information on fractions","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0342","query":"Find current official information on quadratic equations","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0343","query":"Find current official information on trigonometry","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0344","query":"Find current official information on probability","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0345","query":"Find current official information on photosynthesis","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0346","query":"Find current official information on human digestion","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0347","query":"Find current official information on Newton's laws","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0348","query":"Find current official information on chemical bonding","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0349","query":"Find current official information on Indian independence movement","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0350","query":"Find current official information on Indian Constitution","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0351","query":"Find current official information on climate change","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0352","query":"Find current official information on maps and latitude","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0353","query":"Find current official information on Hindi grammar","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0354","query":"Find current official information on English essay writing","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0355","query":"Find current official information on financial accounting","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0356","query":"Find current official information on marketing fundamentals","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0357","query":"Find current official information on data structures","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0358","query":"Find current official information on DBMS normalization","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0359","query":"Find current official information on computer networks","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0360","query":"Find current official information on Python programming","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0361","query":"Search recent educational research for fractions","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0362","query":"Search recent educational research for quadratic equations","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0363","query":"Search recent educational research for trigonometry","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0364","query":"Search recent educational research for probability","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0365","query":"Search recent educational research for photosynthesis","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0366","query":"Search recent educational research for human digestion","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0367","query":"Search recent educational research for Newton's laws","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0368","query":"Search recent educational research for chemical bonding","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0369","query":"Search recent educational research for Indian independence movement","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0370","query":"Search recent educational research for Indian Constitution","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0371","query":"Search recent educational research for climate change","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0372","query":"Search recent educational research for maps and latitude","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0373","query":"Search recent educational research for Hindi grammar","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0374","query":"Search recent educational research for English essay writing","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0375","query":"Search recent educational research for financial accounting","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0376","query":"Search recent educational research for marketing fundamentals","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0377","query":"Search recent educational research for data structures","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0378","query":"Search recent educational research for DBMS normalization","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0379","query":"Search recent educational research for computer networks","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0380","query":"Search recent educational research for Python programming","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0381","query":"Latest official updates on fractions check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0382","query":"Latest official updates on quadratic equations check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0383","query":"Latest official updates on trigonometry check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0384","query":"Latest official updates on probability check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0385","query":"Latest official updates on photosynthesis check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0386","query":"Latest official updates on human digestion check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0387","query":"Latest official updates on Newton's laws check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0388","query":"Latest official updates on chemical bonding check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0389","query":"Latest official updates on Indian independence movement check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0390","query":"Latest official updates on Indian Constitution check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0391","query":"Latest official updates on climate change check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0392","query":"Latest official updates on maps and latitude check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0393","query":"Latest official updates on Hindi grammar check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0394","query":"Latest official updates on English essay writing check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0395","query":"Latest official updates on financial accounting check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0396","query":"Latest official updates on marketing fundamentals check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0397","query":"Latest official updates on data structures check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0398","query":"Latest official updates on DBMS normalization check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0399","query":"Latest official updates on computer networks check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0400","query":"Latest official updates on Python programming check karo","labels":["external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0401","query":"Use my study notes to make a fractions quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0402","query":"Use my study notes to make a quadratic equations quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0403","query":"Use my study notes to make a trigonometry quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0404","query":"Use my study notes to make a probability quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0405","query":"Use my study notes to make a photosynthesis quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0406","query":"Use my study notes to make a human digestion quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0407","query":"Use my study notes to make a Newton's laws quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0408","query":"Use my study notes to make a chemical bonding quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0409","query":"Use my study notes to make a Indian independence movement quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0410","query":"Use my study notes to make a Indian Constitution quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0411","query":"Use my study notes to make a climate change quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0412","query":"Use my study notes to make a maps and latitude quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0413","query":"Use my study notes to make a Hindi grammar quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0414","query":"Use my study notes to make a English essay writing quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0415","query":"Use my study notes to make a financial accounting quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0416","query":"Use my study notes to make a marketing fundamentals quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0417","query":"Use my study notes to make a data structures quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0418","query":"Use my study notes to make a DBMS normalization quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0419","query":"Use my study notes to make a computer networks quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0420","query":"Use my study notes to make a Python programming quiz","labels":["assessment","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0421","query":"fractions par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0422","query":"quadratic equations par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0423","query":"trigonometry par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0424","query":"probability par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0425","query":"photosynthesis par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0426","query":"human digestion par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0427","query":"Newton's laws par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0428","query":"chemical bonding par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0429","query":"Indian independence movement par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0430","query":"Indian Constitution par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0431","query":"climate change par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0432","query":"maps and latitude par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0433","query":"Hindi grammar par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0434","query":"English essay writing par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0435","query":"financial accounting par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0436","query":"marketing fundamentals par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0437","query":"data structures par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0438","query":"DBMS normalization par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0439","query":"computer networks par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0440","query":"Python programming par Hindi test questions banao","labels":["assessment","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0441","query":"My weak fractions areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0442","query":"My weak quadratic equations areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0443","query":"My weak trigonometry areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0444","query":"My weak probability areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0445","query":"My weak photosynthesis areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0446","query":"My weak human digestion areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0447","query":"My weak Newton's laws areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0448","query":"My weak chemical bonding areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0449","query":"My weak Indian independence movement areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0450","query":"My weak Indian Constitution areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0451","query":"My weak climate change areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0452","query":"My weak maps and latitude areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0453","query":"My weak Hindi grammar areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0454","query":"My weak English essay writing areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0455","query":"My weak financial accounting areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0456","query":"My weak marketing fundamentals areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0457","query":"My weak data structures areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0458","query":"My weak DBMS normalization areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0459","query":"My weak computer networks areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0460","query":"My weak Python programming areas se practice quiz banao","labels":["assessment","personalization"],"source":"synthetic-review-required"}
+{"id":"synthetic-0461","query":"Search current fractions guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0462","query":"Search current quadratic equations guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0463","query":"Search current trigonometry guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0464","query":"Search current probability guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0465","query":"Search current photosynthesis guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0466","query":"Search current human digestion guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0467","query":"Search current Newton's laws guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0468","query":"Search current chemical bonding guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0469","query":"Search current Indian independence movement guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0470","query":"Search current Indian Constitution guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0471","query":"Search current climate change guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0472","query":"Search current maps and latitude guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0473","query":"Search current Hindi grammar guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0474","query":"Search current English essay writing guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0475","query":"Search current financial accounting guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0476","query":"Search current marketing fundamentals guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0477","query":"Search current data structures guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0478","query":"Search current DBMS normalization guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0479","query":"Search current computer networks guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0480","query":"Search current Python programming guidelines and make a test","labels":["assessment","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0481","query":"My PDF se fractions Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0482","query":"My PDF se quadratic equations Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0483","query":"My PDF se trigonometry Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0484","query":"My PDF se probability Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0485","query":"My PDF se photosynthesis Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0486","query":"My PDF se human digestion Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0487","query":"My PDF se Newton's laws Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0488","query":"My PDF se chemical bonding Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0489","query":"My PDF se Indian independence movement Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0490","query":"My PDF se Indian Constitution Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0491","query":"My PDF se climate change Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0492","query":"My PDF se maps and latitude Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0493","query":"My PDF se Hindi grammar Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0494","query":"My PDF se English essay writing Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0495","query":"My PDF se financial accounting Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0496","query":"My PDF se marketing fundamentals Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0497","query":"My PDF se data structures Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0498","query":"My PDF se DBMS normalization Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0499","query":"My PDF se computer networks Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0500","query":"My PDF se Python programming Hinglish me samjhao","labels":["knowledge_retrieval","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0501","query":"Compare my fractions notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0502","query":"Compare my quadratic equations notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0503","query":"Compare my trigonometry notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0504","query":"Compare my probability notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0505","query":"Compare my photosynthesis notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0506","query":"Compare my human digestion notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0507","query":"Compare my Newton's laws notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0508","query":"Compare my chemical bonding notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0509","query":"Compare my Indian independence movement notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0510","query":"Compare my Indian Constitution notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0511","query":"Compare my climate change notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0512","query":"Compare my maps and latitude notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0513","query":"Compare my Hindi grammar notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0514","query":"Compare my English essay writing notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0515","query":"Compare my financial accounting notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0516","query":"Compare my marketing fundamentals notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0517","query":"Compare my data structures notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0518","query":"Compare my DBMS normalization notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0519","query":"Compare my computer networks notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0520","query":"Compare my Python programming notes with latest official guidance","labels":["knowledge_retrieval","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0521","query":"Mere weak fractions concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0522","query":"Mere weak quadratic equations concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0523","query":"Mere weak trigonometry concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0524","query":"Mere weak probability concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0525","query":"Mere weak photosynthesis concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0526","query":"Mere weak human digestion concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0527","query":"Mere weak Newton's laws concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0528","query":"Mere weak chemical bonding concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0529","query":"Mere weak Indian independence movement concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0530","query":"Mere weak Indian Constitution concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0531","query":"Mere weak climate change concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0532","query":"Mere weak maps and latitude concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0533","query":"Mere weak Hindi grammar concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0534","query":"Mere weak English essay writing concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0535","query":"Mere weak financial accounting concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0536","query":"Mere weak marketing fundamentals concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0537","query":"Mere weak data structures concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0538","query":"Mere weak DBMS normalization concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0539","query":"Mere weak computer networks concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0540","query":"Mere weak Python programming concepts Hindi me explain karo","labels":["personalization","language_support"],"source":"synthetic-review-required"}
+{"id":"synthetic-0541","query":"My fractions progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0542","query":"My quadratic equations progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0543","query":"My trigonometry progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0544","query":"My probability progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0545","query":"My photosynthesis progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0546","query":"My human digestion progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0547","query":"My Newton's laws progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0548","query":"My chemical bonding progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0549","query":"My Indian independence movement progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0550","query":"My Indian Constitution progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0551","query":"My climate change progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0552","query":"My maps and latitude progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0553","query":"My Hindi grammar progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0554","query":"My English essay writing progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0555","query":"My financial accounting progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0556","query":"My marketing fundamentals progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0557","query":"My data structures progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0558","query":"My DBMS normalization progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0559","query":"My computer networks progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0560","query":"My Python programming progress ke liye latest study resources search karo","labels":["personalization","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0561","query":"Latest fractions updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0562","query":"Latest quadratic equations updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0563","query":"Latest trigonometry updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0564","query":"Latest probability updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0565","query":"Latest photosynthesis updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0566","query":"Latest human digestion updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0567","query":"Latest Newton's laws updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0568","query":"Latest chemical bonding updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0569","query":"Latest Indian independence movement updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0570","query":"Latest Indian Constitution updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0571","query":"Latest climate change updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0572","query":"Latest maps and latitude updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0573","query":"Latest Hindi grammar updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0574","query":"Latest English essay writing updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0575","query":"Latest financial accounting updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0576","query":"Latest marketing fundamentals updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0577","query":"Latest data structures updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0578","query":"Latest DBMS normalization updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0579","query":"Latest computer networks updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0580","query":"Latest Python programming updates Hindi me batao","labels":["language_support","external_research"],"source":"synthetic-review-required"}
+{"id":"synthetic-0581","query":"My notes use karke fractions weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0582","query":"My notes use karke quadratic equations weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0583","query":"My notes use karke trigonometry weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0584","query":"My notes use karke probability weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0585","query":"My notes use karke photosynthesis weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0586","query":"My notes use karke human digestion weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0587","query":"My notes use karke Newton's laws weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0588","query":"My notes use karke chemical bonding weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0589","query":"My notes use karke Indian independence movement weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0590","query":"My notes use karke Indian Constitution weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0591","query":"My notes use karke climate change weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0592","query":"My notes use karke maps and latitude weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0593","query":"My notes use karke Hindi grammar weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0594","query":"My notes use karke English essay writing weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0595","query":"My notes use karke financial accounting weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0596","query":"My notes use karke marketing fundamentals weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0597","query":"My notes use karke data structures weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0598","query":"My notes use karke DBMS normalization weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0599","query":"My notes use karke computer networks weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}
+{"id":"synthetic-0600","query":"My notes use karke Python programming weak areas analyze karo","labels":["personalization","knowledge_retrieval"],"source":"synthetic-review-required"}

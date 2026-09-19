@@ -1,0 +1,9 @@
+{
+  "name": "ShikshaMesh",
+  "short_name": "ShikshaMesh",
+  "description": "Offline-first education intelligence orchestration.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#081522",
+  "theme_color": "#081522"
+}

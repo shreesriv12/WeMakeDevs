@@ -1,0 +1,8 @@
+.root { max-width: 560px; }
+.root form { display: grid; gap: 8px; }
+.root input { width: 100%; background: #07131f; color: #f4f9ff; border: 1px solid #356384; border-radius: 10px; padding: 14px; font: inherit; }
+.root input:focus { outline: 2px solid #5fd4c4; outline-offset: 2px; }
+.root :global(.auth-tabs) { display: flex; gap: 10px; margin: 20px 0; }
+.root :global(.auth-tabs button), .root :global(.secondary) { background: transparent; color: #b9d9ff; border: 1px solid #356384; margin-right: 8px; }
+.root :global(.auth-tabs .active) { background: #5fd4c4; color: #06221f; border-color: #5fd4c4; }
+.root :global(.notice) { color: #5fd4c4; margin: 18px 0 0; }
