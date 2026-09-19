@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "realtime": "node --env-file=.env.local --import tsx realtime/server.ts",
     "lint": "eslint .",
     "test": "vitest run",
     "eval:intents": "tsx scripts/evaluate-intents.ts",
@@ -20,7 +21,8 @@
     "build:reviewed-intents": "tsx scripts/build-reviewed-intent-dataset.ts",
     "approve:template-intents": "tsx scripts/approve-template-intent-candidates.ts",
     "eval:reviewed-intents": "tsx scripts/evaluate-reviewed-intents.ts",
-    "generate:synthetic-mastery": "tsx scripts/generate-synthetic-mastery-events.ts"
+    "generate:synthetic-mastery": "tsx scripts/generate-synthetic-mastery-events.ts",
+    "prepare:translation": ".venv-ml\\Scripts\\python.exe ml\\translation\\prepare_parallel_corpus.py --input Dataset_English_Hindi.csv"
   },
   "dependencies": {
     "@aws-sdk/client-bedrock-agent": "^3.900.0",
@@ -34,13 +36,20 @@
     "@langchain/core": "^0.3.80",
     "@langchain/langgraph": "^0.2.74",
     "@modelcontextprotocol/sdk": "^1.30.0",
+    "@monaco-editor/react": "^4.7.0",
+    "@xyflow/react": "^12.11.6",
     "aws-jwt-verify": "^5.1.1",
+    "konva": "^10.5.0",
     "mammoth": "^1.12.3",
+    "monaco-editor": "^0.56.0",
     "next": "15.5.3",
     "pdf-parse": "^2.4.5",
     "pg": "^8.16.3",
     "react": "19.1.1",
     "react-dom": "19.1.1",
+    "react-konva": "^18.2.14",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3",
     "zod": "3.25.76"
   },
   "devDependencies": {

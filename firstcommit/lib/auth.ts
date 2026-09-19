@@ -4,7 +4,7 @@ import { SimpleJwksCache } from "aws-jwt-verify/jwk";
 import type { Role } from "./policy";
 import { debugError, debugLog } from "./debug";
 
-export type Actor = { id: string; role: Role; institutionId: string; classIds: string[] };
+export type Actor = { id: string; displayName?: string; role: Role; institutionId: string; classIds: string[] };
 type Claims = Record<string, unknown>;
 let verifier: ReturnType<typeof CognitoJwtVerifier.create> | undefined;
 
@@ -20,12 +20,13 @@ export function actorFromClaims(claims: Claims): Actor {
   const institutionId = claims["custom:institution_id"];
   const classIds = claims["custom:class_ids"];
   if (typeof id !== "string" || typeof institutionId !== "string") throw new Error("Token is missing required ShikshaMesh claims");
-  return { id, institutionId, role: asRole(claims["cognito:groups"]), classIds: typeof classIds === "string" ? classIds.split(",").filter(Boolean) : [] };
+  const displayName = typeof claims.name === "string" ? claims.name : typeof claims.email === "string" ? claims.email.split("@")[0] : undefined;
+  return { id, ...(displayName ? { displayName } : {}), institutionId, role: asRole(claims["cognito:groups"]), classIds: typeof classIds === "string" ? classIds.split(",").filter(Boolean) : [] };
 }
 
 function demoActor(): Actor {
   const role: Role = process.env.DEMO_ROLE === "teacher" ? "teacher" : "student";
-  return { id: role === "teacher" ? "teacher-102" : "student-391", role, institutionId: "demo-institute", classIds: ["cn-b"] };
+  return { id: role === "teacher" ? "teacher-102" : "student-391", displayName: role === "teacher" ? "Demo Teacher" : "Demo Student", role, institutionId: "demo-institute", classIds: ["cn-b"] };
 }
 
 export async function authenticate(request: Request): Promise<Actor> {

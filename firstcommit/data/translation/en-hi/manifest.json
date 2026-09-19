@@ -1,0 +1,14 @@
+{
+  "source": "Dataset_English_Hindi.csv",
+  "format": "english-hindi-parallel-jsonl",
+  "splitting": "deterministic-sha256-90-5-5",
+  "counts": {
+    "read": 130476,
+    "kept": 126671,
+    "duplicate": 3341,
+    "invalid": 464,
+    "train": 114101,
+    "validation": 6274,
+    "test": 6296
+  }
+}

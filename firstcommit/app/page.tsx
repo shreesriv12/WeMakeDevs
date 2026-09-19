@@ -3,9 +3,10 @@
 import { FormEvent, useState } from "react";
 import { queueOrchestration } from "@/lib/offline-queue";
 import { SignInPanel, useAuthSession } from "@/components/auth-session";
+import { MarkdownAnswer } from "@/components/markdown-answer";
 
 type Step = { id: string; label: string; status: "queued" | "complete" | "skipped"; detail: string };
-type Result = { language: string; intents: string[]; steps: Step[]; answer: string; sources: { title: string; url: string; kind: string }[]; auditId: string };
+type Result = { language: string; intents: string[]; steps: Step[]; answer: string; sources: { title: string; url: string; kind: string }[]; auditId: string; modelDecision: { model: string; reason: string; confidence: number; fallback: string } };
 type Assessment = { assessmentId:string; topic:string; estimatedMastery:number; masteryProvider:string; modelVersion?:string; questions:{ id:string; prompt:string; options:string[] }[] };
 type AssessmentScore = { attempted:number; correct:number; score:number };
 
@@ -41,7 +42,7 @@ export default function Home() {
   async function startAssessment() {
     setLoading(true); setError("");
     try {
-      const response = await apiFetch("/api/assessments/adaptive", { method:"POST", headers:{ "content-type":"application/json" }, body:JSON.stringify({ count:3 }) });
+      const response = await apiFetch("/api/assessments/adaptive", { method:"POST", headers:{ "content-type":"application/json" }, body:JSON.stringify({ count:3, context:prompt }) });
       const body = await response.json(); if (!response.ok) throw new Error(body.error ?? "Could not create assessment"); setAssessment(body);
     } catch (e) { setError(e instanceof Error ? e.message : "Could not create assessment"); }
     finally { setLoading(false); }
@@ -63,7 +64,7 @@ export default function Home() {
     <section className="hero"><span className="eyebrow">SHIKSHAMESH CORE</span><h1>Education orchestration, made visible.</h1><p>Course-first tutoring with deterministic permissions, learner context and policy-gated research.</p><a href="/teacher">Teacher workflow demo →</a></section>
     <form onSubmit={run} className="composer"><label htmlFor="query">Student request</label><textarea id="query" value={prompt} onChange={(e) => setPrompt(e.target.value)} rows={5} /><button disabled={loading}>{loading ? "Orchestrating…" : "Run task graph"}</button></form>
     {error && <p className="error">{error}</p>}
-    {result && <section className="result"><div className="summary"><span>Language: <b>{result.language}</b></span><span>Intents: <b>{result.intents.join(", ")}</b></span><span>Audit: <b>{result.auditId}</b></span></div><h2>Execution graph</h2><div className="graph">{result.steps.map((step) => <article key={step.id} className={step.status}><b>{step.label}</b><small>{step.detail}</small></article>)}</div><h2>Response</h2><p className="answer">{result.answer}</p><button onClick={startAssessment} disabled={loading}>Start adaptive assessment</button> <a href="/interview">Practice an interview from your notes</a><h2>Evidence</h2><ul>{result.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.title}</a> <small>({source.kind})</small></li>)}</ul></section>}
+    {result && <section className="result"><div className="summary"><span>Language: <b>{result.language}</b></span><span>Intents: <b>{result.intents.join(", ")}</b></span><span>Audit: <b>{result.auditId}</b></span></div><section className="decision-panel"><span className="eyebrow">ADAPTIVE INTELLIGENCE</span><h2>Why this route?</h2><p><b>Model:</b> {result.modelDecision.model} · <b>Confidence:</b> {Math.round(result.modelDecision.confidence * 100)}%</p><p>{result.modelDecision.reason}</p><small><b>Safe fallback:</b> {result.modelDecision.fallback}</small></section><h2>Execution graph</h2><div className="graph">{result.steps.map((step) => <article key={step.id} className={step.status}><b>{step.label}</b><small>{step.detail}</small></article>)}</div><h2>Response</h2><MarkdownAnswer text={result.answer} /><button onClick={startAssessment} disabled={loading}>Start adaptive assessment</button> <a href="/interview">Practice an interview from your notes</a><h2>Evidence</h2><ul>{result.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.title}</a> <small>({source.kind})</small></li>)}</ul></section>}
     {assessment && <section className="result assessment"><h2>Adaptive assessment</h2><p>Focus: <b>{assessment.topic.replaceAll("_", " ")}</b> · Estimated mastery: <b>{Math.round(assessment.estimatedMastery * 100)}%</b></p><small>Mastery source: {assessment.masteryProvider}{assessment.modelVersion ? ` (${assessment.modelVersion})` : ""}</small><form onSubmit={submitAssessment}>{assessment.questions.map((question, index) => <fieldset key={question.id}><legend>{index + 1}. {question.prompt}</legend>{question.options.map((option, optionIndex) => <label className="option" key={option}><input required type="radio" name={question.id} onChange={() => setAnswers((current) => ({ ...current, [question.id]:optionIndex }))} />{option}</label>)}</fieldset>)}<button disabled={loading}>{loading ? "Scoring..." : "Submit answers"}</button></form>{assessmentScore && <p className="score">Score: <b>{assessmentScore.score}%</b> ({assessmentScore.correct}/{assessmentScore.attempted})</p>}</section>}
   </main>;
 }

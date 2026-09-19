@@ -7,8 +7,18 @@ const bank: Question[] = [
   { id:"tcp-1", topic:"transport_reliability", difficulty:"easy", prompt:"Which TCP mechanism confirms that data reached the receiver?", options:["Acknowledgement", "IP address", "Checksum only", "Routing table"], answer:0 },
   { id:"tcp-2", topic:"transport_reliability", difficulty:"medium", prompt:"What should TCP do after its retransmission timer expires without an acknowledgement?", options:["Discard the connection", "Retransmit the unacknowledged segment", "Change the IP address", "Stop flow control"], answer:1 },
   { id:"tcp-3", topic:"transport_reliability", difficulty:"hard", prompt:"Which feature prevents a fast sender from overwhelming a slower receiver?", options:["Sliding window flow control", "DNS", "MAC addressing", "Fragmentation"], answer:0 },
-  { id:"ip-1", topic:"network_routing", difficulty:"easy", prompt:"Which layer is responsible for logical addressing and routing?", options:["Network layer", "Physical layer", "Presentation layer", "Session layer"], answer:0 }
+  { id:"ip-1", topic:"network_routing", difficulty:"easy", prompt:"Which layer is responsible for logical addressing and routing?", options:["Network layer", "Physical layer", "Presentation layer", "Session layer"], answer:0 },
+  { id:"binary-1", topic:"binary_lifting", difficulty:"easy", prompt:"What does up[v][j] represent in binary lifting?", options:["The 2^j-th ancestor of node v", "The depth of node v", "The number of children of node v", "The shortest path from v"], answer:0 },
+  { id:"binary-2", topic:"binary_lifting", difficulty:"medium", prompt:"How can the binary representation of k help find a node's k-th ancestor?", options:["Lift the node for every set bit of k", "Run BFS k times", "Sort all node depths", "Only use the largest power of two"], answer:0 },
+  { id:"binary-3", topic:"binary_lifting", difficulty:"hard", prompt:"Why is the root commonly made its own parent in the up table?", options:["It makes jumps above the root safe and well-defined", "It reduces the tree height", "It removes DFS", "It makes every node a root"], answer:0 }
 ];
+
+function topicFromContext(context?: string) {
+  const value = context?.toLowerCase() ?? "";
+  if (/binary\s*lifting|k-th ancestor|\blca\b/.test(value)) return "binary_lifting";
+  if (/routing|ip address|network layer/.test(value)) return "network_routing";
+  return "transport_reliability";
+}
 
 function masteryFor(actor: Actor): Record<string, number> {
   // Development baseline; replace with the SageMaker knowledge-tracing endpoint.
@@ -41,11 +51,12 @@ export function createAdaptiveAssessment(actor: Actor, count = 3) {
   return { assessmentId: `assessment-${crypto.randomUUID()}`, topic: weakestTopic, estimatedMastery: mastery[weakestTopic], questions: questions.map(({ answer: _, ...question }) => question) };
 }
 
-export async function createAdaptiveAssessmentWithMastery(actor: Actor, count = 3) {
+export async function createAdaptiveAssessmentWithMastery(actor: Actor, count = 3, context?: string) {
   const prediction = await learnerMastery(actor);
-  const weakestTopic = Object.entries(prediction.mastery).sort((a, b) => a[1] - b[1])[0][0];
+  const contextualTopic = topicFromContext(context);
+  const weakestTopic = bank.some((question) => question.topic === contextualTopic) ? contextualTopic : Object.entries(prediction.mastery).sort((a, b) => a[1] - b[1])[0][0];
   const questions = bank.filter((question) => question.topic === weakestTopic).slice(0, Math.min(count, 10));
-  return { assessmentId: `assessment-${crypto.randomUUID()}`, topic: weakestTopic, estimatedMastery: prediction.mastery[weakestTopic], masteryProvider: prediction.provider, modelVersion: prediction.modelVersion, questions: questions.map(({ answer: _, ...question }) => question) };
+  return { assessmentId: `assessment-${crypto.randomUUID()}`, topic: weakestTopic, estimatedMastery: prediction.mastery[weakestTopic] ?? 0.6, masteryProvider: prediction.provider, modelVersion: prediction.modelVersion, questions: questions.map(({ answer: _, ...question }) => question) };
 }
 
 export function scoreAdaptiveAssessment(actor: Actor, answers: { questionId: string; answer: number }[]) {
