@@ -488,7 +488,7 @@ export default function TeacherPage() {
   // ---------------------------------------
 
   return (
-    <main>
+    <main className="teacher-dashboard">
       <section className="hero">
         <span className="eyebrow">
           TEACHER WORKFLOW
@@ -513,8 +513,6 @@ export default function TeacherPage() {
           Student experience
         </a>
       </section>
-
-      <SignInPanel />
 
       {/* ----------------------------------
           COURSE UPLOAD

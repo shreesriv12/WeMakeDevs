@@ -47,10 +47,7 @@ The database uses host port `5433` by default because Windows/WSL commonly reser
 
 ## Next milestones
 
-1. Replace demo identity/data with Cognito, Aurora/DynamoDB and tenant-scoped repositories.
-2. Add asynchronous S3 document extraction, embedding generation and Bedrock Knowledge Bases/OpenSearch retrieval.
-3. Execute the DAG through AgentCore/LangGraph and route production requests to the Bedrock/SageMaker adapters.
-4. Add PWA cache, offline event queue and sync API.
+The prioritized product, production, and ML delivery plan is in [`PRODUCT_ROADMAP.md`](PRODUCT_ROADMAP.md). Its signature learning capability is **Concept X-Ray**, which identifies and repairs a learner's first incorrect reasoning assumption using authorized course evidence; **Explain It Back** then validates recovery through text, voice, code, or canvas input.
 
 ## AWS infrastructure
 
@@ -68,3 +65,5 @@ docker run --rm -p 3000:3000 --env-file .env.local shikshamesh
 ```
 
 The container exposes `GET /api/health`; configure your ECS or App Runner health check to use that path.
+
+The Socket.IO classroom service is deployed separately; see [`realtime/DEPLOYMENT.md`](realtime/DEPLOYMENT.md).

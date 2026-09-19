@@ -4,6 +4,7 @@ import {
   SignInPanel,
   useAuthSession
 } from "@/components/auth-session";
+import { MasteryExport } from "@/components/mastery-export";
 
 export default function AdminPage() {
   const {
@@ -112,6 +113,8 @@ export default function AdminPage() {
           administrator Cognito group.
         </p>
       </section>
+
+      <MasteryExport />
     </main>
   );
 }

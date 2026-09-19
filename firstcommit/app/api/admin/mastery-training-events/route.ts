@@ -11,7 +11,7 @@ export async function GET(request: Request) {
     if (!postgresEnabled()) return Response.json({ error: "PostgreSQL is not configured" }, { status: 503 });
     const salt = process.env.ML_PSEUDONYMIZATION_SALT;
     if (!salt || salt.length < 24) return Response.json({ error: "ML_PSEUDONYMIZATION_SALT must be configured with at least 24 characters" }, { status: 503 });
-    const result = await database().query<{ student_id: string; topic: string; question_id: string | null; difficulty: string | null; score: number; submitted_at: Date }>("SELECT student_id, topic, question_id, difficulty, score, submitted_at FROM assessment_attempts WHERE institution_id = $1 ORDER BY student_id, submitted_at", [actor.institutionId]);
+    const result = await database().query<{ student_id: string; topic: string; question_id: string | null; difficulty: string | null; score: number; submitted_at: Date }>("SELECT a.student_id,a.topic,a.question_id,a.difficulty,a.score,a.submitted_at FROM assessment_attempts a JOIN mastery_training_consents c ON c.institution_id=a.institution_id AND c.user_id=a.student_id AND c.revoked_at IS NULL WHERE a.institution_id = $1 ORDER BY a.student_id,a.submitted_at", [actor.institutionId]);
     const rows = result.rows.map((row) => [
       createHmac("sha256", salt).update(`${actor.institutionId}:${row.student_id}`).digest("hex").slice(0, 32),
       row.topic,

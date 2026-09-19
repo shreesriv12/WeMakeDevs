@@ -5,6 +5,7 @@ import {
   useRef,
   useState
 } from "react";
+import { useSearchParams } from "next/navigation";
 
 import {
   SignInPanel,
@@ -81,6 +82,7 @@ function preferredRecorderMimeType() {
 }
 
 export default function CourseInterviewPage() {
+  const params = useSearchParams();
   const {
     apiFetch,
     idToken,
@@ -127,7 +129,7 @@ export default function CourseInterviewPage() {
     setFocus
   ] =
     useState(
-      "transport reliability"
+      params.get("topic") ?? "transport reliability"
     );
 
   const [

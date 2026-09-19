@@ -46,6 +46,16 @@ The request/response contract is JSON:
 
 Keep the endpoint undeployed until the model passes a human-reviewed evaluation gate.
 
+## Deployment gate
+
+After training either model, run the repository gate against the reviewed splits and the model's `metrics.json`:
+
+```bash
+npm run gate:intent-model -- data/intent/reviewed ml/artifacts/intent-gru/metrics.json
+```
+
+It exits non-zero unless there are at least 300 reviewed examples and the trained model beats the heuristic on the untouched test set. A passing result authorizes only human review for limited batch inference, never automatic endpoint creation.
+
 ## Package for SageMaker (no endpoint)
 
 Package the artifact locally before any AWS deployment:

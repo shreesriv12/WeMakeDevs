@@ -10,11 +10,13 @@ function random(seed: number) {
 }
 
 async function main() {
+  const readOption = (name: string, fallback: number) => { const index = process.argv.indexOf(name); const value = index >= 0 ? Number(process.argv[index + 1]) : fallback; if (!Number.isInteger(value) || value < 2 || value > 5000) throw new Error(`${name} must be an integer between 2 and 5000`); return value; };
+  const learnerCount = readOption("--learners", 80); const attemptsPerLearner = readOption("--attempts", 28);
   const rows = ["learner_id,topic_id,question_id,is_correct,occurred_at,difficulty"];
   const next = random(20260919);
-  for (let learner = 1; learner <= 80; learner++) {
+  for (let learner = 1; learner <= learnerCount; learner++) {
     const mastery = topics.map(() => 0.25 + (next() * 0.6));
-    for (let attempt = 0; attempt < 28; attempt++) {
+    for (let attempt = 0; attempt < attemptsPerLearner; attempt++) {
       const topicIndex = Math.floor(next() * topics.length); const difficultyIndex = Math.min(2, Math.floor(next() * difficulties.length));
       const probability = Math.max(0.08, Math.min(0.93, mastery[topicIndex] - (difficultyIndex * 0.16)));
       const correct = next() < probability ? 1 : 0;
@@ -24,7 +26,7 @@ async function main() {
     }
   }
   const output = resolve("data/mastery/synthetic-attempts.csv"); await mkdir(resolve(output, ".."), { recursive: true }); await writeFile(output, `${rows.join("\n")}\n`);
-  console.log(JSON.stringify({ output, learners: 80, attempts: rows.length - 1, topics, warning: "Synthetic dataset: pipeline validation only, never report as student-model accuracy." }, null, 2));
+  console.log(JSON.stringify({ output, learners: learnerCount, attempts: rows.length - 1, topics, warning: "Synthetic dataset: pipeline validation only, never report as student-model accuracy." }, null, 2));
 }
 
 void main();
