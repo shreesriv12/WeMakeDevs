@@ -15,25 +15,28 @@ const DEFAULT_COLLECTION =
   "shikshamesh-course-chunks";
 
 const QDRANT_TIMEOUT_MS = 15_000;
+const OPENROUTER_TIMEOUT_MS = 30_000;
+
+type QdrantPayload = {
+  chunkId: string;
+  institutionId: string;
+  classId: string;
+  documentId?: string;
+  title: string;
+  text: string;
+  sourceUrl: string;
+};
 
 type QdrantPoint = {
   id: string;
   vector: number[];
-  payload: {
-    chunkId: string;
-    institutionId: string;
-    classId: string;
-    documentId?: string;
-    title: string;
-    text: string;
-    sourceUrl: string;
-  };
+  payload: QdrantPayload;
 };
 
-type QdrantSearchResult = {
-  id: string;
+type QdrantQueryPoint = {
+  id: string | number;
   score?: number;
-  payload?: QdrantPoint["payload"];
+  payload?: QdrantPayload;
 };
 
 type QdrantCollectionResponse = {
@@ -42,10 +45,29 @@ type QdrantCollectionResponse = {
   time?: number;
 };
 
+type QdrantCollectionInfoResponse = {
+  result?: {
+    payload_schema?: Record<
+      string,
+      unknown
+    >;
+  };
+  status?: string;
+  time?: number;
+};
+
 type QdrantPointsResponse = {
   result?: {
     operation_id?: number;
     status?: string;
+  };
+  status?: string;
+  time?: number;
+};
+
+type QdrantQueryResponse = {
+  result?: {
+    points?: QdrantQueryPoint[];
   };
   status?: string;
   time?: number;
@@ -62,14 +84,20 @@ class QdrantRequestError extends Error {
   ) {
     super(message);
 
-    this.name = "QdrantRequestError";
-    this.status = status;
-    this.responseBody = responseBody;
+    this.name =
+      "QdrantRequestError";
+
+    this.status =
+      status;
+
+    this.responseBody =
+      responseBody;
   }
 }
 
 function configuration() {
-  const rawUrl = process.env.QDRANT_URL?.trim();
+  const rawUrl =
+    process.env.QDRANT_URL?.trim();
 
   const apiKey =
     process.env.QDRANT_API_KEY?.trim();
@@ -90,15 +118,17 @@ function configuration() {
     );
   }
 
-  const url = rawUrl.replace(/\/+$/, "");
+  const url =
+    rawUrl.replace(/\/+$/, "");
 
   let parsedUrl: URL;
 
   try {
-    parsedUrl = new URL(url);
+    parsedUrl =
+      new URL(url);
   } catch {
     throw new Error(
-      "QDRANT_URL must be a complete URL, for example http://127.0.0.1:6333"
+      "QDRANT_URL must be a complete URL"
     );
   }
 
@@ -132,7 +162,6 @@ function getFetchErrorMessage(
   ).cause;
 
   if (
-    possibleCause &&
     possibleCause instanceof Error
   ) {
     return `${error.message}: ${possibleCause.message}`;
@@ -156,15 +185,17 @@ async function qdrantRequest<T>(
     apiKey
   } = configuration();
 
-  const requestUrl = `${url}${path}`;
+  const requestUrl =
+    `${url}${path}`;
 
   const controller =
     new AbortController();
 
-  const timeout = setTimeout(
-    () => controller.abort(),
-    QDRANT_TIMEOUT_MS
-  );
+  const timeout =
+    setTimeout(
+      () => controller.abort(),
+      QDRANT_TIMEOUT_MS
+    );
 
   debugLog(
     "qdrant",
@@ -172,7 +203,9 @@ async function qdrantRequest<T>(
     {
       method:
         init.method ?? "GET",
+
       path,
+
       origin:
         new URL(url).origin
     }
@@ -181,31 +214,34 @@ async function qdrantRequest<T>(
   let response: Response;
 
   try {
-    response = await fetch(
-      requestUrl,
-      {
-        ...init,
+    response =
+      await fetch(
+        requestUrl,
+        {
+          ...init,
 
-        signal:
-          controller.signal,
+          signal:
+            controller.signal,
 
-        headers: {
-          "api-key":
-            apiKey,
+          headers: {
+            "api-key":
+              apiKey,
 
-          "content-type":
-            "application/json",
+            "content-type":
+              "application/json",
 
-          accept:
-            "application/json",
+            accept:
+              "application/json",
 
-          ...init.headers
+            ...init.headers
+          }
         }
-      }
-    );
+      );
   } catch (error) {
     const message =
-      getFetchErrorMessage(error);
+      getFetchErrorMessage(
+        error
+      );
 
     debugError(
       "qdrant",
@@ -213,51 +249,69 @@ async function qdrantRequest<T>(
       error,
       {
         method:
-          init.method ??
-          "GET",
+          init.method ?? "GET",
+
         path,
+
         origin:
-          new URL(url)
-            .origin
+          new URL(url).origin
       }
     );
 
     throw new Error(
-      `Unable to connect to Qdrant at ${new URL(
-        url
-      ).origin}. ${message}`
+      `Unable to connect to Qdrant at ${
+        new URL(url).origin
+      }. ${message}`
     );
   } finally {
     clearTimeout(timeout);
   }
 
   if (!response.ok) {
-    const body =
+    const responseBody =
       await response
         .text()
-        .catch(
-          () => ""
-        );
+        .catch(() => "");
 
     debugLog(
       "qdrant",
       "request failed",
       {
         method:
-          init.method ??
-          "GET",
+          init.method ?? "GET",
+
         path,
+
         status:
           response.status,
+
         statusText:
-          response.statusText
+          response.statusText,
+
+        responseBody:
+          responseBody.slice(
+            0,
+            1000
+          )
       }
     );
 
+    const message =
+      `Qdrant request failed ` +
+      `(${response.status} ${response.statusText})` +
+      (
+        responseBody
+          ? `: ${responseBody.slice(
+              0,
+              1000
+            )}`
+          : ""
+      );
+
     throw new QdrantRequestError(
       response.status,
-      `Qdrant request failed (${response.status} ${response.statusText})`,
-      body
+      message,
+      responseBody
     );
   }
 
@@ -289,7 +343,9 @@ async function embed(
   text: string
 ): Promise<number[]> {
   const apiKey =
-    process.env.OPENROUTER_API_KEY?.trim();
+    process.env
+      .OPENROUTER_API_KEY
+      ?.trim();
 
   if (!apiKey) {
     throw new Error(
@@ -303,57 +359,65 @@ async function embed(
       ?.trim() ||
     DEFAULT_EMBEDDING_MODEL;
 
+  const normalizedText =
+    text.trim();
+
+  if (!normalizedText) {
+    throw new Error(
+      "Cannot generate embedding for empty text"
+    );
+  }
+
   debugLog(
     "openrouter",
     "embedding request",
     {
       model,
       textLength:
-        text.length
+        normalizedText.length
     }
   );
 
   const controller =
     new AbortController();
 
-  const timeout = setTimeout(
-    () => controller.abort(),
-    30_000
-  );
+  const timeout =
+    setTimeout(
+      () => controller.abort(),
+      OPENROUTER_TIMEOUT_MS
+    );
 
   let response: Response;
 
   try {
-    response = await fetch(
-      "https://openrouter.ai/api/v1/embeddings",
-      {
-        method:
-          "POST",
+    response =
+      await fetch(
+        "https://openrouter.ai/api/v1/embeddings",
+        {
+          method: "POST",
 
-        signal:
-          controller.signal,
+          signal:
+            controller.signal,
 
-        headers: {
-          Authorization:
-            `Bearer ${apiKey}`,
+          headers: {
+            Authorization:
+              `Bearer ${apiKey}`,
 
-          "content-type":
-            "application/json",
+            "content-type":
+              "application/json",
 
-          accept:
-            "application/json"
-        },
+            accept:
+              "application/json"
+          },
 
-        body:
-          JSON.stringify(
-            {
+          body:
+            JSON.stringify({
               model,
               input:
-                text
-            }
-          )
-      }
-    );
+                normalizedText
+            })
+        }
+      );
   } catch (error) {
     debugError(
       "openrouter",
@@ -362,9 +426,11 @@ async function embed(
     );
 
     throw new Error(
-      `Unable to connect to OpenRouter: ${getFetchErrorMessage(
-        error
-      )}`
+      `Unable to connect to OpenRouter: ${
+        getFetchErrorMessage(
+          error
+        )
+      }`
     );
   } finally {
     clearTimeout(timeout);
@@ -374,9 +440,7 @@ async function embed(
     const errorBody =
       await response
         .text()
-        .catch(
-          () => ""
-        );
+        .catch(() => "");
 
     debugLog(
       "openrouter",
@@ -384,17 +448,29 @@ async function embed(
       {
         status:
           response.status,
+
         statusText:
-          response.statusText
+          response.statusText,
+
+        responseBody:
+          errorBody.slice(
+            0,
+            1000
+          )
       }
     );
 
     throw new Error(
-      `OpenRouter embedding failed (${response.status} ${response.statusText})${
+      `OpenRouter embedding failed ` +
+      `(${response.status} ${response.statusText})` +
+      (
         errorBody
-          ? `: ${errorBody}`
+          ? `: ${errorBody.slice(
+              0,
+              1000
+            )}`
           : ""
-      }`
+      )
     );
   }
 
@@ -406,8 +482,7 @@ async function embed(
     };
 
   const vector =
-    body.data?.[0]
-      ?.embedding;
+    body.data?.[0]?.embedding;
 
   if (
     !Array.isArray(vector) ||
@@ -450,10 +525,8 @@ async function ensureCollection(
     return;
   } catch (error) {
     if (
-      error instanceof
-        QdrantRequestError &&
-      error.status ===
-        404
+      error instanceof QdrantRequestError &&
+      error.status === 404
     ) {
       debugLog(
         "qdrant",
@@ -464,15 +537,6 @@ async function ensureCollection(
         }
       );
     } else {
-      /*
-       * IMPORTANT:
-       * Connection failures,
-       * authentication errors,
-       * 500 responses, TLS
-       * failures, etc. must not
-       * be interpreted as
-       * "collection missing".
-       */
       throw error;
     }
   }
@@ -480,20 +544,18 @@ async function ensureCollection(
   await qdrantRequest<QdrantCollectionResponse>(
     collectionPath,
     {
-      method:
-        "PUT",
+      method: "PUT",
 
       body:
-        JSON.stringify(
-          {
-            vectors: {
-              size:
-                vectorSize,
-              distance:
-                "Cosine"
-            }
+        JSON.stringify({
+          vectors: {
+            size:
+              vectorSize,
+
+            distance:
+              "Cosine"
           }
-        )
+        })
     }
   );
 
@@ -507,14 +569,174 @@ async function ensureCollection(
   );
 }
 
+async function getCollectionInfo() {
+  const {
+    collection
+  } = configuration();
+
+  return qdrantRequest<QdrantCollectionInfoResponse>(
+    `/collections/${encodeURIComponent(
+      collection
+    )}`
+  );
+}
+
+/**
+ * Qdrant Cloud strict mode requires
+ * indexed payload fields when they
+ * are used inside filters.
+ *
+ * We filter on:
+ * - institutionId
+ * - classId
+ * - documentId
+ *
+ * All three are exact-match strings,
+ * so keyword indexes are appropriate.
+ */
+async function ensurePayloadIndexes() {
+  const {
+    collection
+  } = configuration();
+
+  const encodedCollection =
+    encodeURIComponent(
+      collection
+    );
+
+  let info =
+    await getCollectionInfo();
+
+  let payloadSchema =
+    info.result?.payload_schema ??
+    {};
+
+  const requiredIndexes = [
+    "institutionId",
+    "classId",
+    "documentId"
+  ] as const;
+
+  for (
+    const fieldName
+    of requiredIndexes
+  ) {
+    if (
+      Object.prototype.hasOwnProperty.call(
+        payloadSchema,
+        fieldName
+      )
+    ) {
+      debugLog(
+        "qdrant",
+        "payload index exists",
+        {
+          collection,
+          fieldName
+        }
+      );
+
+      continue;
+    }
+
+    debugLog(
+      "qdrant",
+      "creating payload index",
+      {
+        collection,
+        fieldName,
+        fieldSchema:
+          "keyword"
+      }
+    );
+
+    try {
+      await qdrantRequest(
+        `/collections/${encodedCollection}/index?wait=true`,
+        {
+          method: "PUT",
+
+          body:
+            JSON.stringify({
+              field_name:
+                fieldName,
+
+              field_schema:
+                "keyword"
+            })
+        }
+      );
+
+      debugLog(
+        "qdrant",
+        "payload index created",
+        {
+          collection,
+          fieldName
+        }
+      );
+
+      /*
+       * Update local copy so this
+       * request does not check again.
+       */
+      payloadSchema = {
+        ...payloadSchema,
+        [fieldName]:
+          "keyword"
+      };
+    } catch (error) {
+      /*
+       * A second request may have created
+       * the index after our collection GET
+       * but before our PUT.
+       *
+       * Refresh collection info. If the
+       * index exists now, treat this as a
+       * successful concurrent creation.
+       */
+      info =
+        await getCollectionInfo();
+
+      payloadSchema =
+        info.result
+          ?.payload_schema ??
+        {};
+
+      if (
+        Object.prototype.hasOwnProperty.call(
+          payloadSchema,
+          fieldName
+        )
+      ) {
+        debugLog(
+          "qdrant",
+          "payload index already exists after refresh",
+          {
+            collection,
+            fieldName
+          }
+        );
+
+        continue;
+      }
+
+      throw error;
+    }
+  }
+}
+
 export function qdrantConfigured() {
   return Boolean(
     process.env
-      .QDRANT_URL &&
-      process.env
-        .QDRANT_API_KEY &&
-      process.env
-        .OPENROUTER_API_KEY
+      .QDRANT_URL
+      ?.trim() &&
+    process.env
+      .QDRANT_API_KEY
+      ?.trim() &&
+    process.env
+      .OPENROUTER_API_KEY
+      ?.trim()
   );
 }
 
@@ -539,8 +761,10 @@ export async function indexCourseChunks(
     return {
       provider:
         "local" as const,
+
       status:
         "not-configured" as const,
+
       indexed: 0
     };
   }
@@ -567,16 +791,22 @@ export async function indexCourseChunks(
     {
       documentId:
         input.documentId,
+
+      institutionId:
+        input.institutionId,
+
+      classId:
+        input.classId,
+
       chunkCount:
         chunks.length
     }
   );
 
   /*
-   * Generate the first
-   * embedding before creating
-   * the collection so that we
-   * know the vector dimension.
+   * Generate one vector first so
+   * we know the required collection
+   * vector size.
    */
   const firstVector =
     await embed(
@@ -587,13 +817,18 @@ export async function indexCourseChunks(
     firstVector.length
   );
 
-  const points: QdrantPoint[] =
-    [];
+  /*
+   * Create tenant/document indexes
+   * before writing/searching points.
+   */
+  await ensurePayloadIndexes();
+
+  const points:
+    QdrantPoint[] = [];
 
   for (
     let index = 0;
-    index <
-    chunks.length;
+    index < chunks.length;
     index += 1
   ) {
     const text =
@@ -611,40 +846,44 @@ export async function indexCourseChunks(
       firstVector.length
     ) {
       throw new Error(
-        `Embedding dimension mismatch. Expected ${firstVector.length}, received ${vector.length}`
+        `Embedding dimension mismatch. Expected ${
+          firstVector.length
+        }, received ${
+          vector.length
+        }`
       );
     }
 
-    points.push(
-      {
-        id:
-          crypto.randomUUID(),
+    points.push({
+      id:
+        crypto.randomUUID(),
 
-        vector,
+      vector,
 
-        payload: {
-          chunkId:
-            `${input.documentId}:${index + 1}`,
+      payload: {
+        chunkId:
+          `${input.documentId}:${
+            index + 1
+          }`,
 
-          institutionId:
-            input.institutionId,
+        institutionId:
+          input.institutionId,
 
-          classId:
-            input.classId,
+        classId:
+          input.classId,
 
-          documentId:
-            input.documentId,
+        documentId:
+          input.documentId,
 
-          title:
-            input.title,
+        title:
+          input.title,
 
-          text,
+        text,
 
-          sourceUrl:
-            input.sourceUrl
-        }
+        sourceUrl:
+          input.sourceUrl
       }
-    );
+    });
   }
 
   const {
@@ -656,15 +895,12 @@ export async function indexCourseChunks(
       collection
     )}/points?wait=true`,
     {
-      method:
-        "PUT",
+      method: "PUT",
 
       body:
-        JSON.stringify(
-          {
-            points
-          }
-        )
+        JSON.stringify({
+          points
+        })
     }
   );
 
@@ -674,6 +910,7 @@ export async function indexCourseChunks(
     {
       documentId:
         input.documentId,
+
       indexed:
         points.length
     }
@@ -682,8 +919,10 @@ export async function indexCourseChunks(
   return {
     provider:
       "qdrant" as const,
+
     status:
       "indexed" as const,
+
     indexed:
       points.length
   };
@@ -700,7 +939,9 @@ export async function retrieveQdrantKnowledge(
   if (
     !qdrantConfigured()
   ) {
-    return [];
+    throw new Error(
+      "Qdrant retrieval requested but Qdrant is not configured"
+    );
   }
 
   debugLog(
@@ -709,13 +950,34 @@ export async function retrieveQdrantKnowledge(
     {
       institutionId:
         input.institutionId,
+
       classId:
         input.classId,
+
+      documentId:
+        input.documentId ??
+        null,
+
       limit:
-        input.limit ?? 3
+        input.limit ?? 3,
+
+      queryLength:
+        input.query.length
     }
   );
 
+  /*
+   * Ensure strict-mode filter indexes
+   * exist. This also fixes an existing
+   * collection without requiring a PDF
+   * re-upload.
+   */
+  await ensurePayloadIndexes();
+
+  /*
+   * Query embeddings MUST use the
+   * same model used during indexing.
+   */
   const queryVector =
     await embed(
       input.query
@@ -734,14 +996,17 @@ export async function retrieveQdrantKnowledge(
     {
       key:
         "institutionId",
+
       match: {
         value:
           input.institutionId
       }
     },
+
     {
       key:
         "classId",
+
       match: {
         value:
           input.classId
@@ -752,55 +1017,77 @@ export async function retrieveQdrantKnowledge(
   if (
     input.documentId
   ) {
-    must.push(
-      {
-        key:
-          "documentId",
-        match: {
-          value:
-            input.documentId
-        }
+    must.push({
+      key:
+        "documentId",
+
+      match: {
+        value:
+          input.documentId
       }
-    );
+    });
   }
 
+  /*
+   * Qdrant universal Query API:
+   *
+   * POST
+   * /collections/{collection}/points/query
+   *
+   * Dense vector is supplied in `query`.
+   */
   const body =
-    await qdrantRequest<{
-      result?: QdrantSearchResult[];
-    }>(
+    await qdrantRequest<QdrantQueryResponse>(
       `/collections/${encodeURIComponent(
         collection
-      )}/points/search`,
+      )}/points/query`,
       {
-        method:
-          "POST",
+        method: "POST",
 
         body:
-          JSON.stringify(
-            {
-              vector:
-                queryVector,
+          JSON.stringify({
+            query:
+              queryVector,
 
-              limit:
-                input.limit ??
-                3,
+            filter: {
+              must
+            },
 
-              with_payload:
-                true,
+            limit:
+              input.limit ??
+              3,
 
-              filter: {
-                must
-              }
-            }
-          )
+            with_payload:
+              true,
+
+            with_vector:
+              false
+          })
       }
     );
 
-  const sources =
-    (
-      body.result ??
-      []
-    ).flatMap(
+  const points =
+    body.result?.points ??
+    [];
+
+  debugLog(
+    "qdrant",
+    "raw query response received",
+    {
+      pointCount:
+        points.length,
+
+      institutionId:
+        input.institutionId,
+
+      classId:
+        input.classId
+    }
+  );
+
+  const sources:
+    KnowledgeSource[] =
+    points.flatMap(
       (
         result
       ): KnowledgeSource[] => {
@@ -808,8 +1095,23 @@ export async function retrieveQdrantKnowledge(
           result.payload;
 
         if (
-          !payload?.text
+          !payload ||
+          !payload.chunkId ||
+          !payload.title ||
+          !payload.text ||
+          !payload.sourceUrl
         ) {
+          debugLog(
+            "qdrant",
+            "ignoring point with incomplete payload",
+            {
+              pointId:
+                String(
+                  result.id
+                )
+            }
+          );
+
           return [];
         }
 
@@ -839,7 +1141,13 @@ export async function retrieveQdrantKnowledge(
     "knowledge retrieved",
     {
       resultCount:
-        sources.length
+        sources.length,
+
+      titles:
+        sources.map(
+          (source) =>
+            source.title
+        )
     }
   );
 
