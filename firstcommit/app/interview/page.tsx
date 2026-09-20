@@ -1,5 +1,6 @@
 "use client";
 
+import { DEMO_TOPIC } from "@/lib/demo-content";
 import {
   FormEvent,
   Suspense,
@@ -130,7 +131,7 @@ function CourseInterviewPageContent() {
     setFocus
   ] =
     useState(
-      params.get("topic") ?? "transport reliability"
+      params.get("topic") ?? DEMO_TOPIC
     );
 
   const [
@@ -1178,7 +1179,7 @@ function CourseInterviewPageContent() {
       <SignInPanel />
 
       <form
-        className="composer"
+        className="composer interview-form"
         onSubmit={start}
       >
         <label htmlFor="interview-focus">
@@ -1210,6 +1211,7 @@ function CourseInterviewPageContent() {
 
         <button
           type="button"
+          className="secondary-action"
           onClick={
             loadHistory
           }
@@ -1307,7 +1309,7 @@ function CourseInterviewPageContent() {
                     }
                   </small>
 
-                  <p>
+                  <p className="interview-question-actions">
                     <button
                       type="button"
                       disabled={recordingQuestionId !== null && recordingQuestionId !== question.id}

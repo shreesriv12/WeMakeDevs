@@ -3,6 +3,14 @@ import { createAdaptiveAssessment, createAdaptiveAssessmentWithMastery, scoreAda
 
 const actor = { id:"student-391", role:"student" as const, institutionId:"demo-institute", classIds:["cn-b"] };
 describe("adaptive assessment", () => {
+  it("uses library questions and scores them without exposing answers", async () => {
+    const assessment = await createAdaptiveAssessmentWithMastery(actor, 5, "Library Management System book issue and return");
+    expect(assessment.topic).toBe("library_management");
+    expect(assessment.questions).toHaveLength(5);
+    expect(assessment.questions.every(q => q.id.startsWith("library-"))).toBe(true);
+    expect(JSON.stringify(assessment.questions)).not.toContain('"answer"');
+    expect(scoreAdaptiveAssessment(actor, [{ questionId: "library-1", answer: 1 }, { questionId: "library-2", answer: 0 }])).toMatchObject({ attempted: 2, correct: 1, score: 50 });
+  });
   it("selects questions from the learner's weakest topic without leaking answers", () => {
     const assessment = createAdaptiveAssessment(actor, 3);
     expect(assessment.topic).toBe("transport_reliability");

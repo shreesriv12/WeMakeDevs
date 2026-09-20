@@ -1,4 +1,5 @@
 "use client";
+import { DEMO_TOPIC, DEMO_AGENDA } from "@/lib/demo-content";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { io, type Socket } from "socket.io-client";
 import { SignInPanel, useAuthSession } from "@/components/auth-session";
@@ -7,7 +8,7 @@ import { IvsRoom } from "@/components/ivs-room";
 type Message={id:string;senderRole:string;text:string;createdAt:string;attachment?:{type:string;objectId:string}};
 type Participant={id:string;displayName:string;role:"student"|"teacher"|"admin"};
 type Lesson={id:string;title:string;scheduledFor?:string;durationMinutes?:number;status:string;agenda:string[];teacherName:string};
-const fallback:Lesson={id:"cn-b-live",title:"Binary Lifting Lab",durationMinutes:45,status:"live",teacherName:"Teacher",agenda:["Warm-up: k-th ancestor recap","Build the binary lifting table","Discuss LCA edge cases","Adaptive exit question"]};
+const fallback:Lesson={id:"cn-b-live",title:DEMO_TOPIC + " Lab",durationMinutes:45,status:"live",teacherName:"Teacher",agenda:DEMO_AGENDA};
 
 export default function LivePage(){
   const {idToken,role,loading,apiFetch}=useAuthSession();const socket=useRef<Socket|null>(null);

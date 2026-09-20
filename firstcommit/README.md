@@ -148,7 +148,9 @@ npm run dev
 
 Open `http://localhost:3000` or the port printed by Next.js.
 
-To run classroom presence and chat in a second terminal:
+For development uploads without AWS credentials, set `COURSE_STORAGE_PROVIDER=local` in `.env.local`. Original files are saved in the ignored `.local-course-storage/` directory; Qdrant and OpenRouter configuration is still required to index and search their contents. Start PostgreSQL with `docker compose up -d db` to persist the course list. Omit this setting to use S3. Local storage is rejected in production.
+
+## Continuous integration
 
 ```powershell
 npm run realtime
@@ -201,50 +203,10 @@ For a fresh production deployment from the project directory:
 npx vercel@latest --prod --archive=tgz
 ```
 
-For a full-stack host such as Render, use `firstcommit` as the repository root directory, set production environment variables in the host dashboard, add a hosted PostgreSQL `DATABASE_URL`, and run `npm run db:migrate` before accepting user traffic. A production realtime service requires its own reachable Socket.IO deployment and correctly configured CORS origins.
+The container exposes `GET /api/health`; configure your ECS or App Runner health check to use that path.
 
-## Demo story
+The Socket.IO classroom service is deployed separately; see [`realtime/DEPLOYMENT.md`](realtime/DEPLOYMENT.md).
 
-1. A teacher signs in and uploads a small lesson document.
-2. The system processes the document into a class-scoped retrieval source.
-3. A student opens the workspace and asks a doubt in English, Hindi, or Hinglish.
-4. ShikshaMesh retrieves relevant notes, answers with a source, and can turn the topic into Smart Notes, a diagram, a canvas activity, a quiz, or an AI interview.
-5. The student gives an explanation back through text, voice, code, or drawing.
-6. Concept X-Ray identifies the likely root misconception and creates a focused recovery task.
-7. A teacher sees the class-level learning signal and can address the misconception in Live Class on a shared visual workspace.
+## Library Management System recording
 
-## Repository guide
-
-| Path | Purpose |
-| --- | --- |
-| `app/` | Next.js pages, layouts, and API routes |
-| `components/` | Shared UI, Canvas, diagrams, classroom, and learning components |
-| `lib/` | Authentication, retrieval, AI orchestration, policies, persistence, and service clients |
-| `realtime/` | Socket.IO classroom server |
-| `workers/` | Workflow worker logic |
-| `db/init/` | Ordered PostgreSQL schema migrations |
-| `policies/` | Cedar authorization policy definitions |
-| `sam/` | SAM local-testing template and notes |
-| `docker-compose.yml` | Local development services |
-| `HACKATHON_DEMO_RUNBOOK.md` | Suggested end-to-end demonstration flow |
-| `PRODUCT_ROADMAP.md` | Post-demo scale and quality roadmap |
-
-## Roadmap
-
-- Persistent multi-user canvas and diagram state with presence, cursors, layers, connectors, and multi-page boards.
-- Teacher-created live lesson scheduling, attendance, moderation, recordings, and richer presentation controls.
-- Expanded document validation across real course material and stronger source-quality evaluation.
-- A consented, reviewed real learner dataset before training or deploying intent and mastery models.
-- Production secrets management, dashboards, alarms, budgets, backups, CI/CD, browser end-to-end tests, and a full accessibility review.
-
-## Security and responsible use
-
-- Never commit `.env.local`, cloud credentials, API tokens, database passwords, or Cognito secrets.
-- Rotate any key that has been pasted into a chat, terminal capture, issue, screenshot, or commit history.
-- Keep course retrieval scoped by institution, class, and document.
-- Treat AI output as instructional assistance, not an authoritative grade or medical, legal, or financial decision.
-- Obtain appropriate consent before storing learner attempts for analytics, research, or model training.
-
-## License
-
-This project is submitted as a hackathon prototype. Add a license before any broader reuse or distribution.
+Open `/demo` for the recording sequence. Upload `Library_Management_System_Report.pdf` as a teacher, then use a student account in the same class for tutor, notes, interview, Concept X-Ray, and practice. Inputs are prepared in `lib/demo-content.ts`; generated responses still use authorized uploaded notes. The five library diagram templates and fixed adaptive question bank are teaching examples, not generated output. Existing classes and historical records are retained.
