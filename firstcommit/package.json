@@ -27,6 +27,7 @@
     "generate:synthetic-mastery:large": "tsx scripts/generate-synthetic-mastery-events.ts --learners 300 --attempts 60",
     "prepare:translation": ".venv-ml\\Scripts\\python.exe ml\\translation\\prepare_parallel_corpus.py --input Dataset_English_Hindi.csv",
     "package:quiz-worker": "node scripts/package-quiz-worker.mjs",
+    "db:migrate": "node scripts/migrate-postgres.cjs",
     "policy:cedar": "node scripts/verify-cedar-policy.cjs",
     "sam:build": "npm run package:quiz-worker && sam build",
     "sam:quiz-local": "npm run sam:build && sam local invoke QuizWorker --event infra/cli/quiz-workflow-test-input.json --env-vars infra/local/sam-env.json"
