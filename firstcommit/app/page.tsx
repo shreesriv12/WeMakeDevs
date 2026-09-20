@@ -61,8 +61,50 @@ export default function Home() {
 
   if (authLoading) return <main><p>Checking sign-in session…</p></main>;
   if (!idToken) return <main className="landing-page landing-monochrome">
-    <section className="landing-hero"><ShapesDots cellSize={40} influenceRadiusVmin={25} idleScale={.1} minPeakScale={1} maxPeakScale={3} shapes={["circle","triangle","square"]} opacity={1}/><div className="landing-content"><span className="eyebrow">SHIKSHAMESH · AI LEARNING OS</span><h1>Your notes become a learning space.</h1><p>Ask grounded questions, practise with an AI interviewer, draw on a smart canvas, and join live classes built around your own course material.</p><div className="landing-actions"><a className="primary-link" href="/auth">Log in or create account</a><a className="secondary-link" href="#features">Explore features</a></div><div className="landing-proof"><span>Course-grounded AI</span><span>Multilingual support</span><span>Collaborative learning</span></div></div></section>
-    <section id="features" className="feature-grid"><article><span>01</span><h2>Learn from your notes</h2><p>Private retrieval from your approved course documents, with evidence-backed answers.</p></article><article><span>02</span><h2>Practise actively</h2><p>Adaptive quizzes, voice-based AI interviews, code workspace, and visual canvas.</p></article><article><span>03</span><h2>Learn together</h2><p>Topic-focused live rooms, shared work, hands-up interaction, and classroom discussion.</p></article></section>
+    <section className="landing-hero">
+      <ShapesDots cellSize={40} influenceRadiusVmin={25} idleScale={.1} minPeakScale={1} maxPeakScale={3} shapes={["circle","triangle","square"]} opacity={1}/>
+      <div className="landing-shell">
+        <div className="landing-content">
+          <span className="eyebrow">SHIKSHAMESH · AI LEARNING OS</span>
+          <h1>Your notes become a <span>learning space.</span></h1>
+          <p>Ask grounded questions, practise with an AI interviewer, research current information, draw on a smart canvas, and join live classes built around your own course material.</p>
+          <div className="landing-actions">
+            <a className="primary-link" href="/auth">Get started <span aria-hidden="true">→</span></a>
+            <a className="secondary-link" href="#features">Explore features</a>
+          </div>
+          <div className="landing-proof">
+            <span>Course-grounded AI</span>
+            <span>Multilingual support</span>
+            <span>Collaborative learning</span>
+          </div>
+        </div>
+
+        <div className="landing-demo" aria-label="ShikshaMesh agent workflow preview">
+          <div className="demo-tabs">
+            <span className="active">Ask</span><span>Practise</span><span>Research</span><span>Create</span>
+          </div>
+          <div className="demo-prompt">Explain recursion using my course notes...</div>
+          <div className="demo-tags">
+            <span className="tag-green">Use my course material</span>
+            <span className="tag-blue">Search with SerpApi</span>
+            <span className="tag-purple">AI agents</span>
+          </div>
+          <div className="demo-flow">
+            <span>Course Retrieval</span><b>→</b><span>Research Agent</span><b>→</b><span>SerpApi</span><b>→</b><span>Grounded Answer</span>
+          </div>
+          <div className="demo-answer">
+            <strong>Based on your notes, recursion is a technique where a function calls itself to solve a smaller subproblem...</strong>
+            <div><span>Cited from your notes</span><span>External sources</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" className="feature-grid">
+      <article><span>01</span><h2>Learn from your notes</h2><p>Private retrieval from approved course documents with evidence-backed answers and clear source separation.</p><a href="/auth">Start learning →</a></article>
+      <article><span>02</span><h2>Practise actively</h2><p>Adaptive quizzes, voice-based AI interviews, code workspace, Concept X-Ray, and visual canvas.</p><a href="/auth">Start practising →</a></article>
+      <article><span>03</span><h2>Learn together</h2><p>Topic-focused live rooms, shared work, hands-up interaction, and classroom discussion.</p><a href="/auth">Explore collaboration →</a></article>
+    </section>
   </main>;
   if (role === "teacher" || role === "admin") return <main><section className="hero"><span className="eyebrow">SHIKSHAMESH {role.toUpperCase()}</span><h1>Plan once. Orchestrate the rest.</h1><p>Use the teacher workspace to upload course material, create multilingual quizzes, schedule workflows, and review aggregated class insights.</p><a href="/teacher">Open teacher workflow →</a></section><SignInPanel /></main>;
   return <main>
