@@ -1,4 +1,5 @@
 "use client";
+import { DEMO_TOPIC, DEMO_AGENDA } from "@/lib/demo-content";
 import { FormEvent, useEffect, useState } from "react";
 import { SignInPanel, useAuthSession } from "@/components/auth-session";
 
@@ -6,7 +7,7 @@ type Lesson = { id:string; title:string; scheduledFor?:string; durationMinutes?:
 function defaultTime() { const value=new Date(Date.now()+30*60*1000); value.setSeconds(0,0); return value.toISOString().slice(0,16); }
 
 export default function TeacherLivePage() {
-  const { idToken, role, loading, apiFetch } = useAuthSession(); const [title,setTitle]=useState("Binary Lifting Lab"), [scheduledFor,setScheduledFor]=useState(defaultTime()), [duration,setDuration]=useState(45), [agenda,setAgenda]=useState("Warm-up: k-th ancestor recap\nBuild the binary lifting table\nDiscuss LCA edge cases\nAdaptive exit question"), [lessons,setLessons]=useState<Lesson[]>([]), [error,setError]=useState(""), [saving,setSaving]=useState(false);
+  const { idToken, role, loading, apiFetch } = useAuthSession(); const [title,setTitle]=useState(DEMO_TOPIC + " Lab"), [scheduledFor,setScheduledFor]=useState(defaultTime()), [duration,setDuration]=useState(45), [agenda,setAgenda]=useState(DEMO_AGENDA.join("\n")), [lessons,setLessons]=useState<Lesson[]>([]), [error,setError]=useState(""), [saving,setSaving]=useState(false);
   async function load(){const response=await apiFetch("/api/teacher/live-lessons?classId=cn-b");const body=await response.json();if(response.ok)setLessons(body.lessons);else setError(body.error??"Unable to load lessons");}
   useEffect(()=>{if(idToken&&(role==="teacher"||role==="admin"))void load();},[idToken,role]);
   async function submit(event:FormEvent){event.preventDefault();setSaving(true);setError("");try{const response=await apiFetch("/api/teacher/live-lessons",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({classId:"cn-b",title,scheduledFor:new Date(scheduledFor).toISOString(),durationMinutes:duration,agenda:agenda.split("\n").map((item)=>item.trim()).filter(Boolean)})});const body=await response.json();if(!response.ok)throw new Error(body.error??"Unable to schedule lesson");setLessons((current)=>[body,...current]);}catch(reason){setError(reason instanceof Error?reason.message:"Unable to schedule lesson");}finally{setSaving(false);}}

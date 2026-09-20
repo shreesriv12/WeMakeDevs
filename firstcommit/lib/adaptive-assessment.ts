@@ -4,6 +4,11 @@ import { predictMasteryWithSageMaker, type MasteryAttempt } from "./aws/sagemake
 
 type Question = { id: string; topic: string; prompt: string; options: string[]; answer: number; difficulty: "easy" | "medium" | "hard" };
 const bank: Question[] = [
+  { id:"library-1", topic:"library_management", difficulty:"easy", prompt:"Why does the library keep Books and BookCopies as separate tables?", options:["To duplicate every record", "To separate title metadata from each physical copy's status", "To remove accession numbers", "To avoid tracking returns"], answer:1 },
+  { id:"library-2", topic:"library_management", difficulty:"medium", prompt:"Which checks are required before issuing a physical book copy?", options:["Only the title must exist", "Only the member name is needed", "Active membership, issue limit, copy availability, and blocking rules", "Only the fine amount matters"], answer:2 },
+  { id:"library-3", topic:"library_management", difficulty:"hard", prompt:"Why should creating an issue and changing the copy status happen in one database transaction?", options:["To prevent inconsistent borrowing and availability records", "To delete transaction history", "To bypass membership checks", "To allow two simultaneous issues of the same copy"], answer:0 },
+  { id:"library-4", topic:"library_management", difficulty:"medium", prompt:"According to the report, when should renewal be blocked?", options:["Whenever a book has multiple authors", "When the member searches the catalog", "Whenever the copy has a shelf number", "When another member has reserved the book"], answer:3 },
+  { id:"library-5", topic:"library_management", difficulty:"easy", prompt:"How does the report define an overdue fine?", options:["Book price multiplied by total copies", "Overdue days multiplied by the configured daily rate", "A fixed amount for every return", "Number of authors multiplied by loan days"], answer:1 },
   { id:"tcp-1", topic:"transport_reliability", difficulty:"easy", prompt:"Which TCP mechanism confirms that data reached the receiver?", options:["Acknowledgement", "IP address", "Checksum only", "Routing table"], answer:0 },
   { id:"tcp-2", topic:"transport_reliability", difficulty:"medium", prompt:"What should TCP do after its retransmission timer expires without an acknowledgement?", options:["Discard the connection", "Retransmit the unacknowledged segment", "Change the IP address", "Stop flow control"], answer:1 },
   { id:"tcp-3", topic:"transport_reliability", difficulty:"hard", prompt:"Which feature prevents a fast sender from overwhelming a slower receiver?", options:["Sliding window flow control", "DNS", "MAC addressing", "Fragmentation"], answer:0 },
@@ -15,6 +20,7 @@ const bank: Question[] = [
 
 function topicFromContext(context?: string) {
   const value = context?.toLowerCase() ?? "";
+  if (/library|bookcopies|book (issue|return)|catalog|overdue fine/.test(value)) return "library_management";
   if (/binary\s*lifting|k-th ancestor|\blca\b/.test(value)) return "binary_lifting";
   if (/routing|ip address|network layer/.test(value)) return "network_routing";
   return "transport_reliability";

@@ -82,8 +82,8 @@ export default function TeacherPage() {
   );
 
   const [languages, setLanguages] = useState([
-    "hi",
-    "mr"
+    "en",
+    "hi"
   ]);
 
   const [result, setResult] =

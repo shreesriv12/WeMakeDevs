@@ -1,4 +1,5 @@
 node_modules/
+.local-course-storage/
 .next/
 .env*
 !.env.example

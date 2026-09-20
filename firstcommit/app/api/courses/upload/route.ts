@@ -1,6 +1,6 @@
 import {
-  uploadProcessedCourseDocument
-} from "@/lib/aws/s3-course-store";
+  storeCourseDocument
+} from "@/lib/course-storage";
 
 import {
   authenticate
@@ -199,7 +199,7 @@ export async function POST(
     );
 
     const uploaded =
-      await uploadProcessedCourseDocument(
+      await storeCourseDocument(
         {
           institutionId:
             actor.institutionId,
@@ -249,7 +249,7 @@ export async function POST(
             file.name,
 
           sourceUrl:
-            `s3://${uploaded.bucket}/${uploaded.sourceKey}`,
+            uploaded.sourceUrl,
 
           chunks:
             processed.chunks
@@ -262,7 +262,9 @@ export async function POST(
       | { provider: "bedrock" | "local"; status: string; ingestionJobId?: string }
       | undefined;
     try {
-      const started = await startKnowledgeIngestion(uploaded.kbSourceKey);
+      const started = uploaded.provider === "local"
+        ? { provider: "local" as const, status: ingestion.status }
+        : await startKnowledgeIngestion(uploaded.kbSourceKey);
       bedrockIngestion = { ...started, status: started.status ?? "started" };
     } catch (reason) {
       debugError(
@@ -336,6 +338,9 @@ export async function POST(
         },
 
         ingestion: {
+          provider: ingestion.provider,
+          status: ingestion.status,
+          ingestionJobId: bedrockIngestion?.ingestionJobId,
           qdrant: ingestion,
           bedrock: bedrockIngestion
         },

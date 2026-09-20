@@ -12,6 +12,8 @@ npm run dev
 
 Open `http://localhost:3000`. Add `SERPAPI_API_KEY` only if external research is enabled; the app runs without it.
 
+For development uploads without AWS credentials, set `COURSE_STORAGE_PROVIDER=local` in `.env.local`. Original files are saved in the ignored `.local-course-storage/` directory; Qdrant and OpenRouter configuration is still required to index and search their contents. Start PostgreSQL with `docker compose up -d db` to persist the course list. Omit this setting to use S3. Local storage is rejected in production.
+
 ## Continuous integration
 
 The GitHub Actions workflow in `.github/workflows/ci.yml` runs type checking, tests, intent evaluation, and a production build on pushes to `main` and pull requests. It has no AWS credentials and does not deploy resources.
@@ -71,3 +73,7 @@ docker run --rm -p 3000:3000 --env-file .env.local shikshamesh
 The container exposes `GET /api/health`; configure your ECS or App Runner health check to use that path.
 
 The Socket.IO classroom service is deployed separately; see [`realtime/DEPLOYMENT.md`](realtime/DEPLOYMENT.md).
+
+## Library Management System recording
+
+Open `/demo` for the recording sequence. Upload `Library_Management_System_Report.pdf` as a teacher, then use a student account in the same class for tutor, notes, interview, Concept X-Ray, and practice. Inputs are prepared in `lib/demo-content.ts`; generated responses still use authorized uploaded notes. The five library diagram templates and fixed adaptive question bank are teaching examples, not generated output. Existing classes and historical records are retained.

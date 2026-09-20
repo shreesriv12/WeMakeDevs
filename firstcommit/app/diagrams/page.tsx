@@ -1,5 +1,6 @@
 "use client";
 
+import { DEMO_TOPIC, DEMO_DIAGRAMS } from "@/lib/demo-content";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { SignInPanel, useAuthSession } from "@/components/auth-session";
@@ -8,6 +9,7 @@ import { MermaidDiagram } from "@/components/mermaid-diagram";
 type Kind = "flowchart" | "sequence" | "class" | "state" | "er";
 type Template = { label: string; kind: Kind; make: (topic: string) => string };
 const templates: Template[] = [
+  ...(["flowchart", "class", "sequence", "er", "state"] as const).map(kind => ({ label: `Library ${kind === "er" ? "database" : kind}`, kind, make: () => DEMO_DIAGRAMS[kind] })),
   { label: "Learning flow", kind: "flowchart", make: topic => `flowchart LR\n  A[Read ${topic}] --> B[Identify core idea]\n  B --> C[Work an example]\n  C --> D[Explain it back]` },
   { label: "UML class", kind: "class", make: topic => `classDiagram\n  class ${topic.replace(/[^a-z0-9]/gi, "") || "Concept"} {\n    +definition\n    +solveExample()\n  }\n  class Student {\n    +practice()\n  }\n  Student --> ${topic.replace(/[^a-z0-9]/gi, "") || "Concept"} : learns` },
   { label: "UML sequence", kind: "sequence", make: topic => `sequenceDiagram\n  participant Student\n  participant Tutor\n  participant Notes\n  Student->>Tutor: Ask about ${topic}\n  Tutor->>Notes: Retrieve relevant concepts\n  Notes-->>Tutor: Grounded explanation\n  Tutor-->>Student: Example and practice` },
@@ -19,8 +21,8 @@ export default function DiagramsPage() {
   const params = useSearchParams(); const { idToken, loading, apiFetch } = useAuthSession();
   const workspace = (params.get("workspace") ?? "class-main").replace(/[^a-zA-Z0-9_-]/g, "").slice(0, 70) || "class-main";
   const workspaceKey = `lesson-${workspace}`;
-  const [topic, setTopic] = useState(() => params.get("topic") ?? "Binary Lifting"); const [kind, setKind] = useState<Kind>("flowchart");
-  const [code, setCode] = useState(templates[0].make(params.get("topic") ?? "Binary Lifting")); const [submitted, setSubmitted] = useState(code);
+  const [topic, setTopic] = useState(() => params.get("topic") ?? DEMO_TOPIC); const [kind, setKind] = useState<Kind>("flowchart");
+  const [code, setCode] = useState(templates[0].make(params.get("topic") ?? DEMO_TOPIC)); const [submitted, setSubmitted] = useState(code);
   const [status, setStatus] = useState("Choose a classroom template, edit it, or generate from your approved notes."); const [busy, setBusy] = useState(false); const [error, setError] = useState("");
   useEffect(()=>{const templateId=params.get("template")??params.get("topic");if(!idToken||!templateId)return;void apiFetch("/api/teacher/diagram-templates?classId=cn-b").then(async response=>{const body=await response.json();if(!response.ok)throw new Error(body.error??"Unable to load class template");const template=(body.templates??[]).find((item:{id:string;title:string})=>item.id===templateId||item.title===templateId);if(!template)return;setTopic(template.title);setKind(template.kind);setCode(template.code);setSubmitted(template.code);setStatus(`Loaded class template: ${template.title}`);}).catch(reason=>setError(reason instanceof Error?reason.message:"Unable to load class template"));},[idToken,apiFetch,params]);
   function useTemplate(index: number) { const template = templates[index]; const next = template.make(topic || "Untitled concept"); setKind(template.kind); setCode(next); setSubmitted(next); setStatus(`${template.label} template loaded. Edit it or publish it to the lesson Canvas.`); }
