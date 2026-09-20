@@ -53,6 +53,34 @@ The prioritized product, production, and ML delivery plan is in [`PRODUCT_ROADMA
 
 The deployable foundation is in [`infra/`](infra/README.md). It intentionally requires a `terraform plan` review before any AWS resources are created.
 
+## AWS Ship It implementation
+
+ShikshaMesh is built for the **AWS Ship It** path: a cloud-deployable, cost-aware learning platform rather than a local-only prototype. The application uses AWS services for identity, course documents, asynchronous workflows, AI retrieval, audit events, monitoring, and optional live video.
+
+| Ship It area | ShikshaMesh implementation | Status |
+| --- | --- | --- |
+| Agents and AI | Amazon Bedrock Knowledge Bases and Nova for course-grounded retrieval and generation; SageMaker adapter for evaluated intent/mastery models | Bedrock configured; SageMaker intentionally deferred until a trained model beats the baseline |
+| Serverless | AWS Lambda quiz worker and AWS Step Functions quiz → translation → notification → analytics workflow | Configured and testable from the teacher workspace |
+| Servers and runtimes | Dockerized Next.js web app and separate Socket.IO realtime service, each with health checks | Packaged for separate App Runner deployments |
+| Data and search | Amazon S3 course-document storage, Bedrock Knowledge Base ingestion, PostgreSQL, and Qdrant development retrieval | S3 and KB configured; PostgreSQL runs in Docker for the demo |
+| Auth and policy | Amazon Cognito user pool, verified ID tokens, role-based access, tenant/class scoping | Configured |
+| Plumbing | Amazon EventBridge privacy-safe audit events and Amazon CloudWatch workflow dashboard | Configured |
+| Live learning | Amazon IVS Real-Time, using server-issued short-lived participant tokens | Optional and enabled only when a stage is configured |
+
+### Production demo deployment layout
+
+```text
+Browser
+  -> App Runner: Next.js ShikshaMesh web application
+  -> App Runner: Socket.IO realtime classroom
+  -> Amazon Cognito: sign-in and role claims
+  -> Amazon S3 + Bedrock Knowledge Bases: authorised course documents
+  -> Lambda + Step Functions: background quiz workflow
+  -> EventBridge + CloudWatch: audit events and operational visibility
+```
+
+For the hackathon, always-on services such as RDS, ECS/Fargate, Redis, and a SageMaker real-time endpoint are intentionally deferred to protect the AWS credit budget. The web and realtime containers are deployment-ready; add the public App Runner URLs here after final deployment.
+
 ## Hackathon submission
 
 The track-ready project narrative, demo flow, and accurate AWS architecture mapping are in [`HACKATHON_SUBMISSION.md`](HACKATHON_SUBMISSION.md).
