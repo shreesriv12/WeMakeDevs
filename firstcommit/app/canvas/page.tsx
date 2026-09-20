@@ -1,7 +1,7 @@
 // Socket.IO cleanup returns the socket instance, while React cleanup returns void.
 // @ts-nocheck
 "use client";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import dynamic from "next/dynamic";
 import Editor from "@monaco-editor/react";
@@ -11,7 +11,7 @@ import { io, type Socket } from "socket.io-client";
 import "./canvas-page.css";
 const KonvaBoard=dynamic(()=>import("@/components/konva-board"),{ssr:false,loading:()=> <section className="result"><p>Loading canvas…</p></section>});
 type Kind="note"|"geometry"|"code";
-export default function CanvasPage(){
+function CanvasPageContent(){
   const params=useSearchParams();const workspaceKey=`lesson-${(params.get("workspace")??"class-main").replace(/[^a-zA-Z0-9_-]/g,"").slice(0,70)||"class-main"}`;const topic=params.get("topic")??"this lesson";
   const {idToken,loading,apiFetch}=useAuthSession();const socket=useRef<Socket|null>(null);const cursorTimer=useRef<Record<string,number>>({});const [kind,setKind]=useState<Kind>("note"),[object,setObject]=useState("empty workspace"),[answer,setAnswer]=useState(""),[sharedShapes,setSharedShapes]=useState<CanvasShape[]|null>(null),[liveStatus,setLiveStatus]=useState("Connecting shared workspace…"),[collaborators,setCollaborators]=useState<Array<{id:string;displayName:string;role:string}>>([]),[remoteCursors,setRemoteCursors]=useState<CanvasCursor[]>([]);const [content,setContent]=useState("Select a drawing, note, geometry object, or code snippet and ask for help."),[code,setCode]=useState("function kthAncestor(node: number, k: number, up: number[][]) {\n  for (let bit = 0; k > 0; bit += 1, k >>= 1) {\n    if (k & 1) node = up[node][bit];\n  }\n  return node;\n}"),[language,setLanguage]=useState("typescript");
   useEffect(()=>{setContent(`Topic workspace: ${topic}. Use the Canvas to draw the important reasoning steps, then ask for a note-grounded explanation.`);setObject(topic);},[topic]);
@@ -27,4 +27,8 @@ export default function CanvasPage(){
     {sharedShapes===null?<section className="result"><p>Loading lesson Canvas…</p></section>:<KonvaBoard onChange={setObject} initialShapes={sharedShapes} onPersist={persist} onLiveChange={liveChange} onCursorMove={({x,y})=>socket.current?.emit("canvas:cursor",{classId:"cn-b",workspaceKey,x,y})} remoteCursors={remoteCursors} collaborators={collaborators}/>} 
     <section className="canvas-ai-panel"><div className="canvas-mode-tabs"><button className={kind==="note"?"active":""} onClick={()=>setKind("note")}>▤ &nbsp; Note</button><button className={kind==="geometry"?"active":""} onClick={()=>setKind("geometry")}>△ &nbsp; Geometry</button><button className={kind==="code"?"active":""} onClick={()=>setKind("code")}>‹/› &nbsp; Code</button></div>{kind==="code"&&<><label htmlFor="code-language">Language</label><select id="code-language" value={language} onChange={event=>setLanguage(event.target.value)}><option value="typescript">TypeScript</option><option value="javascript">JavaScript</option><option value="python">Python</option><option value="cpp">C++</option></select><label>Code workspace</label><div className="monaco-shell"><Editor height="360px" language={language} theme="vs-dark" value={code} onChange={value=>setCode(value??"")} options={{minimap:{enabled:false},fontSize:15,automaticLayout:true}}/></div></>}<label>Selected {kind} context</label><textarea maxLength={2000} rows={6} value={content} onChange={event=>setContent(event.target.value)}/><span className="canvas-context-count">{content.length}/2000</span><div className="canvas-ask-row"><button onClick={()=>void ask()}>✦ &nbsp; Ask ShikshaMesh &nbsp; →</button><div className="canvas-suggestions"><span>Try asking:</span><button onClick={()=>suggestion("Explain this diagram using my notes for {topic}.")}>Explain this diagram</button><button onClick={()=>suggestion("Find mistakes in my reasoning for {topic} and explain how to fix them.")}>Find mistakes</button><button onClick={()=>suggestion("Turn this canvas into concise revision notes for {topic}.")}>Turn this into notes</button></div></div>{answer&&<p className="canvas-answer">{answer}</p>}</section>
   </main>;
+}
+
+export default function CanvasPage() {
+  return <Suspense fallback={<main><p>Loading canvas…</p></main>}><CanvasPageContent /></Suspense>;
 }

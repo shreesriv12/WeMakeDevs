@@ -12,6 +12,40 @@ npm run dev
 
 Open `http://localhost:3000`. Add `SERPAPI_API_KEY` only if external research is enabled; the app runs without it.
 
+## Build It: local AWS-compatible development
+
+ShikshaMesh supports a zero-credit local workflow alongside its AWS Ship It architecture.
+
+| Tool | How ShikshaMesh uses it | Cost |
+| --- | --- | --- |
+| Docker | Runs PostgreSQL, Qdrant, and optional LocalStack containers locally | No AWS charge |
+| LocalStack | Emulates S3, SQS, EventBridge, and Lambda endpoints for local integration testing | No AWS charge |
+| SAM CLI | Builds and invokes the packaged quiz Lambda against a local test event | No AWS charge |
+| Cedar | Evaluates the local authorization policy through the Cedar WASM engine to guard against RBAC policy drift | No AWS charge |
+| Finch | Optional Docker-compatible alternative; Docker Desktop is used on this development machine | No AWS charge |
+
+Start local AWS emulation:
+
+```bash
+docker compose --profile local-aws up -d localstack
+```
+
+LocalStack creates a development S3 bucket, EventBridge bus, and SQS notification queue at startup. It never calls the AWS account.
+
+Validate the Cedar authorization mirror:
+
+```bash
+npm run policy:cedar
+```
+
+After installing the AWS SAM CLI on your machine, test the same Lambda package used in AWS without invoking the cloud function:
+
+```bash
+npm run sam:quiz-local
+```
+
+The SAM template is [`template.yaml`](template.yaml); its local event and non-billable environment configuration are in [`infra/local/`](infra/local/).
+
 ## Continuous integration
 
 The GitHub Actions workflow in `.github/workflows/ci.yml` runs type checking, tests, intent evaluation, and a production build on pushes to `main` and pull requests. It has no AWS credentials and does not deploy resources.

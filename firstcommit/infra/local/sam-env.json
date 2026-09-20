@@ -1,0 +1,7 @@
+{
+  "QuizWorker": {
+    "AWS_REGION": "us-east-1",
+    "ENABLE_BEDROCK_QUIZ_GENERATION": "false",
+    "ENABLE_AWS_TRANSLATE": "false"
+  }
+}

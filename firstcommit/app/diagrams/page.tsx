@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { SignInPanel, useAuthSession } from "@/components/auth-session";
 import { MermaidDiagram } from "@/components/mermaid-diagram";
@@ -15,7 +15,7 @@ const templates: Template[] = [
   { label: "DSA decision tree", kind: "flowchart", make: topic => `flowchart TD\n  A[Problem: ${topic}] --> B{What is the invariant?}\n  B --> C[Precompute useful state]\n  C --> D[Answer each query]\n  D --> E[Check edge cases]` },
 ];
 
-export default function DiagramsPage() {
+function DiagramsPageContent() {
   const params = useSearchParams(); const { idToken, loading, apiFetch } = useAuthSession();
   const workspace = (params.get("workspace") ?? "class-main").replace(/[^a-zA-Z0-9_-]/g, "").slice(0, 70) || "class-main";
   const workspaceKey = `lesson-${workspace}`;
@@ -29,4 +29,8 @@ export default function DiagramsPage() {
   if (loading) return <main><p>Checking sign-in session…</p></main>;
   if (!idToken) return <main><section className="hero"><span className="eyebrow">VISUAL LEARNING</span><h1>Diagram Studio</h1><p>Build and explain flowcharts from your course material.</p></section><SignInPanel /></main>;
   return <main className="diagram-page"><section className="hero"><span className="eyebrow">MERMAID · NOTE-GROUNDED VISUALS</span><h1>Turn a topic into a diagram.</h1><p>Use a ready classroom template, generate from authorized notes, then publish it into the shared lesson workspace.</p></section><section className="diagram-studio"><aside className="diagram-controls"><label htmlFor="diagram-template">Quick classroom template</label><select id="diagram-template" defaultValue="" onChange={event => event.target.value && useTemplate(Number(event.target.value))}><option value="" disabled>Choose a template</option>{templates.map((template, index) => <option value={index} key={template.label}>{template.label}</option>)}</select><label htmlFor="diagram-topic">Topic</label><input id="diagram-topic" value={topic} onChange={event => setTopic(event.target.value)} /><label htmlFor="diagram-kind">Diagram type</label><select id="diagram-kind" value={kind} onChange={event => setKind(event.target.value as Kind)}><option value="flowchart">Flowchart</option><option value="sequence">UML sequence diagram</option><option value="class">UML class diagram</option><option value="state">State machine</option><option value="er">Entity relationship diagram</option></select><button type="button" onClick={() => void generate()} disabled={busy}>{busy ? "Working…" : "Generate from notes"}</button><label htmlFor="mermaid-code">Mermaid code</label><textarea id="mermaid-code" rows={18} spellCheck={false} value={code} onChange={event => setCode(event.target.value)} /><button type="button" className="diagram-preview-button" onClick={() => { setSubmitted(code); setStatus("Preview updated from your Mermaid code."); }}>Update preview</button></aside><section className="diagram-preview"><div className="diagram-preview-head"><div><span className="eyebrow">LIVE PREVIEW</span><h2>{topic || "Untitled diagram"}</h2></div><div className="diagram-actions"><button type="button" onClick={() => navigator.clipboard.writeText(submitted)}>Copy code</button><button type="button" className="diagram-publish" onClick={() => void publishToCanvas()} disabled={busy}>Publish to Canvas</button></div></div><MermaidDiagram code={submitted} /><small>{status}</small><p className="diagram-canvas-hint">This publishes to this lesson’s shared board. <a href={`/canvas?topic=${encodeURIComponent(topic)}&workspace=${encodeURIComponent(workspace)}`}>Open Canvas</a></p>{error && <p className="error">{error}</p>}</section></section></main>;
+}
+
+export default function DiagramsPage() {
+  return <Suspense fallback={<main><p>Loading Diagram Studio…</p></main>}><DiagramsPageContent /></Suspense>;
 }

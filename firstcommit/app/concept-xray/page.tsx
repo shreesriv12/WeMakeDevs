@@ -1,13 +1,13 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { SignInPanel, useAuthSession } from "@/components/auth-session";
 
 type Result = { sessionId: string; retrievalProvider: string; diagnosis: { misconception: string; whyItBreaks: string; correctionBridge: string; recoveryChallenge: string; confidence: number; evidenceSource: string }; sources: { title: string; sourceUrl: string }[] };
 type Recovery = { score: number; feedback: string; masteryEligible: boolean; nextStep: string };
 
-export default function ConceptXRayPage() {
+function ConceptXRayPageContent() {
   const params = useSearchParams();
   const { idToken, loading, apiFetch } = useAuthSession();
   const [focus, setFocus] = useState(() => params.get("topic") ?? "Binary lifting");
@@ -37,4 +37,8 @@ export default function ConceptXRayPage() {
   if (loading) return <main><p>Checking sign-in session…</p></main>;
   if (!idToken) return <main><section className="hero"><span className="eyebrow">CONCEPT X-RAY</span><h1>Show where your understanding broke.</h1><p>Sign in to inspect an explanation against your authorized course notes.</p></section><SignInPanel /></main>;
   return <main><section className="hero"><span className="eyebrow">CONCEPT X-RAY</span><h1>Find the first wrong assumption.</h1><p>Paste an explanation, transcript, code reasoning, or canvas description. ShikshaMesh compares it with your course notes and gives one small recovery challenge.</p></section><form className="composer" onSubmit={inspect}><label htmlFor="xray-focus">Topic</label><input id="xray-focus" value={focus} onChange={(event) => setFocus(event.target.value)} /><label htmlFor="xray-kind">Evidence type</label><select id="xray-kind" value={kind} onChange={(event) => setKind(event.target.value as typeof kind)}><option value="text">Written explanation</option><option value="voice">Voice transcript</option><option value="code">Code reasoning</option><option value="canvas">Canvas explanation</option></select><label htmlFor="xray-evidence">Your reasoning</label><textarea id="xray-evidence" rows={7} value={evidence} onChange={(event) => setEvidence(event.target.value)} /><button disabled={submitting}>{submitting ? "Inspecting reasoning…" : "Run Concept X-Ray"}</button></form>{error && <p className="error">{error}</p>}{result && <section className="result xray-result"><span className="eyebrow">MISCONCEPTION PATH · {Math.round(result.diagnosis.confidence * 100)}% CONFIDENCE</span><h2>First likely misconception</h2><p>{result.diagnosis.misconception}</p><h3>Why it breaks the solution</h3><p>{result.diagnosis.whyItBreaks}</p><h3>Correction bridge</h3><p>{result.diagnosis.correctionBridge}</p><div className="recovery-card"><span>2-MINUTE RECOVERY</span><p>{result.diagnosis.recoveryChallenge}</p></div><form className="explain-back-form" onSubmit={explain}><label htmlFor="explain-back">Explain it back</label><textarea id="explain-back" rows={5} value={recovery} onChange={(event) => setRecovery(event.target.value)} placeholder="Teach the corrected idea back in your own words…" /><button disabled={submitting || recovery.trim().length < 12}>{submitting ? "Checking…" : "Check my explanation"}</button></form>{recoveryResult && <div className={recoveryResult.masteryEligible ? "recovery-result passed" : "recovery-result"}><b>{recoveryResult.masteryEligible ? "Recovery looks strong" : "Try one more time"}</b><p>Score: {recoveryResult.score}% · {recoveryResult.feedback}</p><small>{recoveryResult.nextStep}</small></div>}<p><small>Grounded in: {result.diagnosis.evidenceSource} · Retrieval: {result.retrievalProvider}</small></p></section>}</main>;
+}
+
+export default function ConceptXRayPage() {
+  return <Suspense fallback={<main><p>Loading Concept X-Ray…</p></main>}><ConceptXRayPageContent /></Suspense>;
 }

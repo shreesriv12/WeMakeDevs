@@ -1,0 +1,22 @@
+# Local-only configuration and generated output
+.env*
+.git
+.next
+.vercel
+node_modules
+coverage
+artifacts
+dist
+
+# Local training data and Python environment are not needed by the web app.
+.venv-ml
+ml
+data
+Dataset_English_Hindi.csv
+
+# Local infrastructure and workspace files
+docx_render
+.docx_deps
+*.tsbuildinfo
+*.docx
+*.pdf
