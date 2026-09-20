@@ -1,423 +1,348 @@
 # 🎓 ShikshaMesh
 
-> **An agentic, multilingual AI learning platform combining grounded course intelligence, adaptive learning, multimodal experiences, and real-time web research powered by SerpApi.**
+> **An AWS-powered, agentic, multilingual learning platform that transforms course material into personalized tutoring, adaptive assessments, AI interviews, misconception diagnosis, visual learning, and collaborative classrooms.**
 
-### 🏆 Hackathon Tracks
+[![AWS](https://img.shields.io/badge/AWS-Powered-FF9900?logo=amazonaws&logoColor=white)](#-aws-cloud-architecture)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](#-technology-stack)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](#-technology-stack)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](#-technology-stack)
+[![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?logo=docker&logoColor=white)](#-running-locally)
 
-**Primary Track:** `Ship It — Agents and AI`
-
----
-
-## 🌟 What is ShikshaMesh?
-
-**ShikshaMesh** is an AI-powered education platform designed to go beyond the traditional "chat with your PDF" experience.
-
-Instead of sending every request to a single LLM, ShikshaMesh uses a **policy-aware multi-agent architecture** where specialized agents collaborate across:
-
-* 📚 Course-grounded tutoring
-* 🔎 Real-time research powered by **SerpApi**
-* 🧠 Adaptive assessments
-* 🔬 Misconception detection with **Concept X-Ray**
-* 🎤 AI-powered interviews
-* 📝 Smart learning tools
-* 🎨 Diagrams and collaborative Canvas
-* 👨‍🏫 Teacher analytics and interventions
-* 🌐 Live classrooms
-* 📶 Offline-first learning
-
-The system decides **which agent should handle a request, what data that agent is allowed to access, whether external research is necessary, and how the final answer should be grounded and cited.**
+**Live Demo:** https://shikshamesh.onrender.com/ 
+**Repository:** https://github.com/shreesriv12/WeMakeDevs
 
 ---
 
-# 💡 The Problem
+# 🌟 What is ShikshaMesh?
 
-Modern AI tutors are powerful, but most educational assistants still suffer from several problems:
+ShikshaMesh is an intelligent learning workspace designed for students and teachers who already have PDFs, notes, slides, lectures, and assignments but still struggle with a more important problem:
 
-### 1. Generic answers
+> **Understanding exactly what a student misunderstood and what they should learn next.**
 
-General-purpose LLMs may answer using broad model knowledge instead of the student's actual course material.
+Traditional AI tutors usually behave like generic chatbots. They answer questions, but they do not necessarily follow the teacher's material, understand classroom permissions, track misconceptions, adapt assessments, or connect learning activities together.
 
-### 2. Outdated knowledge
+ShikshaMesh approaches education as an **agent orchestration problem**.
 
-Course retrieval alone cannot answer questions involving:
-
-* latest education guidelines;
-* current events;
-* recent research;
-* new technologies;
-* updated policies;
-* external learning resources.
-
-### 3. Unsafe web research
-
-Giving an AI unrestricted search access can expose private context or mix untrusted web information with official course material.
-
-### 4. No understanding of *why* a student is wrong
-
-Most platforms evaluate the final answer.
-
-They do not identify the **first incorrect assumption in the student's reasoning**.
-
-### 5. One AI model doing everything
-
-Tutoring, research, assessment generation, teacher workflows, and learner analysis require different tools and permissions.
-
-ShikshaMesh approaches this as an **agent orchestration problem**.
-
----
-
-# 🚀 Our Solution
-
-ShikshaMesh combines:
+Instead of sending every request to one model, the platform combines specialized AI agents, deterministic authorization, course-grounded retrieval, learner mastery signals, AWS AI services, serverless workflows, multilingual tools, and collaborative learning experiences.
 
 ```text
-Identity
-    +
-Deterministic Policy
-    +
-Agent Orchestration
-    +
-Private Course Retrieval
-    +
-SerpApi Live Research
-    +
-Learner Mastery
-    +
-AWS AI Services
-    +
-Observable Workflows
-    =
-Trustworthy AI Learning
-```
+                    Student / Teacher
+                           │
+                           ▼
+                  Amazon Cognito
+                           │
+                           ▼
+               Authentication + Policy
+                           │
+                           ▼
+                    Intent Router
+                           │
+              ┌────────────┼────────────┐
+              │            │            │
+              ▼            ▼            ▼
+         Tutor Agent   Assessment   Research Agent
+                           Agent
+              │            │            │
+              ▼            ▼            ▼
+          Bedrock      SageMaker      SerpApi
+              │
+              ▼
+      Bedrock Knowledge Base
+              │
+              ▼
+             S3
 
-A typical request flows through:
-
-```text
-Student Request
-      │
-      ▼
-Authentication
-      │
-      ▼
-Tenant / Class Scope
-      │
-      ▼
-Deterministic RBAC + ABAC Policy
-      │
-      ▼
-Intent Router
-      │
-      ▼
-LangGraph Agent Orchestration
-      │
-      ├──────── Tutor Agent
-      │
-      ├──────── Adaptive Assessment Agent
-      │
-      ├──────── Teacher / Quiz Agent
-      │
-      └──────── Research Agent
-                       │
-                       ▼
-                 SerpApi Gateway
-                       │
-                       ▼
-             Trusted Web Evidence
-      │
-      ▼
-Grounded Answer + Citations
+                     +
+                     
+        Step Functions + Lambda
+                     │
+                  Translate
+                     │
+                EventBridge
+                     │
+                 CloudWatch
 ```
 
 ---
 
-# 🤖 Ship It — Agents and AI
+# 🏆 Hackathon Tracks
 
-ShikshaMesh is designed around **specialized AI agents rather than a single chatbot**.
+ShikshaMesh combines both the **Build It** and **Ship It** development approaches.
 
-The current architecture supports agent-oriented workflows for:
+## 🔨 Build It
 
-### 📚 Tutor Agent
+The local development environment uses AWS-compatible open-source tools so important infrastructure and authorization workflows can be developed and tested locally.
 
-Answers learner questions using authorized course material.
+Implemented tooling includes:
 
-The tutor prioritizes institution-provided evidence rather than arbitrary web content.
+| Tool | Usage |
+| --- | --- |
+| **AWS SAM** | Local Lambda workflow definition and quiz-worker invocation |
+| **LocalStack** | Local emulation of AWS-style S3, Lambda, SQS, and EventBridge workflows |
+| **Cedar** | Deterministic student, teacher, administrator, class, and institution authorization policies |
+| **Docker / Docker Compose** | Local PostgreSQL, supporting services, and application containers |
 
-When configured for AWS, the flow becomes:
+The local workflow makes it possible to develop and verify important cloud behavior without requiring every development request to reach AWS.
+
+---
+
+# 🚀 Ship It
+
+AWS powers the cloud intelligence, storage, authentication, workflows, observability, and live-learning capabilities of ShikshaMesh.
+
+## AWS services implemented in ShikshaMesh
+
+| AWS Service | Implementation in ShikshaMesh |
+| --- | --- |
+| **Amazon Bedrock** | Grounded tutor, quiz, interview, explanation, and educational generation |
+| **Amazon Bedrock Knowledge Bases** | Retrieval of authorized course material before AI generation |
+| **Amazon SageMaker AI** | Runtime integration for multilingual intent classification and learner-mastery inference |
+| **Amazon S3** | Secure storage of uploaded PDFs, DOCX files, TXT files, processed learning content, and Knowledge Base sources |
+| **Amazon Cognito** | Student, teacher, and administrator authentication and role-aware access |
+| **AWS Lambda** | Serverless quiz-generation and processing worker |
+| **AWS Step Functions** | Multi-stage quiz workflow orchestration |
+| **Amazon Translate** | Multilingual quiz translation |
+| **Amazon EventBridge** | Audit, workflow, notification, and analytics events |
+| **Amazon CloudWatch** | Logs, workflow visibility, operational debugging, and monitoring |
+| **Amazon IVS Real-Time** | Real-time classroom video participation |
+| **AWS IAM** | Least-privilege access between AWS services |
+| **IAM Identity Center** | Secure development and CLI access |
+| **Amazon ECR** | Container image storage for the ShikshaMesh application |
+
+---
+
+# ☁️ AWS Cloud Architecture
+
+AWS is not used as a simple hosting checkbox in ShikshaMesh.
+
+Different services are responsible for different parts of the learning lifecycle.
+
+```text
+┌──────────────────────────────────────────────────────┐
+│                    ShikshaMesh UI                    │
+│                                                      │
+│ Student • Teacher • Admin • Canvas • Live Classroom │
+└────────────────────────┬─────────────────────────────┘
+                         │
+                         ▼
+                ┌──────────────────┐
+                │ Amazon Cognito   │
+                │ Authentication   │
+                └────────┬─────────┘
+                         │
+                         ▼
+        ┌────────────────────────────────┐
+        │ Authentication + Policy Layer  │
+        │ RBAC • ABAC • Cedar            │
+        │ Institution • Class Scope      │
+        └───────────────┬────────────────┘
+                        │
+                        ▼
+               ┌─────────────────┐
+               │  Agent Router   │
+               └────────┬────────┘
+                        │
+       ┌────────────────┼─────────────────┐
+       │                │                 │
+       ▼                ▼                 ▼
+┌────────────┐   ┌─────────────┐   ┌─────────────┐
+│   Tutor    │   │ Assessment  │   │  Research   │
+│   Agent    │   │    Agent    │   │    Agent    │
+└─────┬──────┘   └──────┬──────┘   └──────┬──────┘
+      │                 │                 │
+      ▼                 ▼                 ▼
+Amazon Bedrock     SageMaker AI        SerpApi
+      │
+      ▼
+Bedrock Knowledge Bases
+      │
+      ▼
+   Amazon S3
+
+
+┌──────────────────────────────────────────────────────┐
+│                Serverless Workflow                   │
+│                                                      │
+│ Step Functions → Lambda → Translate → EventBridge   │
+└────────────────────────┬─────────────────────────────┘
+                         │
+                         ▼
+                    CloudWatch
+
+
+┌──────────────────────────────────────────────────────┐
+│                  Live Learning                       │
+│                                                      │
+│              Amazon IVS Real-Time                    │
+└──────────────────────────────────────────────────────┘
+```
+
+---
+
+# 🤖 Multi-Agent Learning Architecture
+
+ShikshaMesh does not treat every learning request as the same problem.
+
+Different specialized agents handle different tasks.
+
+## 📚 Tutor Agent
+
+The Tutor Agent answers questions using the learner's authorized course material.
 
 ```text
 Student Question
       ↓
-Authorization
+Authentication
+      ↓
+Class / Institution Scope
       ↓
 Course Retrieval
       ↓
-Amazon Bedrock Knowledge Bases
+Bedrock Knowledge Bases
       ↓
-Relevant Course Chunks
+Relevant Course Evidence
       ↓
 Amazon Bedrock
       ↓
-Grounded Tutor Response
+Grounded Explanation
 ```
 
----
+The system prioritizes teacher-provided material instead of immediately relying on general web knowledge.
 
-### 🔎 Research Agent
-
-Handles questions requiring information beyond the learner's private course material.
-
-Instead of allowing unrestricted web access:
-
-```text
-Research Intent
-      ↓
-Authorization
-      ↓
-PII-safe Query
-      ↓
-Approved Domain Policy
-      ↓
-SerpApi
-      ↓
-Normalized Results
-      ↓
-Cited External Evidence
-```
-
-This makes external research **explicit, controlled and auditable**.
+This keeps explanations aligned with the learner's actual syllabus.
 
 ---
 
-### 🧠 Adaptive Assessment Agent
+## 🧠 Adaptive Assessment Agent
 
-Uses learner mastery information to select appropriate questions.
+The assessment system creates quizzes and updates learner mastery signals.
 
-The assessment system is designed so that:
+It considers:
 
-* difficulty can adapt to learner state;
-* learner progress can influence question selection;
-* answer keys are not exposed in quiz-generation client payloads;
-* mastery events can feed future learning models.
+- course material;
+- topic;
+- previous attempts;
+- difficulty;
+- learner mastery;
+- language;
+- assessment history.
+
+This allows ShikshaMesh to move beyond static quizzes.
+
+A learner who struggles with a topic can receive additional practice instead of immediately moving to harder questions.
 
 ---
 
-### 👨‍🏫 Teacher / Quiz Agent
+## 👨‍🏫 Teacher / Quiz Agent
 
-Teacher workflows support multi-step quiz and learning operations.
-
-AWS orchestration is designed around:
+Teachers can create course-aware assessments using an AWS serverless workflow.
 
 ```text
 Teacher Request
       ↓
-Policy Check
+Authorization
       ↓
-Step Functions
+AWS Step Functions
       ↓
-Lambda Workers
+AWS Lambda
+      ↓
+Course Retrieval
+      ↓
+Amazon Bedrock
       ↓
 Quiz Generation
       ↓
-Translation / Scheduling / Analytics
+Amazon Translate
+      ↓
+Notification / Analytics Events
+      ↓
+Amazon EventBridge
+      ↓
+Amazon CloudWatch
 ```
 
-The application already contains a Step Functions integration path with local development fallback behavior.
+The workflow separates long-running learning operations from the main application request.
 
 ---
 
-# 🔥 SerpApi — Live Intelligence Layer
+## 🔎 Research Agent
 
-SerpApi is a **first-class component of ShikshaMesh's Research Agent**.
+The Research Agent handles questions requiring information beyond private course material.
 
-We deliberately avoid treating search as:
-
-```text
-LLM → unrestricted Google search
-```
-
-Instead:
+External research does not automatically receive the student's private learning context.
 
 ```text
-Agent
-  ↓
-Research intent detected
-  ↓
+External Research Request
+          ↓
 Authorization
-  ↓
-Sensitive context removed
-  ↓
-Domain policy applied
-  ↓
+          ↓
+Research Intent Detection
+          ↓
+PII-Safe Query
+          ↓
+Approved Domain Policy
+          ↓
 SerpApi
-  ↓
-Results normalized
-  ↓
-Sources preserved
-  ↓
-Answer with citations
-```
-
-This gives ShikshaMesh a controlled bridge between:
-
-```text
-PRIVATE KNOWLEDGE
-Course Notes
-Institution Content
-Learner Context
-
-        +
-
-LIVE KNOWLEDGE
-Current Web Information
-Official Education Sources
-Learning Resources
-```
-
----
-
-# 🔍 How ShikshaMesh Uses SerpApi
-
-## 1. Governed Web Research
-
-The server-side Search Gateway uses SerpApi only when the application detects an **external research intent**.
-
-For example:
-
-> "What are the latest UGC guidelines related to this topic?"
-
-The application can route this through:
-
-```text
-Question
-   ↓
-Intent Router
-   ↓
-Research Agent
-   ↓
-Policy Gateway
-   ↓
-SerpApi
-   ↓
-Approved Sources
-   ↓
+          ↓
+Normalized Evidence
+          ↓
 Cited Response
 ```
 
----
-
-## 2. Official Source Allowlisting
-
-External search can be restricted using:
-
-```env
-SERPAPI_ALLOWED_DOMAINS=ncert.nic.in,ugc.gov.in
-```
-
-This means the Research Agent can be configured to prefer or restrict itself to trusted education sources.
-
-An empty allowlist disables the governed external-research flow.
+SerpApi therefore acts as a **controlled external research tool**, while AWS services remain the primary learning and cloud infrastructure.
 
 ---
 
-## 3. PII-Aware Search
+# 📚 Grounded AI Tutor
 
-Student context should not automatically become a web search query.
+A teacher can upload course material such as:
 
-The Research Gateway therefore creates a boundary between:
+- PDF documents;
+- DOCX notes;
+- text files;
+- lecture material;
+- institutional learning content.
+
+The learning pipeline then creates a trusted knowledge layer.
 
 ```text
-PRIVATE STUDENT CONTEXT
-        ✕
-PUBLIC SEARCH QUERY
+Teacher Upload
+      ↓
+Amazon S3
+      ↓
+Document Processing
+      ↓
+Bedrock Knowledge Base
+      ↓
+Metadata-Scoped Retrieval
+      ↓
+Amazon Bedrock
+      ↓
+Grounded Student Response
 ```
 
-SerpApi calls happen **server-side**, and the API key is never intended to be exposed to the browser.
+Retrieval can be scoped using:
+
+- institution;
+- class;
+- document;
+- learner authorization.
+
+This prevents unrelated course material from silently entering another class's learning context.
 
 ---
 
-## 4. Normalized Citations
+# 🔬 Concept X-Ray
 
-Search results are normalized into a predictable structure containing information such as:
+One of ShikshaMesh's core learning features is **Concept X-Ray**.
 
-```text
-Title
-URL
-Snippet
-Provider
-```
+Most learning applications answer:
 
-The application can therefore distinguish:
+> Did the student get the answer correct?
 
-```text
-📘 Course Evidence
+ShikshaMesh asks:
 
-from
-
-🌐 External SerpApi Evidence
-```
-
-instead of silently mixing both knowledge sources.
-
----
-
-# 🎥 SerpApi-Powered Learning Resource Discovery
-
-SerpApi is also used for discovering educational video playlists.
-
-For a learner studying a topic, ShikshaMesh can search for:
-
-```text
-<topic> tutorial site:youtube.com/playlist
-```
-
-The system:
-
-```text
-Learning Topic
-      ↓
-SerpApi Google Search
-      ↓
-YouTube Playlist Results
-      ↓
-Playlist ID Validation
-      ↓
-Deduplication
-      ↓
-Learning Resource UI
-```
-
-Privacy-enhanced YouTube embeds can then be shown to the learner.
-
-This turns SerpApi into more than a research backend.
-
-It becomes a **learning-resource discovery engine**.
-
----
-
-# 🧪 Verify the SerpApi Integration
-
-From the application directory:
-
-```bash
-cd firstcommit
-npm run verify:serpapi
-```
-
-The verification script performs a governed search and checks that allowed official sources are returned.
-
----
-
-# 🧠 Concept X-Ray
-
-One of ShikshaMesh's core learning experiences is **Concept X-Ray**.
-
-Most education platforms ask:
-
-> Did the student get the answer right?
-
-Concept X-Ray asks:
-
-> **Where did the student's reasoning first break?**
+> **Where did the student's reasoning first become incorrect?**
 
 Example:
 
@@ -432,37 +357,45 @@ First Likely Misconception
        ↓
 Course-Grounded Correction
        ↓
-Recovery Bridge
+Recovery Challenge
        ↓
 Explain It Back
 ```
 
-Instead of merely giving the correct answer, the system attempts to identify the learner's first incorrect assumption and help repair it.
+For example, if a learner says that `up[v][j]` represents the `j-th` ancestor in binary lifting, Concept X-Ray can identify the misconception that the jump actually represents `2^j`.
+
+Instead of simply showing the final answer, the learner is shown:
+
+1. where the reasoning changed direction;
+2. why that assumption is incorrect;
+3. the correct concept;
+4. a small recovery exercise;
+5. an Explain It Back challenge.
 
 ---
 
 # 🗣️ Explain It Back
 
-After receiving a correction, learners should demonstrate understanding.
+Correcting a learner does not guarantee that they understood the correction.
 
-The broader ShikshaMesh experience supports multimodal learning workflows involving:
+ShikshaMesh therefore asks students to explain the concept again using their own reasoning.
 
-* text;
-* voice;
-* code;
-* diagrams;
-* canvas-based interaction.
+Students can explain through:
 
-This creates a loop:
+- text;
+- voice;
+- code;
+- diagrams;
+- Canvas drawings.
 
 ```text
 Mistake
    ↓
 Diagnosis
    ↓
-Explanation
+Correction
    ↓
-Recovery
+Recovery Activity
    ↓
 Explain It Back
    ↓
@@ -471,459 +404,663 @@ Mastery Signal
 
 ---
 
-# ✨ Core Capabilities
+# 🎤 AI Interview
 
-| Capability                 | Description                                             |
-| -------------------------- | ------------------------------------------------------- |
-| 🤖 Agent Orchestration     | LangGraph-based routing across specialized AI workflows |
-| 📚 Grounded Tutor          | Answers based on authorized course evidence             |
-| 🔎 Research Agent          | SerpApi-powered governed external research              |
-| 🎥 Resource Discovery      | SerpApi-powered educational playlist discovery          |
-| 🧠 Adaptive Assessment     | Mastery-aware assessment workflows                      |
-| 🔬 Concept X-Ray           | Detects likely reasoning misconceptions                 |
-| 🗣️ Explain It Back        | Learner recovery and understanding validation           |
-| 🎤 AI Interviews           | Course-oriented interview sessions and reports          |
-| 👨‍🏫 Teacher Intelligence | Misconceptions, interventions and analytics             |
-| 🎨 Diagram Studio          | Visual educational diagrams                             |
-| 🖌️ Collaborative Canvas   | Shared learning workspace                               |
-| 🌐 Live Classroom          | Realtime classroom collaboration                        |
-| 📶 Offline Learning        | PWA + IndexedDB request queue                           |
-| 🔐 Policy Engine           | Deterministic RBAC/ABAC authorization                   |
-| 🧩 MCP                     | Agent-facing policy-bound tools                         |
-| ☁️ AWS Integration         | Bedrock, SageMaker, Cognito, S3 and workflows           |
+Students can practise explaining course concepts through an interactive AI interview.
+
+The interview can:
+
+- generate questions from uploaded course material;
+- ask progressively deeper follow-up questions;
+- accept typed answers;
+- accept spoken answers;
+- convert speech to text;
+- generate spoken questions;
+- score responses;
+- provide feedback;
+- generate an interview report.
+
+This tests whether a learner can **explain a concept**, rather than simply recognize the correct multiple-choice option.
 
 ---
 
-# 🏗️ System Architecture
+# 📝 Smart Notes
+
+Smart Notes converts course concepts into revision-friendly learning material.
+
+Generated learning material can include:
+
+- concise summaries;
+- key concepts;
+- important definitions;
+- examples;
+- memory hooks;
+- common mistakes;
+- revision prompts;
+- flashcard-style questions;
+- bilingual explanations.
+
+The goal is to turn long notes into something a student can actually revise from.
+
+---
+
+# 🎨 Diagram Studio
+
+Many technical topics are easier to understand visually.
+
+Diagram Studio allows students and teachers to create and edit:
+
+- flowcharts;
+- UML diagrams;
+- sequence diagrams;
+- class diagrams;
+- database schemas;
+- state diagrams;
+- system architecture diagrams;
+- DSA decision trees;
+- algorithm flows.
+
+Mermaid-based diagrams make generated visuals editable instead of producing static images only.
+
+---
+
+# 🖌️ Learning Canvas
+
+The Learning Canvas gives students a workspace where they can reason visually.
+
+It supports:
+
+- freehand drawing;
+- text notes;
+- shapes;
+- arrows;
+- connectors;
+- code blocks;
+- diagrams;
+- geometry objects;
+- collaborative annotations;
+- visual explanations.
+
+This is particularly useful for subjects where the reasoning itself is spatial or diagrammatic.
+
+---
+
+# 💻 Code Workspace
+
+Technical learners can explain and experiment using code through a Monaco-based editor.
+
+The code workspace allows programming concepts to be studied alongside:
+
+- tutoring;
+- diagrams;
+- Canvas explanations;
+- Concept X-Ray;
+- Explain It Back.
+
+Students are not forced to convert every technical explanation into plain text.
+
+---
+
+# 📊 Adaptive Learning and Mastery
+
+Learner activity produces mastery signals that can influence subsequent learning experiences.
+
+Signals can include:
 
 ```text
-┌──────────────────────────────────────────────┐
-│               ShikshaMesh UI                │
-│                                              │
-│ Student • Teacher • Admin • Canvas • Live   │
-└──────────────────────┬───────────────────────┘
-                       │
-                       ▼
-┌──────────────────────────────────────────────┐
-│            Next.js Application API           │
-└──────────────────────┬───────────────────────┘
-                       │
-                       ▼
-┌──────────────────────────────────────────────┐
-│        Authentication + Policy Layer         │
-│                                              │
-│ Cognito • RBAC • ABAC • Tenant/Class Scope  │
-└──────────────────────┬───────────────────────┘
-                       │
-                       ▼
-┌──────────────────────────────────────────────┐
-│             Intent / Agent Router            │
-│                                              │
-│       Local Router / SageMaker Adapter       │
-└──────────────┬──────────────────┬────────────┘
-               │                  │
-               ▼                  ▼
-┌──────────────────────┐   ┌──────────────────────┐
-│ Private Knowledge    │   │ External Knowledge   │
-│                      │   │                      │
-│ Course Repository    │   │ Research Agent       │
-│ Bedrock KB           │   │ SerpApi Gateway      │
-│ Qdrant               │   │ Approved Sources     │
-└──────────┬───────────┘   └──────────┬───────────┘
-           │                          │
-           └────────────┬─────────────┘
-                        ▼
-┌──────────────────────────────────────────────┐
-│                AI Agent Layer                │
-│                                              │
-│ Tutor • Research • Assessment • Teacher     │
-└──────────────────────┬───────────────────────┘
-                       │
-                       ▼
-┌──────────────────────────────────────────────┐
-│       Data / Workflows / Observability       │
-│                                              │
-│ PostgreSQL • S3 • Step Functions            │
-│ EventBridge • CloudWatch • SNS/SQS          │
-└──────────────────────────────────────────────┘
+Quiz Attempts
+     +
+Interview Responses
+     +
+Concept X-Ray Results
+     +
+Explain It Back
+     +
+Assessment History
+     =
+Learner Mastery State
 ```
 
----
+The mastery model can influence:
 
-# ☁️ AWS Deployment Architecture
+- question difficulty;
+- recommended revision topics;
+- intervention timing;
+- assessment selection;
+- next learning activity.
 
-ShikshaMesh is being designed for an AWS-native production deployment while keeping local development inexpensive and straightforward.
-
-## 🤖 Agents and AI
-
-### Amazon Bedrock
-
-Planned/adapter-backed uses include:
-
-* tutor generation;
-* grounded explanations;
-* agent reasoning;
-* educational content generation;
-* Knowledge Base retrieval.
-
-### Amazon SageMaker
-
-The SageMaker path is intended for specialized ML workloads such as:
-
-* multilingual intent classification;
-* learner modeling;
-* custom education models;
-* mastery prediction.
-
-A SageMaker runtime adapter already exists so the deterministic local intent router can be replaced by a hosted model.
+Amazon SageMaker AI integration provides the runtime path for specialized intent and mastery models.
 
 ---
 
-# ⚡ Serverless
+# 🌐 Multilingual Learning
 
-## AWS Lambda
+ShikshaMesh supports learning experiences designed for:
 
-Planned for asynchronous worker tasks including:
+- English;
+- Hindi;
+- Hinglish;
+- additional Indian-language quiz workflows.
 
-* quiz generation;
-* content processing;
-* translation;
-* background learning jobs;
-* notification processing.
+Amazon Translate is integrated into the quiz workflow for multilingual assessments.
 
-## AWS Step Functions
+This allows the same teacher-created learning material to support students who may understand the subject better in a different language.
 
-Used/planned for multi-stage workflows such as:
+---
+
+# 👨‍🏫 Teacher Intelligence
+
+Teachers receive a different workspace from students.
+
+The teacher experience includes:
+
+- course-document uploads;
+- ingestion tracking;
+- assessment generation;
+- quiz scheduling;
+- language selection;
+- misconception patterns;
+- learner intervention signals;
+- classroom activity;
+- reusable diagram templates;
+- live-class controls;
+- attendance signals.
+
+---
+
+# 🔥 Misconception Heatmap
+
+Concept X-Ray results can be aggregated into classroom-level misconception patterns.
+
+Instead of only showing:
 
 ```text
-Generate Quiz
-    ↓
-Validate
-    ↓
-Translate
-    ↓
-Store
-    ↓
-Schedule
-    ↓
-Analytics
+40% students answered incorrectly
 ```
 
-The project already includes an application integration path and Terraform placeholder workflow.
-
-## Amazon EventBridge
-
-Used for privacy-aware application and audit events.
-
----
-
-# 💾 Data and Search
-
-## Amazon S3
-
-Used/planned for:
-
-* course uploads;
-* institutional documents;
-* ingestion sources;
-* learning artifacts.
-
-The repository already contains an AWS-ready S3 course-upload adapter.
-
-## Amazon RDS / PostgreSQL
-
-PostgreSQL is currently used locally.
-
-Production deployment is planned around **Amazon RDS for PostgreSQL**.
-
-Structured data can include:
-
-* learners;
-* courses;
-* assessments;
-* mastery events;
-* classroom state;
-* teacher analytics.
-
-## Amazon Bedrock Knowledge Bases
-
-The AWS-native RAG architecture is:
+the platform can help identify patterns such as:
 
 ```text
-Teacher / Institution Upload
-            ↓
-           S3
-            ↓
-   Bedrock Knowledge Base
-            ↓
-Metadata-Scoped Retrieval
-            ↓
-        Bedrock
-            ↓
-Grounded Educational Response
+Students understand binary lifting
+but frequently confuse j with 2^j.
 ```
 
-Retrieval can be constrained by institution/class metadata.
-
-## Qdrant
-
-Qdrant is currently an **external vector-search option** for development and experimentation.
-
-The long-term AWS-native retrieval path focuses on **Bedrock Knowledge Bases**.
+This gives teachers something actionable to explain again.
 
 ---
 
-# 🔐 Authentication and Policy
+# 🌐 Live Classroom
 
-## Amazon Cognito
+ShikshaMesh includes a real-time collaborative classroom experience.
 
-Cognito is used/planned as the production identity layer.
+Features include:
 
-The application contains Cognito access-token verification.
+- student presence;
+- attendance;
+- realtime chat;
+- raised hands;
+- shared learning activities;
+- collaborative Canvas;
+- linked diagrams;
+- note-grounded doubt support;
+- teacher controls;
+- optional video participation.
 
-Trusted claims can provide:
+## Amazon IVS Real-Time
+
+Amazon IVS Real-Time provides the live-video layer.
+
+Students can join as viewers and selectively enable:
+
+- camera;
+- microphone.
+
+Participant access uses short-lived server-issued tokens rather than exposing privileged credentials in the client.
+
+---
+
+# 📶 Offline-Friendly Learning
+
+ShikshaMesh includes an offline-first foundation.
+
+```text
+Student Action
+      ↓
+Internet Available?
+    ↙           ↘
+  Yes           No
+   ↓             ↓
+Server      IndexedDB Queue
+                  ↓
+          Connectivity Returns
+                  ↓
+               Replay
+                  ↓
+          Server Authorization
+```
+
+Implemented offline foundations include:
+
+- PWA manifest;
+- service worker;
+- IndexedDB;
+- connectivity detection;
+- offline request queue;
+- replay after connectivity returns.
+
+Privileged requests are still re-authorized by the server after replay.
+
+---
+
+# 🔐 Security Architecture
+
+ShikshaMesh follows one important rule:
+
+> **Models generate. Policies authorize.**
+
+The AI model does not decide whether a student is allowed to access a document, classroom, teacher workflow, or privileged tool.
+
+Authorization happens before agent execution.
+
+Implemented controls include:
+
+- Amazon Cognito authentication;
+- signed JWT verification;
+- student / teacher / admin roles;
+- RBAC;
+- ABAC;
+- Cedar policies;
+- institution isolation;
+- class-scoped authorization;
+- metadata-scoped retrieval;
+- server-side secrets;
+- PII-aware research queries;
+- privacy-safe audit events;
+- server authorization for offline replay;
+- account deletion workflow;
+- research/training consent controls.
+
+---
+
+# 🪪 Amazon Cognito
+
+Amazon Cognito provides the production authentication layer.
+
+The platform supports:
 
 ```text
 User
-Role
-Institution
-Tenant
-Class
+ │
+ ├── Student
+ ├── Teacher
+ └── Administrator
 ```
 
-Those claims feed deterministic authorization.
-
-The important architectural rule is:
-
-> **The LLM does not decide whether the user is authorized.**
-
-Authorization happens before agent/tool execution.
+Cognito identity information feeds the deterministic policy layer before protected tools or learning data are accessed.
 
 ---
 
-# 🐳 Containers and Runtime
+# 💾 Amazon S3
 
-## Docker
+Amazon S3 stores teacher-uploaded course material and Bedrock ingestion sources.
 
-The application can run locally as a container:
-
-```bash
-docker build -t shikshamesh .
-```
-
-```bash
-docker run --rm -p 3000:3000 --env-file .env.local shikshamesh
-```
-
-## Amazon ECS / AWS App Runner
-
-Production container hosting is planned using:
-
-* **Amazon ECS**, or
-* **AWS App Runner**
-
-for the Next.js application and supporting containerized services.
-
-The realtime Socket.IO classroom service can be deployed independently.
-
----
-
-# 🔧 Platform Plumbing
-
-The production architecture plans to use:
-
-### Amazon CloudWatch
-
-For:
-
-* application logs;
-* metrics;
-* agent execution visibility;
-* alarms;
-* operational debugging.
-
-### AWS Budgets
-
-For:
-
-* hackathon cost controls;
-* Bedrock spend monitoring;
-* SageMaker spend monitoring;
-* infrastructure budget alerts.
-
-### Amazon SNS
-
-For:
-
-* notifications;
-* workflow events;
-* teacher alerts.
-
-### Amazon SQS
-
-For:
-
-* asynchronous jobs;
-* retry queues;
-* document processing;
-* decoupled agent workflows.
-
----
-
-# ☁️ AWS Architecture Summary
+Stored objects use institution/class-aware paths and metadata.
 
 ```text
-                         ┌─────────────────┐
-                         │ Amazon Cognito  │
-                         └────────┬────────┘
-                                  │
-                                  ▼
-┌──────────────┐        ┌────────────────────┐
-│ Student /    │───────▶│ Next.js App        │
-│ Teacher      │        │ ECS / App Runner   │
-└──────────────┘        └─────────┬──────────┘
-                                  │
-                     ┌────────────┴────────────┐
-                     │                         │
-                     ▼                         ▼
-              ┌─────────────┐          ┌──────────────┐
-              │ LangGraph   │          │ Policy Layer │
-              │ Agents      │          │ RBAC / ABAC  │
-              └──────┬──────┘          └──────────────┘
-                     │
-       ┌─────────────┼──────────────────────┐
-       │             │                      │
-       ▼             ▼                      ▼
-┌────────────┐ ┌─────────────┐      ┌──────────────┐
-│ Bedrock    │ │ SageMaker   │      │ SerpApi      │
-│ + KB       │ │ ML Models   │      │ Live Search  │
-└─────┬──────┘ └─────────────┘      └──────────────┘
-      │
-      ▼
-┌────────────┐
-│ S3 Course  │
-│ Documents  │
-└────────────┘
+Institution
+    ↓
+Class
+    ↓
+Document
+    ↓
+Processed Learning Content
+```
 
-      ┌─────────────────────────────────────┐
-      │         Workflow Layer              │
-      │                                     │
-      │ Lambda • Step Functions             │
-      │ EventBridge • SNS • SQS             │
-      └─────────────────────────────────────┘
+This storage hierarchy supports authorization-aware retrieval.
 
-      ┌─────────────────────────────────────┐
-      │             Data                    │
-      │                                     │
-      │ RDS/PostgreSQL • Bedrock KB         │
-      │ Qdrant (external/current option)    │
-      └─────────────────────────────────────┘
+---
 
-      ┌─────────────────────────────────────┐
-      │          Observability              │
-      │                                     │
-      │ CloudWatch • AWS Budgets            │
-      └─────────────────────────────────────┘
+# 🧠 Amazon Bedrock
+
+Amazon Bedrock is used for grounded educational generation.
+
+Bedrock-powered workflows include:
+
+- tutor explanations;
+- assessment generation;
+- interview generation;
+- grounded educational responses;
+- reasoning support;
+- Knowledge Base retrieval.
+
+Generation is combined with authorized course evidence rather than treating the language model as the source of truth.
+
+---
+
+# 📚 Amazon Bedrock Knowledge Bases
+
+Bedrock Knowledge Bases connects private learning documents with AI generation.
+
+```text
+Course Material
+     ↓
+Amazon S3
+     ↓
+Bedrock Knowledge Base
+     ↓
+Metadata Filter
+     ↓
+Relevant Chunks
+     ↓
+Amazon Bedrock
+     ↓
+Grounded Response
 ```
 
 ---
 
-# 📊 Deployment Status
+# ⚡ AWS Lambda
 
-We intentionally distinguish between **implemented integrations** and **planned production infrastructure**.
+The quiz worker runs as a serverless Lambda workflow component.
 
-| Component                      | Status        |
-| ------------------------------ | ------------- |
-| Next.js application            | ✅ Implemented |
-| Docker image                   | ✅ Implemented |
-| `/api/health` endpoint         | ✅ Implemented |
-| PostgreSQL local environment   | ✅ Implemented |
-| SerpApi Research Gateway       | ✅ Implemented |
-| SerpApi YouTube discovery      | ✅ Implemented |
-| LangGraph agent routing        | ✅ Implemented |
-| MCP research/course tools      | ✅ Implemented |
-| Cognito integration            | ✅ Implemented |
-| S3 adapter                     | ✅ Implemented |
-| Bedrock tutor adapter          | ✅ Implemented |
-| Bedrock Knowledge Base adapter | ✅ Implemented |
-| SageMaker runtime adapter      | ✅ Implemented |
-| Step Functions integration     | ✅ Implemented |
-| EventBridge audit integration  | ✅ Implemented |
-| Terraform AWS foundation       | ✅ Implemented |
-| Public AWS deployment          | 🛠️ Planned   |
-| ECS / App Runner runtime       | 🛠️ Planned   |
-| Production RDS                 | 🛠️ Planned   |
-| Lambda worker fleet            | 🛠️ Planned   |
-| SNS/SQS async architecture     | 🛠️ Planned   |
-| Production Bedrock KB          | 🛠️ Planned   |
-| Production SageMaker endpoints | 🛠️ Planned   |
-| CloudWatch dashboards/alarms   | 🛠️ Planned   |
-| AWS budget guardrails          | 🛠️ Planned   |
+The worker handles stages including:
+
+- quiz generation;
+- course retrieval;
+- multilingual translation;
+- notification events;
+- analytics events.
 
 ---
 
-# 🛠️ Tech Stack
+# 🔄 AWS Step Functions
 
-### Frontend
+Step Functions orchestrates multi-stage assessment workflows.
 
-* Next.js 15
-* React 19
-* TypeScript
-* Tailwind CSS
-* shadcn
-* Mermaid
-* React Konva
-* Monaco Editor
+```text
+Generate Quiz
+      ↓
+Validate
+      ↓
+Translate
+      ↓
+Notify
+      ↓
+Analytics
+```
 
-### Agentic AI
+Using a workflow engine keeps these operations visible and independently traceable instead of hiding every operation inside one large application endpoint.
 
-* LangGraph
-* Model Context Protocol
-* Amazon Bedrock
-* Amazon Bedrock Knowledge Bases
-* Amazon SageMaker
+---
 
-### Search
+# 🌍 Amazon Translate
 
-* **SerpApi**
-* Qdrant
-* Bedrock Knowledge Bases
+Amazon Translate powers multilingual assessment workflows.
 
-### Backend
+A generated quiz can be translated while preserving:
 
-* Next.js API routes
-* PostgreSQL
-* Socket.IO
-* Zod
+- question IDs;
+- question ordering;
+- answer options;
+- correct answer indexes;
+- difficulty;
+- quiz structure.
 
-### AWS
+---
 
-* Amazon Bedrock
-* Amazon SageMaker
-* Amazon S3
-* Amazon Cognito
-* AWS Lambda — planned production worker layer
-* AWS Step Functions
-* Amazon EventBridge
-* Amazon RDS/PostgreSQL — planned production database
-* Amazon ECS / App Runner — planned runtime
-* Amazon CloudWatch — planned production observability
-* Amazon SNS/SQS — planned async plumbing
-* AWS Budgets — planned cost controls
-* Amazon IVS
+# 📡 Amazon EventBridge
 
-### DevOps
+EventBridge provides event-driven communication for:
 
-* Docker
-* Docker Compose
-* GitHub Actions
-* Terraform
+- workflow events;
+- audit events;
+- assessment events;
+- notification events;
+- analytics events.
+
+Sensitive information such as raw student answers, JWTs, private documents, and API keys is excluded from audit event payloads.
+
+---
+
+# 📊 Amazon CloudWatch
+
+CloudWatch provides operational visibility into AWS-backed workflows.
+
+It is used for:
+
+- Lambda logs;
+- structured workflow logs;
+- error investigation;
+- workflow monitoring;
+- operational dashboards.
+
+---
+
+# 🔑 IAM and IAM Identity Center
+
+AWS IAM controls permissions between services.
+
+IAM Identity Center is used for secure development and AWS CLI access without relying on permanent credentials inside the repository.
+
+---
+
+# 📦 Amazon ECR
+
+The ShikshaMesh application is containerized and its container deployment workflow uses Amazon ECR for image storage.
+
+This keeps application packaging consistent between development and cloud deployment workflows.
+
+---
+
+# 🔎 Governed External Research
+
+SerpApi is intentionally kept separate from private course intelligence.
+
+```text
+PRIVATE KNOWLEDGE
+Course Material
+Student Context
+Institution Content
+       │
+       ▼
+S3 + Bedrock Knowledge Bases
+
+
+PUBLIC KNOWLEDGE
+Current Information
+Official Resources
+Recent Research
+       │
+       ▼
+Research Agent + SerpApi
+```
+
+Student private context is not automatically converted into public web-search queries.
+
+---
+
+# 🎥 Learning Resource Discovery
+
+The Research Agent can also find relevant learning resources such as educational video playlists.
+
+```text
+Learning Topic
+      ↓
+Research Agent
+      ↓
+SerpApi
+      ↓
+Educational Results
+      ↓
+Validation
+      ↓
+Deduplication
+      ↓
+Learning Resource UI
+```
+
+---
+
+# 🧩 Model Context Protocol
+
+ShikshaMesh includes MCP-based tooling so AI agents interact with explicit, policy-bound tools instead of receiving unrestricted access to application data.
+
+Examples include:
+
+- course retrieval;
+- research;
+- learning context;
+- authorization-aware operations.
+
+---
+
+# 🏗️ Complete Platform Flow
+
+```text
+                         Student / Teacher
+                                │
+                                ▼
+                         Amazon Cognito
+                                │
+                                ▼
+                      RBAC + ABAC + Cedar
+                                │
+                                ▼
+                          Agent Router
+                                │
+          ┌─────────────────────┼──────────────────────┐
+          │                     │                      │
+          ▼                     ▼                      ▼
+     Tutor Agent          Assessment Agent       Research Agent
+          │                     │                      │
+          ▼                     ▼                      ▼
+ Amazon Bedrock         SageMaker AI             SerpApi
+          │
+          ▼
+Bedrock Knowledge Bases
+          │
+          ▼
+      Amazon S3
+          
+          
+Teacher Quiz Request
+        │
+        ▼
+AWS Step Functions
+        │
+        ▼
+AWS Lambda
+        │
+        ├── Bedrock
+        ├── Bedrock Knowledge Base
+        ├── Amazon Translate
+        └── EventBridge
+                 │
+                 ▼
+             CloudWatch
+
+
+Live Classroom
+        │
+        ▼
+Amazon IVS Real-Time
+```
+
+---
+
+# ✨ Feature Summary
+
+| Capability | Implementation |
+| --- | --- |
+| 🤖 Multi-Agent Routing | Specialized tutoring, assessment, teacher, and research workflows |
+| 📚 Grounded Tutor | Course-aware answers with retrieved evidence |
+| 🧠 Adaptive Assessment | Difficulty and mastery-aware quizzes |
+| 🔬 Concept X-Ray | Finds the first likely misconception in student reasoning |
+| 🗣️ Explain It Back | Validates understanding after correction |
+| 🎤 AI Interview | Voice/text course-based interview practice |
+| 📝 Smart Notes | Structured revision material |
+| 🎨 Diagram Studio | UML, Mermaid, DSA, system and database diagrams |
+| 🖌️ Learning Canvas | Collaborative visual reasoning workspace |
+| 💻 Code Workspace | Monaco-based programming environment |
+| 🌐 Live Classroom | Presence, chat, collaboration and video |
+| 📶 Offline Learning | PWA + IndexedDB queue and replay |
+| 👨‍🏫 Teacher Intelligence | Misconceptions, assessments and interventions |
+| 🔎 Governed Research | Policy-controlled external information retrieval |
+| 🎥 Resource Discovery | Educational resource and playlist discovery |
+| 🔐 Policy Engine | Cognito + RBAC + ABAC + Cedar |
+| ☁️ AWS Intelligence | Bedrock, SageMaker, S3 and AWS serverless workflows |
+
+---
+
+# 🛠️ Technology Stack
+
+## Frontend
+
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Mermaid
+- React Konva
+- Monaco Editor
+
+## Agentic AI
+
+- LangGraph
+- Model Context Protocol
+- Amazon Bedrock
+- Amazon Bedrock Knowledge Bases
+- Amazon SageMaker AI
+
+## AWS
+
+- Amazon Bedrock
+- Amazon Bedrock Knowledge Bases
+- Amazon SageMaker AI
+- Amazon S3
+- Amazon Cognito
+- AWS Lambda
+- AWS Step Functions
+- Amazon Translate
+- Amazon EventBridge
+- Amazon CloudWatch
+- Amazon IVS Real-Time
+- AWS IAM
+- IAM Identity Center
+- Amazon ECR
+
+## Build It
+
+- AWS SAM
+- LocalStack
+- Cedar
+- Docker
+- Docker Compose
+
+## Backend
+
+- Next.js API Routes
+- PostgreSQL
+- Socket.IO
+- Zod
+
+## Retrieval and Search
+
+- Bedrock Knowledge Bases
+- Qdrant
+- SerpApi
+
+## DevOps
+
+- Docker
+- GitHub Actions
+- Terraform
+- AWS CLI
 
 ---
 
 # 📁 Repository Structure
-
-The primary application currently lives inside `firstcommit/`.
 
 ```text
 WeMakeDevs/
@@ -944,12 +1081,17 @@ WeMakeDevs/
     ├── components/
     │
     ├── lib/
-    │   ├── authentication
-    │   ├── policy
-    │   ├── retrieval
-    │   ├── SerpApi
-    │   ├── research gateway
-    │   └── AWS adapters
+    │   ├── aws/
+    │   ├── authentication/
+    │   ├── policy/
+    │   ├── retrieval/
+    │   ├── research/
+    │   └── learning/
+    │
+    ├── workers/
+    │   └── quiz/
+    │
+    ├── policies/
     │
     ├── mcp/
     │
@@ -967,6 +1109,7 @@ WeMakeDevs/
     │
     ├── tests/
     │
+    ├── template.yaml
     ├── Dockerfile
     ├── compose.yaml
     └── package.json
@@ -976,54 +1119,23 @@ WeMakeDevs/
 
 # 🚀 Running Locally
 
-## Prerequisites
-
-Install:
-
-* Node.js
-* npm
-* Docker
-* Docker Compose
-
-Optional:
-
-* SerpApi API key
-* AWS account/credentials for testing configured AWS integrations
-
----
-
-## 1. Clone
+## 1. Clone the repository
 
 ```bash
 git clone https://github.com/shreesriv12/WeMakeDevs.git
-```
-
-```bash
 cd WeMakeDevs/firstcommit
 ```
 
----
-
-## 2. Install Dependencies
+## 2. Install dependencies
 
 ```bash
 npm install
 ```
 
----
+## 3. Configure environment variables
 
-## 3. Configure Environment
-
-Copy:
-
-```text
-.env.example
-```
-
-to:
-
-```text
-.env.local
+```bash
+cp .env.example .env.local
 ```
 
 Windows:
@@ -1032,46 +1144,19 @@ Windows:
 copy .env.example .env.local
 ```
 
-Linux/macOS:
-
-```bash
-cp .env.example .env.local
-```
+Never commit `.env.local`.
 
 ---
 
-# 🔑 Configure SerpApi
-
-Add:
-
-```env
-SERPAPI_API_KEY=your_serpapi_key
-SERPAPI_ALLOWED_DOMAINS=ncert.nic.in,ugc.gov.in
-```
-
-The SerpApi key is **server-only**.
-
-Do not expose it using a `NEXT_PUBLIC_` environment variable.
-
----
-
-# 🐘 Start PostgreSQL
+## 4. Start PostgreSQL
 
 ```bash
 docker compose up -d db
 ```
 
-The local database uses port:
-
-```text
-5433
-```
-
-by default.
-
 ---
 
-# ▶️ Start ShikshaMesh
+## 5. Start ShikshaMesh
 
 ```bash
 npm run dev
@@ -1085,281 +1170,159 @@ http://localhost:3000
 
 ---
 
-# 🌐 Realtime Classroom
+# 🔨 Running the Build It Environment
 
-Start the realtime Socket.IO service:
+## LocalStack
+
+Start the local AWS-compatible environment:
 
 ```bash
-npm run realtime
+docker compose --profile local-aws up -d localstack
 ```
 
-This supports realtime classroom capabilities including shared state and collaborative experiences.
+LocalStack provides local development equivalents for workflows involving:
+
+```text
+S3
+Lambda
+SQS
+EventBridge
+```
+
+---
+
+## Cedar
+
+Run local authorization verification:
+
+```bash
+npm run policy:cedar
+```
+
+The Cedar policy tests validate scenarios including:
+
+- student self-access;
+- teacher class access;
+- administrator access;
+- governed research permissions.
+
+---
+
+## AWS SAM
+
+The repository contains a SAM template and local quiz-worker configuration for serverless workflow development.
+
+```bash
+npm run sam:quiz-local
+```
 
 ---
 
 # 🧪 Testing
 
-Run tests:
+Run application tests:
 
 ```bash
 npm test
 ```
 
-Production build:
+Run a production build:
 
 ```bash
 npm run build
 ```
 
-Evaluate intents:
+Evaluate intent classification:
 
 ```bash
 npm run eval:intents
 ```
 
-Verify SerpApi:
+Verify external research:
 
 ```bash
 npm run verify:serpapi
 ```
 
----
-
-# 🔐 Security Philosophy
-
-ShikshaMesh follows a simple principle:
-
-> **Models generate. Policies authorize.**
-
-The AI model is never treated as the security boundary.
-
-Important controls include:
-
-* deterministic RBAC/ABAC;
-* server-side authentication;
-* tenant isolation;
-* class-scoped retrieval;
-* server-only SerpApi;
-* controlled external research;
-* PII-aware search;
-* course-evidence separation;
-* reauthorization of privileged offline actions;
-* privacy-aware audit events.
-
----
-
-# 📶 Offline-First Learning
-
-ShikshaMesh contains an offline-first foundation using:
-
-* PWA manifest;
-* service worker;
-* IndexedDB;
-* request queue;
-* connectivity-aware replay.
-
-```text
-Student Action
-      ↓
-Internet available?
-   ↙       ↘
- Yes       No
-  ↓         ↓
-Server    IndexedDB Queue
-             ↓
-       Connectivity Returns
-             ↓
-          Replay
-             ↓
-     Server Authorization
-```
-
-Privileged operations remain server-authorized even after offline replay.
-
----
-
-# 🧠 ML & Deep Learning
-
-ShikshaMesh also contains an ML experimentation path.
-
-## Multilingual Intent Classification
-
-The intent pipeline includes tooling for:
-
-* dataset preparation;
-* synthetic augmentation;
-* training;
-* evaluation;
-* error analysis;
-* human review;
-* deployment gating.
-
-The production direction is:
-
-```text
-User Request
-      ↓
-SageMaker Intent Model
-      ↓
-Intent Labels
-      ↓
-LangGraph
-      ↓
-Specialized Agent
-```
-
----
-
-## Deep Knowledge Tracing
-
-A GRU-based Deep Knowledge Tracing baseline is included for learner-mastery experimentation.
-
-The goal is to estimate learner understanding over time using pseudonymous learning events.
-
-This can eventually influence:
-
-```text
-Question Difficulty
-Recommended Topics
-Revision Timing
-Interventions
-Assessment Selection
-```
-
-Training is intentionally separate from the standard web application build to avoid unexpected compute costs.
-
----
-
-# 🔄 CI/CD
-
-GitHub Actions handles application validation such as:
-
-```text
-Push / Pull Request
-        ↓
-Type Checking
-        ↓
-Tests
-        ↓
-Intent Evaluation
-        ↓
-Production Build
-```
-
-AWS credentials are intentionally not required by the standard CI pipeline.
-
-Infrastructure deployment remains an explicit action.
-
----
-
-# 🏗️ Infrastructure as Code
-
-The AWS Terraform foundation is located at:
-
-```text
-firstcommit/infra/
-```
-
-The current foundation includes resources/pathways for:
-
-* encrypted/versioned S3 course storage;
-* EventBridge audit bus;
-* Cognito user pool;
-* Cognito web client;
-* Step Functions quiz workflow foundation.
-
-Typical workflow:
+Verify Cedar policies:
 
 ```bash
-cd firstcommit/infra
+npm run policy:cedar
 ```
-
-```bash
-cp terraform.tfvars.example terraform.tfvars
-```
-
-```bash
-terraform init
-terraform plan
-terraform apply
-```
-
-> ⚠️ Always inspect `terraform plan` before creating cloud resources.
-
-Production infrastructure should also consider:
-
-* IAM least privilege;
-* KMS;
-* data residency;
-* log retention;
-* Secrets Manager;
-* CloudWatch alarms;
-* AWS Budgets;
-* backup policies;
-* deletion policies.
 
 ---
 
 # 🎬 Hackathon Demo Flow
 
-A strong demo for both **Agents & AI** and **SerpApi** judges is:
+A complete demo can be shown as one connected learning journey.
 
-### Step 1 — Grounded Learning
+## 1. Authentication
 
-Sign in as a student and ask a question about uploaded course material.
+Sign in using Amazon Cognito.
+
+Show that students and teachers receive different experiences.
+
+---
+
+## 2. Upload Course Material
+
+Upload a PDF, DOCX, or TXT file.
 
 Show:
 
 ```text
-Question
-→ Tutor Agent
+Teacher Upload
+→ Amazon S3
+→ Bedrock Knowledge Base
+→ Course Intelligence
+```
+
+---
+
+## 3. Grounded Tutor
+
+Ask a question about the uploaded course material.
+
+Show:
+
+```text
+Student Question
+→ Authorization
 → Course Retrieval
-→ Grounded Answer
+→ Bedrock Knowledge Base
+→ Amazon Bedrock
+→ Grounded Response
 ```
 
 ---
 
-### Step 2 — Live Research
+## 4. Adaptive Quiz
 
-Ask something requiring fresh external information.
-
-For example:
-
-> "Find the latest official guidance related to this topic."
+Create a quiz from course content.
 
 Show:
 
 ```text
-Question
-→ Intent Router
-→ Research Agent
-→ Policy Gateway
-→ SerpApi
-→ Official Sources
-→ Citations
-```
-
-Highlight that the application clearly distinguishes **external research** from **course evidence**.
-
----
-
-### Step 3 — SerpApi Resource Discovery
-
-Search for learning resources related to the current topic.
-
-Show SerpApi discovering relevant YouTube playlists.
-
-This demonstrates that SerpApi is used for both:
-
-```text
-Research Intelligence
-        +
-Learning Resource Discovery
+Teacher Request
+→ Step Functions
+→ Lambda
+→ Bedrock
+→ Translate
+→ EventBridge
+→ CloudWatch
 ```
 
 ---
 
-### Step 4 — Concept X-Ray
+## 5. AI Interview
+
+Start a course-based interview.
+
+Answer using voice or text and show the final feedback report.
+
+---
+
+## 6. Concept X-Ray
 
 Give the system an intentionally incorrect explanation.
 
@@ -1368,267 +1331,133 @@ Show:
 ```text
 Student Reasoning
 → Concept X-Ray
-→ Misconception
-→ Correction Bridge
+→ First Misconception
+→ Correction
+→ Recovery Challenge
 → Explain It Back
 ```
 
 ---
 
-### Step 5 — Adaptive Learning
+## 7. Smart Notes
 
-Open the quiz experience and demonstrate mastery-aware assessment behavior.
+Generate revision notes from the same learning context.
 
 ---
 
-### Step 6 — Teacher Intelligence
+## 8. Diagram Studio + Canvas
 
-Switch to the teacher experience.
+Generate a diagram and continue explaining the topic visually.
+
+---
+
+## 9. Live Classroom
 
 Show:
 
-* misconception signals;
-* interventions;
-* analytics;
-* learning workflows.
+- realtime presence;
+- chat;
+- shared Canvas;
+- raised hands;
+- teacher interaction;
+- Amazon IVS Real-Time video.
 
 ---
 
-### Step 7 — Collaborative Learning
+## 10. Governed Research
 
-Demonstrate:
+Ask a question requiring current information.
 
-* Canvas;
-* diagrams;
-* live classroom;
-* realtime collaboration.
-
----
-
-### Step 8 — AWS Architecture
-
-Finish with the deployment architecture.
-
-Explain:
+Show:
 
 ```text
-Agents
-→ Bedrock
-
-Custom ML
-→ SageMaker
-
-Documents
-→ S3
-
-RAG
-→ Bedrock Knowledge Bases
-
-Identity
-→ Cognito
-
-Workflows
-→ Step Functions + Lambda
-
-Events
-→ EventBridge
-
-Database
-→ RDS/PostgreSQL
-
-Containers
-→ ECS / App Runner
-
-Async
-→ SNS/SQS
-
-Monitoring
-→ CloudWatch
-
-Cost Controls
-→ AWS Budgets
+Research Intent
+→ Policy Check
+→ PII-Safe Query
+→ SerpApi
+→ Approved Sources
+→ Cited Evidence
 ```
 
 ---
 
-# 🏆 Why ShikshaMesh for Agents & AI?
+# 💡 What Makes ShikshaMesh Different?
 
-ShikshaMesh demonstrates an agent architecture where different tasks are handled by different specialized systems.
-
-```text
-              ShikshaMesh
-                   │
-        ┌──────────┼───────────┐
-        │          │           │
-      Tutor     Research    Assessment
-      Agent       Agent        Agent
-        │          │           │
-        │       SerpApi        │
-        │          │           │
-        └──────────┼───────────┘
-                   │
-               Policy Layer
-                   │
-            Trusted Data/Tools
-```
-
-The key idea is:
-
-> **Agents can be powerful without being unrestricted.**
-
----
-
-# 🏆 Why ShikshaMesh for the SerpApi Hackathon?
-
-SerpApi is not included merely to display search results.
-
-It acts as the **live intelligence layer for the Research Agent**.
-
-The integration demonstrates:
-
-* intent-aware search;
-* agent-driven research;
-* server-side API usage;
-* official-domain controls;
-* privacy boundaries;
-* normalized evidence;
-* citations;
-* learning-resource discovery;
-* separation between private and public knowledge.
+ShikshaMesh is not simply:
 
 ```text
-Private Course Intelligence
-            +
-SerpApi Live Intelligence
-            +
-Policy-Aware Agents
-            =
-Grounded, Current Learning
-```
-
----
-
-# 🗺️ Roadmap
-
-## Current
-
-* ✅ Next.js learning platform
-* ✅ LangGraph agent routing
-* ✅ SerpApi Research Gateway
-* ✅ SerpApi playlist discovery
-* ✅ RBAC/ABAC authorization
-* ✅ PostgreSQL development environment
-* ✅ Cognito integration
-* ✅ S3 adapter
-* ✅ Bedrock adapter
-* ✅ Bedrock Knowledge Base adapter
-* ✅ SageMaker runtime adapter
-* ✅ Step Functions integration
-* ✅ EventBridge integration
-* ✅ Concept X-Ray
-* ✅ Adaptive assessments
-* ✅ AI interviews
-* ✅ Collaborative Canvas
-* ✅ Realtime classroom foundation
-* ✅ Offline-first foundation
-* ✅ Docker
-* ✅ Terraform foundation
-* 🔜 Deploy application to ECS / App Runner
-* 🔜 Deploy production RDS PostgreSQL
-* 🔜 Provision production Bedrock Knowledge Base
-* 🔜 Deploy SageMaker intent model
-* 🔜 Add Lambda workers
-* 🔜 Add SQS asynchronous jobs
-* 🔜 Add SNS notifications
-* 🔜 Expand CloudWatch monitoring
-* 🔜 Configure AWS Budgets
-* 🔜 Expand Research Agent capabilities
-* 🔜 Improve SerpApi source ranking and research synthesis
-
----
-
-# 📚 Project Documentation
-
-More detailed documentation is available inside `firstcommit/`:
-
-```text
-HACKATHON_SUBMISSION.md
-HACKATHON_DEMO_RUNBOOK.md
-HACKATHON_DELIVERY_PLAN.md
-PRODUCT_ROADMAP.md
-ML_DL_IMPLEMENTATION_PLAN.md
-infra/README.md
-mcp/README.md
-realtime/DEPLOYMENT.md
-```
-
----
-
-# ⚠️ Deployment Status
-
-The repository contains AWS-ready application adapters, Docker packaging, Cognito integration, workflow integrations, and Terraform infrastructure foundations.
-
-A full public production environment still requires deployment into an AWS account and configuration of:
-
-* IAM roles;
-* runtime secrets;
-* networking;
-* RDS;
-* Bedrock resources;
-* SageMaker endpoints;
-* container hosting;
-* monitoring;
-* cost controls.
-
-No AWS resources are automatically created during normal local development.
-
----
-
-# 🌍 Vision
-
-We believe the future of AI education is not:
-
-```text
-Student → Chatbot → Answer
+Student → LLM → Answer
 ```
 
 It is:
 
 ```text
-                  Student
-                     │
-                     ▼
-               AI Orchestrator
-                     │
-       ┌─────────────┼─────────────┐
-       │             │             │
-       ▼             ▼             ▼
- Course Knowledge  Live Research  Learner State
-       │             │             │
-       ▼             ▼             ▼
-   Bedrock KB      SerpApi       Mastery Model
-       │             │             │
-       └─────────────┼─────────────┘
-                     │
-                     ▼
-              Specialized Agents
-                     │
-                     ▼
-          Personalized Learning
+                         Student
+                            │
+                            ▼
+                     Identity + Policy
+                            │
+                            ▼
+                     AI Orchestrator
+                            │
+           ┌────────────────┼────────────────┐
+           │                │                │
+           ▼                ▼                ▼
+    Course Knowledge   Learner State    Live Research
+           │                │                │
+           ▼                ▼                ▼
+      Bedrock KB        SageMaker         SerpApi
+           │                │                │
+           └────────────────┼────────────────┘
+                            │
+                            ▼
+                    Specialized Agents
+                            │
+                            ▼
+                   Personalized Learning
 ```
 
-AI should not simply generate answers.
+The platform does not only generate answers.
 
-It should **understand the learning context, retrieve the right evidence, research when necessary, detect misconceptions, adapt to the learner, and help teachers understand where intervention matters.**
+It connects:
+
+**identity + policy + private knowledge + AI generation + learner mastery + serverless workflows + live collaboration + external evidence**
+
+into one learning system.
+
+---
+
+# 🎓 Vision
+
+Students should not have to wait until an exam to discover that they misunderstood a foundational concept.
+
+Teachers should not need to manually inspect every student's reasoning to discover the same misconception repeated across an entire classroom.
+
+AI should not simply provide another answer.
+
+It should help learners:
+
+- retrieve the right evidence;
+- understand concepts;
+- practise;
+- make mistakes safely;
+- identify misconceptions;
+- repair reasoning;
+- explain ideas back;
+- adapt their learning;
+- collaborate with teachers.
+
+That is what ShikshaMesh is built to do.
 
 ---
 
 # 🎓 ShikshaMesh
 
-### **Private knowledge. Live intelligence. Specialized agents. Better learning.**
+### **AWS-powered agents. Grounded knowledge. Adaptive learning. Better classrooms.**
 
-**Primary Hackathon Category:** `Ship It — Agents and AI`
+**Build It:** SAM · LocalStack · Cedar · Docker  
+**Ship It:** Bedrock · SageMaker AI · S3 · Cognito · Lambda · Step Functions · Translate · EventBridge · CloudWatch · IVS · IAM · ECR
 
-**SerpApi:** powering governed real-time research and learning-resource discovery.
+**External Research:** SerpApi
 
-**AWS:** powering the planned production architecture for agents, ML, retrieval, identity, workflows, storage, compute, and observability.
+**GitHub:** https://github.com/shreesriv12/WeMakeDevs
