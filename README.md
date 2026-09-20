@@ -5,7 +5,6 @@
 ### 🏆 Hackathon Tracks
 
 **Primary Track:** `Ship It — Agents and AI`
-**SerpApi Hackathon:** AI-powered governed research & learning-resource discovery
 
 ---
 
