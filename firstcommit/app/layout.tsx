@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./styles.css";
+import "./design-system.css";
 import { OfflineSync } from "@/components/offline-sync";
 import { AuthSessionProvider } from "@/components/auth-session";
 import { AppNav } from "@/components/app-nav";
