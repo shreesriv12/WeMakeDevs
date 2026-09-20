@@ -6,6 +6,7 @@ import { SignInPanel, useAuthSession } from "@/components/auth-session";
 import { MarkdownAnswer } from "@/components/markdown-answer";
 import { TopicWorkspace } from "@/components/topic-workspace";
 import { ShapesDots } from "@/components/ui/shapes-dots";
+import "./landing-refresh.css";
 
 type Step = { id: string; label: string; status: "queued" | "complete" | "skipped"; detail: string };
 type Result = { language: string; intents: string[]; steps: Step[]; answer: string; sources: { title: string; url: string; kind: string }[]; auditId: string; modelDecision: { model: string; reason: string; confidence: number; fallback: string } };
@@ -68,38 +69,18 @@ export default function Home() {
           <span className="eyebrow">SHIKSHAMESH · AI LEARNING OS</span>
           <h1>Your notes become a <span>learning space.</span></h1>
           <p>Ask grounded questions, practise with an AI interviewer, research current information, draw on a smart canvas, and join live classes built around your own course material.</p>
-          <div className="landing-actions">
-            <a className="primary-link" href="/auth">Get started <span aria-hidden="true">→</span></a>
-            <a className="secondary-link" href="#features">Explore features</a>
-          </div>
-          <div className="landing-proof">
-            <span>Course-grounded AI</span>
-            <span>Multilingual support</span>
-            <span>Collaborative learning</span>
-          </div>
+          <div className="landing-actions"><a className="primary-link" href="/auth">Get started <span aria-hidden="true">→</span></a><a className="secondary-link" href="#features">Explore features</a></div>
+          <div className="landing-proof"><span>Course-grounded AI</span><span>Multilingual support</span><span>Collaborative learning</span></div>
         </div>
-
         <div className="landing-demo" aria-label="ShikshaMesh agent workflow preview">
-          <div className="demo-tabs">
-            <span className="active">Ask</span><span>Practise</span><span>Research</span><span>Create</span>
-          </div>
+          <div className="demo-tabs"><span className="active">Ask</span><span>Practise</span><span>Research</span><span>Create</span></div>
           <div className="demo-prompt">Explain recursion using my course notes...</div>
-          <div className="demo-tags">
-            <span className="tag-green">Use my course material</span>
-            <span className="tag-blue">Search with SerpApi</span>
-            <span className="tag-purple">AI agents</span>
-          </div>
-          <div className="demo-flow">
-            <span>Course Retrieval</span><b>→</b><span>Research Agent</span><b>→</b><span>SerpApi</span><b>→</b><span>Grounded Answer</span>
-          </div>
-          <div className="demo-answer">
-            <strong>Based on your notes, recursion is a technique where a function calls itself to solve a smaller subproblem...</strong>
-            <div><span>Cited from your notes</span><span>External sources</span></div>
-          </div>
+          <div className="demo-tags"><span className="tag-green">Use my course material</span><span className="tag-blue">Search with SerpApi</span><span className="tag-purple">AI agents</span></div>
+          <div className="demo-flow"><span>Course Retrieval</span><b>→</b><span>Research Agent</span><b>→</b><span>SerpApi</span><b>→</b><span>Grounded Answer</span></div>
+          <div className="demo-answer"><strong>Based on your notes, recursion is a technique where a function calls itself to solve a smaller subproblem...</strong><div><span>Cited from your notes</span><span>External sources</span></div></div>
         </div>
       </div>
     </section>
-
     <section id="features" className="feature-grid">
       <article><span>01</span><h2>Learn from your notes</h2><p>Private retrieval from approved course documents with evidence-backed answers and clear source separation.</p><a href="/auth">Start learning →</a></article>
       <article><span>02</span><h2>Practise actively</h2><p>Adaptive quizzes, voice-based AI interviews, code workspace, Concept X-Ray, and visual canvas.</p><a href="/auth">Start practising →</a></article>
