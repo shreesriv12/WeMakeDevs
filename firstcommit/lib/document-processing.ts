@@ -7,8 +7,39 @@ const MAX_CHUNKS = 200;
 
 export type ProcessedDocument = { text: string; chunks: string[] };
 
+function collapseRepeatedTokens(value: string) {
+  return value
+    .replace(/\b(\p{L}{1,12})(?:\s+\1){2,}\b/giu, "$1")
+    .replace(/\b([A-Z]{1,5})(?:\s+\1){2,}\b/g, "$1");
+}
+
+function collapseRepeatedPhrases(value: string) {
+  return value.replace(/\b(.{8,90}?)\s+(?:\1\s+){2,}/giu, "$1 ");
+}
+
+function repairSpacedUppercaseWords(value: string) {
+  return value
+    .replace(/\b([A-Z])(?:\s+([A-Z])){2,}\b/g, (match) => match.replace(/\s+/g, ""))
+    .replace(/\b([A-Z]{2,})(?:\s+([A-Z]{1,4})){2,}\b/g, (match) => match.replace(/\s+/g, ""));
+}
+
 export function normalizeDocumentText(value: string) {
-  return value.replace(/\r\n?/g, "\n").replace(/[ \t]+/g, " ").replace(/\n /g, "\n").replace(/\n{3,}/g, "\n\n").trim();
+  return collapseRepeatedPhrases(
+    collapseRepeatedTokens(
+      repairSpacedUppercaseWords(
+        value
+          .replace(/\r\n?/g, "\n")
+          .replace(/\u00ad/g, "")
+          .replace(/[ \t]+/g, " ")
+          .replace(/\n /g, "\n")
+          .replace(/\n{3,}/g, "\n\n")
+      )
+    )
+  )
+    .replace(/\s+([,.;:!?])/g, "$1")
+    .replace(/([,.;:!?])(?=[A-Za-z])/g, "$1 ")
+    .replace(/[ \t]{2,}/g, " ")
+    .trim();
 }
 
 export function chunkDocumentText(text: string, size = CHUNK_SIZE, overlap = CHUNK_OVERLAP) {

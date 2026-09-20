@@ -5,3 +5,10 @@ node_modules
 coverage
 docx_render
 .docx_deps
+.venv-ml
+Dataset_English_Hindi.csv
+data
+ml
+artifacts
+dist
+*.tsbuildinfo

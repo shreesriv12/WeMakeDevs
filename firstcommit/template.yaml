@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: ShikshaMesh local SAM template for the quiz worker.
+Globals:
+  Function:
+    Runtime: nodejs22.x
+    Timeout: 15
+    MemorySize: 256
+Resources:
+  QuizWorker:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/quiz-worker/
+      Handler: index.handler
+      Environment:
+        Variables:
+          AWS_REGION: us-east-1
+          ENABLE_BEDROCK_QUIZ_GENERATION: "false"
+          ENABLE_AWS_TRANSLATE: "false"
+          AUDIT_EVENT_BUS_NAME: shikshamesh-audit

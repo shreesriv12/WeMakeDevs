@@ -10,3 +10,5 @@ data/intent/reviewed/
 .venv-ml/
 .dist
 dist/
+
+.vercel

@@ -1,0 +1,1 @@
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'C:\WeMakeDevs\WeMakeDevs\firstcommit\.next\cache\webpack\server-production\0.pack_' -> 'C:\WeMakeDevs\WeMakeDevs\firstcommit\.next\cache\webpack\server-production\0.pack'

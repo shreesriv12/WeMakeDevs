@@ -1,4 +1,18 @@
 services:
+  localstack:
+    image: localstack/localstack:3.8
+    profiles: ["local-aws"]
+    environment:
+      SERVICES: s3,sqs,events,lambda
+      DEFAULT_REGION: us-east-1
+      AWS_DEFAULT_REGION: us-east-1
+      DEBUG: 0
+    ports:
+      - "4566:4566"
+    volumes:
+      - "./infra/localstack/init:/etc/localstack/init/ready.d:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
   db:
     image: postgres:16-alpine
     container_name: shikshamesh-postgres

@@ -26,7 +26,11 @@
     "generate:synthetic-mastery": "tsx scripts/generate-synthetic-mastery-events.ts",
     "generate:synthetic-mastery:large": "tsx scripts/generate-synthetic-mastery-events.ts --learners 300 --attempts 60",
     "prepare:translation": ".venv-ml\\Scripts\\python.exe ml\\translation\\prepare_parallel_corpus.py --input Dataset_English_Hindi.csv",
-    "package:quiz-worker": "node scripts/package-quiz-worker.mjs"
+    "package:quiz-worker": "node scripts/package-quiz-worker.mjs",
+    "db:migrate": "node scripts/migrate-postgres.cjs",
+    "policy:cedar": "node scripts/verify-cedar-policy.cjs",
+    "sam:build": "npm run package:quiz-worker && sam build",
+    "sam:quiz-local": "npm run sam:build && sam local invoke QuizWorker --event infra/cli/quiz-workflow-test-input.json --env-vars infra/local/sam-env.json"
   },
   "dependencies": {
     "@aws-sdk/client-bedrock-agent": "^3.900.0",
@@ -40,6 +44,7 @@
     "@aws-sdk/client-sfn": "^3.900.0",
     "@aws-sdk/client-translate": "^3.1136.0",
     "@base-ui/react": "^1.8.0",
+    "@cedar-policy/cedar-wasm": "^4.13.0",
     "@langchain/core": "^0.3.80",
     "@langchain/langgraph": "^0.2.74",
     "@modelcontextprotocol/sdk": "^1.30.0",
@@ -54,7 +59,7 @@
     "mammoth": "^1.12.3",
     "mermaid": "^12.0.0",
     "monaco-editor": "^0.56.0",
-    "next": "15.5.3",
+    "next": "15.5.25",
     "pdf-parse": "^2.4.5",
     "pg": "^8.16.3",
     "react": "19.1.1",
@@ -74,7 +79,7 @@
     "@types/react-dom": "19.1.9",
     "esbuild": "^0.28.2",
     "eslint": "9.35.0",
-    "eslint-config-next": "15.5.3",
+    "eslint-config-next": "15.5.25",
     "tailwindcss": "^4.3.3",
     "tsx": "^4.23.13",
     "typescript": "5.9.2",

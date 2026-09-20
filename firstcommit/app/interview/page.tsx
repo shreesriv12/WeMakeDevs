@@ -3,6 +3,7 @@
 import { DEMO_TOPIC } from "@/lib/demo-content";
 import {
   FormEvent,
+  Suspense,
   useRef,
   useState
 } from "react";
@@ -82,7 +83,7 @@ function preferredRecorderMimeType() {
   );
 }
 
-export default function CourseInterviewPage() {
+function CourseInterviewPageContent() {
   const params = useSearchParams();
   const {
     apiFetch,
@@ -1447,4 +1448,8 @@ export default function CourseInterviewPage() {
       )}
     </main>
   );
+}
+
+export default function CourseInterviewPage() {
+  return <Suspense fallback={<main><p>Loading AI Interview…</p></main>}><CourseInterviewPageContent /></Suspense>;
 }
