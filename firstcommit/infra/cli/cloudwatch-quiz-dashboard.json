@@ -1,0 +1,73 @@
+{
+  "widgets": [
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 0,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "Quiz Lambda invocations and errors",
+        "view": "timeSeries",
+        "region": "us-east-1",
+        "stat": "Sum",
+        "period": 300,
+        "metrics": [
+          [ "AWS/Lambda", "Invocations", "FunctionName", "shikshamesh-quiz-worker" ],
+          [ ".", "Errors", ".", "." ],
+          [ ".", "Throttles", ".", "." ]
+        ]
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12,
+      "y": 0,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "Quiz Lambda duration",
+        "view": "timeSeries",
+        "region": "us-east-1",
+        "stat": "p95",
+        "period": 300,
+        "metrics": [
+          [ "AWS/Lambda", "Duration", "FunctionName", "shikshamesh-quiz-worker" ]
+        ]
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 6,
+      "width": 24,
+      "height": 6,
+      "properties": {
+        "title": "Step Functions quiz workflow executions",
+        "view": "timeSeries",
+        "region": "us-east-1",
+        "stat": "Sum",
+        "period": 300,
+        "metrics": [
+          [ "AWS/States", "ExecutionsStarted", "StateMachineArn", "arn:aws:states:us-east-1:339486312822:stateMachine:shikshamesh-quiz-workflow" ],
+          [ ".", "ExecutionsSucceeded", ".", "." ],
+          [ ".", "ExecutionsFailed", ".", "." ],
+          [ ".", "ExecutionsTimedOut", ".", "." ]
+        ]
+      }
+    },
+    {
+      "type": "log",
+      "x": 0,
+      "y": 12,
+      "width": 24,
+      "height": 6,
+      "properties": {
+        "title": "Recent quiz workflow logs",
+        "region": "us-east-1",
+        "view": "table",
+        "query": "SOURCE '/aws/lambda/shikshamesh-quiz-worker' | fields @timestamp, @message | sort @timestamp desc | limit 30"
+      }
+    }
+  ]
+}

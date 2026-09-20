@@ -1,0 +1,11 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublishPrivacySafeQuizWorkflowEvents",
+      "Effect": "Allow",
+      "Action": "events:PutEvents",
+      "Resource": "arn:aws:events:us-east-1:339486312822:event-bus/shikshamesh-audit"
+    }
+  ]
+}

@@ -25,7 +25,8 @@
     "audit:intent-dataset": "tsx scripts/audit-intent-dataset.ts",
     "generate:synthetic-mastery": "tsx scripts/generate-synthetic-mastery-events.ts",
     "generate:synthetic-mastery:large": "tsx scripts/generate-synthetic-mastery-events.ts --learners 300 --attempts 60",
-    "prepare:translation": ".venv-ml\\Scripts\\python.exe ml\\translation\\prepare_parallel_corpus.py --input Dataset_English_Hindi.csv"
+    "prepare:translation": ".venv-ml\\Scripts\\python.exe ml\\translation\\prepare_parallel_corpus.py --input Dataset_English_Hindi.csv",
+    "package:quiz-worker": "node scripts/package-quiz-worker.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-bedrock-agent": "^3.900.0",
@@ -37,6 +38,8 @@
     "@aws-sdk/client-s3": "^3.900.0",
     "@aws-sdk/client-sagemaker-runtime": "^3.900.0",
     "@aws-sdk/client-sfn": "^3.900.0",
+    "@aws-sdk/client-translate": "^3.1136.0",
+    "@base-ui/react": "^1.8.0",
     "@langchain/core": "^0.3.80",
     "@langchain/langgraph": "^0.2.74",
     "@modelcontextprotocol/sdk": "^1.30.0",
@@ -44,7 +47,10 @@
     "@xyflow/react": "^12.11.6",
     "amazon-ivs-web-broadcast": "^1.39.0",
     "aws-jwt-verify": "^5.1.1",
+    "class-variance-authority": "^0.7.1",
+    "cn": "^0.3.0",
     "konva": "^10.5.0",
+    "lucide-react": "^1.47.0",
     "mammoth": "^1.12.3",
     "mermaid": "^12.0.0",
     "monaco-editor": "^0.56.0",
@@ -54,17 +60,22 @@
     "react": "19.1.1",
     "react-dom": "19.1.1",
     "react-konva": "^18.2.14",
+    "shadcn": "^4.21.0",
     "socket.io": "^4.8.3",
     "socket.io-client": "^4.8.3",
+    "tw-animate-css": "^1.4.0",
     "zod": "3.25.76"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "22.18.0",
     "@types/pg": "^8.15.5",
     "@types/react": "19.1.12",
     "@types/react-dom": "19.1.9",
+    "esbuild": "^0.28.2",
     "eslint": "9.35.0",
     "eslint-config-next": "15.5.3",
+    "tailwindcss": "^4.3.3",
     "tsx": "^4.23.13",
     "typescript": "5.9.2",
     "vitest": "3.2.4"

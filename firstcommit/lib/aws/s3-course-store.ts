@@ -27,6 +27,11 @@ export async function uploadProcessedCourseDocument(input: CourseUpload & { chun
   const client = new S3Client({ region });
   const sourceKey = `raw/institutions/${institutionId}/classes/${classId}/${documentId}-${safeName}`;
   await client.send(new PutObjectCommand({ Bucket: bucket, Key: sourceKey, Body: input.bytes, ContentType: input.contentType, ServerSideEncryption: "aws:kms", Metadata: { institutionId, classId } }));
+  // Bedrock data sources should only scan this deliberate, metadata-scoped prefix.
+  // Keeping the raw upload separate prevents duplicate raw/processed objects from being ingested.
+  const kbSourceKey = `kb-source/${documentId}-${safeName}`;
+  await client.send(new PutObjectCommand({ Bucket: bucket, Key: kbSourceKey, Body: input.bytes, ContentType: input.contentType, ServerSideEncryption: "aws:kms" }));
+  await client.send(new PutObjectCommand({ Bucket: bucket, Key: `${kbSourceKey}.metadata.json`, Body: JSON.stringify({ metadataAttributes: { institutionId, classId, documentId } }), ContentType: "application/json", ServerSideEncryption: "aws:kms" }));
   const keys: string[] = [];
   for (const [index, chunk] of input.chunks.entries()) {
     const key = `institutions/${institutionId}/classes/${classId}/processed/${documentId}/chunk-${String(index + 1).padStart(3, "0")}.txt`;
@@ -34,5 +39,5 @@ export async function uploadProcessedCourseDocument(input: CourseUpload & { chun
     await client.send(new PutObjectCommand({ Bucket: bucket, Key: `${key}.metadata.json`, Body: JSON.stringify({ metadataAttributes: { institutionId, classId, documentId, chunkIndex: index + 1 } }), ContentType: "application/json", ServerSideEncryption: "aws:kms" }));
     keys.push(key);
   }
-  return { bucket, sourceKey, keys, documentId };
+  return { bucket, sourceKey, kbSourceKey, keys, documentId };
 }

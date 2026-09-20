@@ -59,13 +59,13 @@ function deterministicRecoveryScore(response: string, diagnosis: ConceptDiagnosi
 
 export async function explainItBack(actor: Actor, sessionId: string, response: string) {
   if (!postgresEnabled()) throw new Error("Explain It Back requires PostgreSQL");
-  const session = await database().query<{ id: string; student_id: string; institution_id: string; class_id: string; diagnosis: ConceptDiagnosis }>("SELECT id,student_id,institution_id,class_id,diagnosis FROM concept_xray_sessions WHERE id=$1", [sessionId]);
+  const session = await database().query<{ id: string; student_id: string; institution_id: string; class_id: string; focus:string; diagnosis: ConceptDiagnosis }>("SELECT id,student_id,institution_id,class_id,focus,diagnosis FROM concept_xray_sessions WHERE id=$1", [sessionId]);
   const row = session.rows[0];
   if (!row || row.student_id !== actor.id || row.institution_id !== actor.institutionId) throw new Error("Concept X-Ray session not found");
   const answer = response.trim();
   if (answer.length < 12 || answer.length > 5000) throw new Error("Your explanation must be between 12 and 5000 characters");
   let score = deterministicRecoveryScore(answer, row.diagnosis);
-  let feedback = score >= 70 ? "Good recovery. Your explanation reconnects the central ideas. Confirm it with a short adaptive question before changing estimated mastery." : "You are moving in the right direction, but restate the correction bridge in your own words and include one concrete example.";
+  let feedback = score >= 70 ? "Good recovery. Your explanation reconnects the central ideas. This recovery is now recorded in your mastery history; confirm it with a short adaptive question too." : "You are moving in the right direction, but restate the correction bridge in your own words and include one concrete example.";
   if (process.env.OPENROUTER_API_KEY) {
     try {
       const text = await generateWithOpenRouter(`Evaluate a student's Explain It Back response against this Concept X-Ray diagnosis. Return JSON only: {"score":number,"feedback":string}. Score correctness, causal reasoning, and whether the original misconception is repaired. Do not award mastery solely for fluent wording. Diagnosis: ${JSON.stringify(row.diagnosis)}\nStudent explanation: ${answer}`);
@@ -75,5 +75,15 @@ export async function explainItBack(actor: Actor, sessionId: string, response: s
   }
   const masteryEligible = score >= 70;
   await database().query("INSERT INTO concept_xray_recoveries (id,session_id,response,score,feedback) VALUES ($1,$2,$3,$4,$5)", [crypto.randomUUID(), row.id, answer, score, feedback]);
-  return { sessionId: row.id, score, feedback, masteryEligible, nextStep: masteryEligible ? "Take one targeted adaptive question to confirm mastery improvement." : row.diagnosis.recoveryChallenge };
+  let masteryRecorded=false;
+  if(masteryEligible){try{await database().query("INSERT INTO assessment_attempts (id,student_id,institution_id,class_id,topic,question_id,difficulty,score) VALUES ($1,$2,$3,$4,$5,$6,'medium',$7)",[crypto.randomUUID(),actor.id,row.institution_id,row.class_id,row.focus,`xray-recovery-${row.id}`,score]);masteryRecorded=true;}catch{/* Recovery remains saved even if optional mastery-history storage is unavailable. */}}
+  return { sessionId: row.id, score, feedback, masteryEligible, masteryRecorded, nextStep: masteryEligible ? "Take one targeted adaptive question to confirm the recovered concept under a new question." : row.diagnosis.recoveryChallenge };
+}
+
+export type MisconceptionCluster={focus:string;misconception:string;learners:number;attempts:number;averageConfidence:number;latestAt:string};
+export async function misconceptionHeatmap(actor:Actor,classId:string){
+  if((actor.role!=="teacher"&&actor.role!=="admin")||(actor.role!=="admin"&&!actor.classIds.includes(classId)))throw new Error("Not authorized to view class misconceptions");
+  if(!postgresEnabled())return [] as MisconceptionCluster[];
+  const result=await database().query<{focus:string;misconception:string;learners:string;attempts:string;average_confidence:string;latest_at:Date}>("SELECT focus, COALESCE(diagnosis->>'misconception','Unclassified misconception') AS misconception, COUNT(DISTINCT student_id)::text AS learners, COUNT(*)::text AS attempts, AVG(COALESCE((diagnosis->>'confidence')::numeric,0))::text AS average_confidence, MAX(created_at) AS latest_at FROM concept_xray_sessions WHERE institution_id=$1 AND class_id=$2 GROUP BY focus,diagnosis->>'misconception' ORDER BY COUNT(*) DESC, MAX(created_at) DESC LIMIT 20",[actor.institutionId,classId]);
+  return result.rows.map(row=>({focus:row.focus,misconception:row.misconception,learners:Number(row.learners),attempts:Number(row.attempts),averageConfidence:Number(row.average_confidence),latestAt:row.latest_at.toISOString()}));
 }

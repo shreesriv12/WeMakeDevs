@@ -53,6 +53,10 @@ The prioritized product, production, and ML delivery plan is in [`PRODUCT_ROADMA
 
 The deployable foundation is in [`infra/`](infra/README.md). It intentionally requires a `terraform plan` review before any AWS resources are created.
 
+## Hackathon submission
+
+The track-ready project narrative, demo flow, and accurate AWS architecture mapping are in [`HACKATHON_SUBMISSION.md`](HACKATHON_SUBMISSION.md).
+
 ## ML and deep learning
 
 The model roadmap and evaluation gates are documented in [`ML_DL_IMPLEMENTATION_PLAN.md`](ML_DL_IMPLEMENTATION_PLAN.md). SageMaker-ready multilingual Transformer training is in [`ml/intent/`](ml/intent/README.md); the GRU Deep Knowledge Tracing baseline and its pseudonymous event schema are in [`ml/mastery/`](ml/mastery/README.md). Training and endpoint deployment are intentionally manual cost-controlled steps, not part of the normal web-app build.

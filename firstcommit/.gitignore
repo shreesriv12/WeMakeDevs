@@ -7,3 +7,5 @@ artifacts/*.zip
 ml/artifacts/
 data/intent/reviewed/
 .venv-ml/
+.dist
+dist/

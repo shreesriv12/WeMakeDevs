@@ -1,7 +1,7 @@
 import type { Actor } from "./auth";
 import { database, postgresEnabled } from "./postgres";
 
-export type LiveAttachment = { type: "canvas" | "code" | "geometry" | "document"; objectId: string };
+export type LiveAttachment = { type: "canvas" | "code" | "geometry" | "document" | "diagram"; objectId: string };
 export type LiveMessage = { id: string; senderName: string; senderRole: string; text: string; attachment?: LiveAttachment; createdAt: string };
 
 async function ensureActorScope(actor: Actor, classId: string) {
@@ -32,7 +32,7 @@ async function durableRoomId(actor: Actor, classId: string, roomKey: string) {
 function safeAttachment(value: unknown): LiveAttachment | undefined {
   if (!value || typeof value !== "object") return undefined;
   const attachment = value as { type?: unknown; objectId?: unknown };
-  if (!["canvas", "code", "geometry", "document"].includes(String(attachment.type)) || typeof attachment.objectId !== "string" || !attachment.objectId.trim() || attachment.objectId.length > 200) return undefined;
+  if (!["canvas", "code", "geometry", "document", "diagram"].includes(String(attachment.type)) || typeof attachment.objectId !== "string" || !attachment.objectId.trim() || attachment.objectId.length > 200) return undefined;
   return { type: attachment.type as LiveAttachment["type"], objectId: attachment.objectId.trim() };
 }
 

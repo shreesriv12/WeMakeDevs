@@ -5,6 +5,7 @@ import { queueOrchestration } from "@/lib/offline-queue";
 import { SignInPanel, useAuthSession } from "@/components/auth-session";
 import { MarkdownAnswer } from "@/components/markdown-answer";
 import { TopicWorkspace } from "@/components/topic-workspace";
+import { ShapesDots } from "@/components/ui/shapes-dots";
 
 type Step = { id: string; label: string; status: "queued" | "complete" | "skipped"; detail: string };
 type Result = { language: string; intents: string[]; steps: Step[]; answer: string; sources: { title: string; url: string; kind: string }[]; auditId: string; modelDecision: { model: string; reason: string; confidence: number; fallback: string } };
@@ -59,8 +60,8 @@ export default function Home() {
   }
 
   if (authLoading) return <main><p>Checking sign-in session…</p></main>;
-  if (!idToken) return <main className="landing-page">
-    <section className="landing-hero"><span className="eyebrow">SHIKSHAMESH · AI LEARNING OS</span><h1>Your notes become a learning space.</h1><p>Ask grounded questions, practise with an AI interviewer, draw on a smart canvas, and join live classes built around your own course material.</p><div className="landing-actions"><a className="primary-link" href="/auth">Log in or create account</a><a className="secondary-link" href="#features">Explore features</a></div><div className="landing-proof"><span>Course-grounded AI</span><span>Multilingual support</span><span>Collaborative learning</span></div></section>
+  if (!idToken) return <main className="landing-page landing-monochrome">
+    <section className="landing-hero"><ShapesDots cellSize={40} influenceRadiusVmin={25} idleScale={.1} minPeakScale={1} maxPeakScale={3} shapes={["circle","triangle","square"]} opacity={1}/><div className="landing-content"><span className="eyebrow">SHIKSHAMESH · AI LEARNING OS</span><h1>Your notes become a learning space.</h1><p>Ask grounded questions, practise with an AI interviewer, draw on a smart canvas, and join live classes built around your own course material.</p><div className="landing-actions"><a className="primary-link" href="/auth">Log in or create account</a><a className="secondary-link" href="#features">Explore features</a></div><div className="landing-proof"><span>Course-grounded AI</span><span>Multilingual support</span><span>Collaborative learning</span></div></div></section>
     <section id="features" className="feature-grid"><article><span>01</span><h2>Learn from your notes</h2><p>Private retrieval from your approved course documents, with evidence-backed answers.</p></article><article><span>02</span><h2>Practise actively</h2><p>Adaptive quizzes, voice-based AI interviews, code workspace, and visual canvas.</p></article><article><span>03</span><h2>Learn together</h2><p>Topic-focused live rooms, shared work, hands-up interaction, and classroom discussion.</p></article></section>
   </main>;
   if (role === "teacher" || role === "admin") return <main><section className="hero"><span className="eyebrow">SHIKSHAMESH {role.toUpperCase()}</span><h1>Plan once. Orchestrate the rest.</h1><p>Use the teacher workspace to upload course material, create multilingual quizzes, schedule workflows, and review aggregated class insights.</p><a href="/teacher">Open teacher workflow →</a></section><SignInPanel /></main>;

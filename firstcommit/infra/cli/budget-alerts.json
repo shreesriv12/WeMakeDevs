@@ -1,0 +1,13 @@
+{
+  "BudgetName": "shikshamesh-hackathon-cap",
+  "BudgetLimit": { "Amount": "140", "Unit": "USD" },
+  "TimeUnit": "MONTHLY",
+  "BudgetType": "COST",
+  "CostFilters": {},
+  "NotificationsWithSubscribers": [
+    { "Notification": { "NotificationType": "ACTUAL", "ComparisonOperator": "GREATER_THAN", "Threshold": 17.86, "ThresholdType": "PERCENTAGE" }, "Subscribers": [{ "SubscriptionType": "EMAIL", "Address": "REPLACE_WITH_YOUR_EMAIL" }] },
+    { "Notification": { "NotificationType": "ACTUAL", "ComparisonOperator": "GREATER_THAN", "Threshold": 35.72, "ThresholdType": "PERCENTAGE" }, "Subscribers": [{ "SubscriptionType": "EMAIL", "Address": "REPLACE_WITH_YOUR_EMAIL" }] },
+    { "Notification": { "NotificationType": "ACTUAL", "ComparisonOperator": "GREATER_THAN", "Threshold": 71.43, "ThresholdType": "PERCENTAGE" }, "Subscribers": [{ "SubscriptionType": "EMAIL", "Address": "REPLACE_WITH_YOUR_EMAIL" }] },
+    { "Notification": { "NotificationType": "ACTUAL", "ComparisonOperator": "GREATER_THAN", "Threshold": 100, "ThresholdType": "PERCENTAGE" }, "Subscribers": [{ "SubscriptionType": "EMAIL", "Address": "REPLACE_WITH_YOUR_EMAIL" }] }
+  ]
+}

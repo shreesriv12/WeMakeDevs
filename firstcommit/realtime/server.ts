@@ -21,6 +21,11 @@ async function emitRoomPresence(room: string) {
   const participants = [...new Map(sockets.map((item) => { const actor = item.data.actor; return [actor?.id, { id: actor?.id, displayName: actor?.displayName ?? "Learner", role: actor?.role ?? "student" }]; })).values()].filter((item) => Boolean(item.id));
   io.to(room).emit("presence:update", { onlineCount: participants.length, participants });
 }
+async function emitCanvasPresence(room: string) {
+  const sockets = await io.in(room).fetchSockets();
+  const participants = [...new Map(sockets.map((item) => { const actor = item.data.actor; return [actor?.id, { id: actor?.id, displayName: actor?.displayName ?? "Learner", role: actor?.role ?? "student" }]; })).values()].filter((item) => Boolean(item.id));
+  io.to(room).emit("canvas:presence", { participants });
+}
 
 io.use(async (socket, next) => {
   try { const token = socket.handshake.auth.token; if (typeof token !== "string") throw new Error("Missing token"); socket.data.actor = actorFromClaims(await verifier.verify(token) as Record<string, unknown>); next(); }
@@ -43,10 +48,11 @@ io.on("connection", (socket) => {
     for (const target of targets) if (target.data.actor?.id === participantId) { target.leave(room); target.emit("room:removed", "You were removed from this live classroom by the teacher."); }
     await emitRoomPresence(room);
   });
-  socket.on("canvas:join", ({ classId, workspaceKey }: { classId:string; workspaceKey:string }) => { const actor = socket.data.actor; if (!actor || !hasClassAccess(actor, classId)) return socket.emit("room:error", "Not authorized for this canvas workspace"); socket.join(`${actor.institutionId}:${classId}:canvas:${workspaceKey}`); });
+  socket.on("canvas:join", async ({ classId, workspaceKey }: { classId:string; workspaceKey:string }) => { const actor = socket.data.actor; if (!actor || !hasClassAccess(actor, classId)) return socket.emit("room:error", "Not authorized for this canvas workspace"); const room=`${actor.institutionId}:${classId}:canvas:${workspaceKey}`; socket.data.canvasRoom=room; socket.join(room); await emitCanvasPresence(room); });
   socket.on("canvas:state", ({ classId, workspaceKey, state }: { classId:string; workspaceKey:string; state:unknown }) => { const actor = socket.data.actor; if (!actor || !hasClassAccess(actor, classId) || !Array.isArray(state) || state.length > 2000 || JSON.stringify(state).length > 1_000_000) return; socket.to(`${actor.institutionId}:${classId}:canvas:${workspaceKey}`).emit("canvas:state", { state, updatedBy: actor.displayName ?? "Learner" }); });
+  socket.on("canvas:cursor", ({ classId, workspaceKey, x, y }: { classId:string; workspaceKey:string; x:number; y:number }) => { const actor = socket.data.actor; if (!actor || !hasClassAccess(actor, classId) || !Number.isFinite(x) || !Number.isFinite(y) || x < 0 || y < 0 || x > 2000 || y > 2000) return; socket.to(`${actor.institutionId}:${classId}:canvas:${workspaceKey}`).emit("canvas:cursor", { id: actor.id, displayName: actor.displayName ?? "Learner", x, y }); });
   socket.on("hand:raise", ({ roomId, classId, raised }: { roomId:string; classId:string; raised:boolean }) => { const actor = socket.data.actor; if (!actor || !hasClassAccess(actor, classId)) return; io.to(classroomRoom(actor, classId, roomId)).emit("hand:update", { userId:actor.id, displayName:actor.displayName ?? "Learner", role:actor.role, raised }); });
   socket.on("chat:message", async ({ roomId, classId, text, attachment }) => { const actor = socket.data.actor; if (!actor || !hasClassAccess(actor, classId) || typeof text !== "string") return; try { const message = await persistLiveMessage(actor, { classId, roomKey: roomId, text, attachment }); io.to(classroomRoom(actor, classId, roomId)).emit("chat:message", { ...message, senderRole: message.senderName }); } catch (error) { socket.emit("room:error", error instanceof Error ? error.message : "Could not save live message"); } });
-  socket.on("disconnect", () => { const room = socket.data.classroomRoom, actor = socket.data.actor, classId = socket.data.classroomClassId, roomKey = socket.data.classroomRoomKey; if (typeof room === "string") void emitRoomPresence(room); if (actor && typeof classId === "string" && typeof roomKey === "string") void recordLiveAttendance(actor, { classId, roomKey, event: "left" }).catch((error) => console.error("Live attendance persistence unavailable:", error)); });
+  socket.on("disconnect", () => { const room = socket.data.classroomRoom, canvasRoom=socket.data.canvasRoom, actor = socket.data.actor, classId = socket.data.classroomClassId, roomKey = socket.data.classroomRoomKey; if (typeof room === "string") void emitRoomPresence(room); if(typeof canvasRoom==="string") void emitCanvasPresence(canvasRoom); if (actor && typeof classId === "string" && typeof roomKey === "string") void recordLiveAttendance(actor, { classId, roomKey, event: "left" }).catch((error) => console.error("Live attendance persistence unavailable:", error)); });
 });
 httpServer.listen(port, () => console.log(`ShikshaMesh realtime server listening on ${port}`));

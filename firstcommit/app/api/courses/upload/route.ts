@@ -15,6 +15,10 @@ import {
 } from "@/lib/qdrant";
 
 import {
+  startKnowledgeIngestion
+} from "@/lib/aws/knowledge-ingestion";
+
+import {
   debugError,
   debugLog
 } from "@/lib/debug";
@@ -252,6 +256,26 @@ export async function POST(
         }
       );
 
+    // Qdrant keeps the immediate development/search path available. Bedrock runs
+    // asynchronously from the deliberately scoped kb-source/ prefix.
+    let bedrockIngestion:
+      | { provider: "bedrock" | "local"; status: string; ingestionJobId?: string }
+      | undefined;
+    try {
+      const started = await startKnowledgeIngestion(uploaded.kbSourceKey);
+      bedrockIngestion = { ...started, status: started.status ?? "started" };
+    } catch (reason) {
+      debugError(
+        "upload",
+        "Bedrock ingestion could not start; Qdrant indexing remains available",
+        reason
+      );
+      bedrockIngestion = {
+        provider: "bedrock",
+        status: "pending-retry"
+      };
+    }
+
     const persistence =
       await recordCourseDocument(
         actor,
@@ -271,7 +295,10 @@ export async function POST(
             file.type,
 
           ingestionStatus:
-            ingestion.status
+            bedrockIngestion?.status ??
+            ingestion.status,
+          ingestionJobId:
+            bedrockIngestion?.ingestionJobId
         }
       );
 
@@ -283,6 +310,7 @@ export async function POST(
           uploaded.documentId,
 
         provider:
+          bedrockIngestion?.provider ??
           ingestion.provider,
 
         indexed:
@@ -307,7 +335,10 @@ export async function POST(
               .length
         },
 
-        ingestion,
+        ingestion: {
+          qdrant: ingestion,
+          bedrock: bedrockIngestion
+        },
 
         persistence
       },
